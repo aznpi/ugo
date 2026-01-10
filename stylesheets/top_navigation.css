@@ -1,0 +1,94 @@
+nav {
+  background-color: #fff;
+  font-family: "Source Sans 3", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+nav .dropdown-toggle::after {
+  display: none;
+}
+nav ul.navbar-nav {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  justify-content: space-evenly;
+}
+nav ul.navbar-nav li.nav-item {
+  position: unset;
+}
+nav ul.navbar-nav li a:not(.btn) {
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  color: #2A2A2A;
+  padding: 0 !important;
+}
+nav ul.navbar-nav li a:not(.btn):hover {
+  color: #2A2A2A;
+}
+nav ul.navbar-nav li div.dropdown-menu {
+  margin-top: -5px;
+  width: 100%;
+  padding: 30px 0;
+}
+nav ul.navbar-nav li div.dropdown-menu .col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+nav ul.navbar-nav li div.dropdown-menu .icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+nav ul.navbar-nav li div.dropdown-menu .icon-container .image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+nav ul.navbar-nav li div.dropdown-menu .icon-container .link-title {
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  color: #163D5C;
+}
+nav ul.navbar-nav li div.dropdown-menu ul.link-list li {
+  list-style: none;
+  margin-bottom: 5px;
+}
+nav ul.navbar-nav li div.dropdown-menu ul.link-list li a.link-item {
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  text-decoration: none;
+  color: #575757;
+}
+nav ul.navbar-nav li div.dropdown-menu ul.link-list li a.link-item:hover {
+  color: #163D5C;
+}
+
+#magic-line {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100px;
+  height: 2px;
+  background: #163D5C;
+  opacity: 0;
+  left: 0;
+}
+#magic-line.magic-active {
+  opacity: 1;
+}/*# sourceMappingURL=top_navigation.css.map */

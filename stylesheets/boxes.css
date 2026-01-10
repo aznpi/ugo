@@ -1,0 +1,33 @@
+/* 2 rows x 3 columns boxes section */
+.boxes-section {
+  padding: 3rem 0;
+}
+
+.box-card {
+  background: #fff;
+  border: 1px solid #e6eef5;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 15px 15px 0;
+}
+@media (max-width: 576px) {
+  .box-card {
+    padding: 1rem;
+  }
+}
+.box-card .box-cta {
+  margin-top: 1rem;
+}
+.box-card h5 {
+  margin-bottom: 30px;
+}
+.box-card .icon-container.rounded-circle {
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 10px;
+  margin: 0 auto;
+}/*# sourceMappingURL=boxes.css.map */

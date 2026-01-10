@@ -1,0 +1,126 @@
+@use 'variables' as v;
+
+nav{
+    background-color: #fff;
+    font-family: v.$primary-font;
+    font-optical-sizing: auto;
+    font-style: normal;
+
+    .dropdown-toggle{
+        &::after{
+            display:none;
+        }
+    }
+    ul{
+        &.navbar-nav{
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            justify-content: space-evenly;
+
+            li{
+                &.nav-item{
+                    position: unset;
+                }
+                a{
+                    &:not(.btn){
+
+                        font-weight: 400;
+                        font-style: Regular;
+                        font-size: 16px;
+                        line-height: 24px;
+                        letter-spacing: 0%;
+                        text-align: center;
+                        vertical-align: middle;
+                        color: #2A2A2A;
+                        padding: 0 !important;
+
+                        &:hover{
+                            color: #2A2A2A;
+                        }
+
+                    }
+                    
+                }
+                div{
+                    &.dropdown-menu{
+                        margin-top:-5px;
+                        width:100%;
+                        padding: 30px 0;
+
+                        .col{
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+
+                        .icon-container{
+                            display:flex;
+                            justify-content: center;
+                            align-items: center;
+                            flex-direction: column;
+
+                            .image-container{
+                                display:flex;
+                                justify-content: center;
+                                align-items: center;
+                            }
+
+                            .link-title{
+                                font-weight: 700;
+                                font-style: Bold;
+                                font-size: 20px;
+                                line-height: 28px;
+                                letter-spacing: 0%;
+                                text-align: center;
+                                vertical-align: middle;
+                                color:v.$primary-color;
+
+                            }
+                        }
+
+                        ul{
+                            &.link-list{
+                                li{
+                                    list-style: none;
+                                    margin-bottom:5px;
+                                    a{
+                                        &.link-item{
+                                            font-weight: 400;
+                                            font-style: Regular;
+                                            font-size: 16px;
+                                            line-height: 24px;
+                                            letter-spacing: 0%;
+                                            vertical-align: middle;
+                                            text-decoration: none;
+                                            color:v.$anchor-link-color;
+
+                                            &:hover{
+                                                color:v.$primary-color;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#magic-line { 
+  position: absolute;
+  bottom: 20px; 
+  left: 0; 
+  width: 100px; 
+  height: 2px; 
+  background: v.$primary-color;
+  opacity: 0;
+  left:0;
+
+  &.magic-active{
+    opacity: 1;
+  }
+}

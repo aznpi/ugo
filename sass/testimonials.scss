@@ -1,0 +1,87 @@
+@use "variables" as v;
+
+/* Testimonial section */
+.testimonials {
+	padding: 4rem 0;
+	background: #ffffff;
+    color: v.$secondary-color;
+    @media (max-width: 768px) {
+		padding: 2rem 0;
+}
+
+    .testimonial-item {
+        position: relative;
+        z-index: 1;
+        &:after{
+            font-family: FontAwesome;
+            content: "\f10e";
+            font-size: 100px;
+            position: absolute;
+            top: -50px;
+            right:50px;
+            z-index: 2;
+        }
+        &:nth-child(odd) {
+            &:after{
+                color: v.$light-blue-color;
+            }
+        }
+        &:nth-child(even) {
+            &:after{
+                color: v.$primary-color;
+            }
+        }
+        background: #fff;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 6px 18px rgba(15,23,42,0.06);
+        min-height: 180px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .testimonial-quote {
+        
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+
+    }
+    .testimonial-author {
+        
+        font-weight: 700;
+        font-style: Bold;
+        font-size: 24px;
+        line-height: 32px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+
+    }
+    .testimonial-role {
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 20px;
+        line-height: 28px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+
+    }
+    .testimonial-slider {
+        .slick-slide {
+            padding-top: 40px;
+            padding-right: 80px;
+            padding-bottom: 40px;
+            padding-left: 80px;
+            border-radius: 20px;
+            box-sizing: border-box;
+            background-color: v.$light-grey-color;
+        }
+    }
+    .slick-track{
+        padding-top:20px;
+    }
+    
+}
