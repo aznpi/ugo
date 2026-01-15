@@ -23,11 +23,37 @@
   margin-top: 1rem;
 }
 .box-card h5 {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+}
+.box-card p:last-child {
+  margin-bottom: 0px;
 }
 .box-card .icon-container.rounded-circle {
-  width: -moz-fit-content;
-  width: fit-content;
-  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
   margin: 0 auto;
+}
+.box-card .icon-container img {
+  width: 56px;
+}
+
+.box:not(:last-child) .box-container.arrow-enabled {
+  position: relative;
+}
+.box:not(:last-child) .box-container.arrow-enabled:after {
+  content: "\f04b";
+  font-family: FontAwesome;
+  font-size: 36px;
+  color: #163D5C;
+  position: absolute;
+  right: -25px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+@media (max-width: 768px) {
+  .box:not(:last-child) .box-container.arrow-enabled:after {
+    display: none;
+  }
 }/*# sourceMappingURL=boxes.css.map */

@@ -1,7 +1,4 @@
 var $el, leftPos, newWidth;
-/*
-        EXAMPLE ONE
-    */
 
 /* Add Magic Line markup via JavaScript, because it ain't gonna work without */
 $("#main-nav").append("<li id='magic-line'></li>");

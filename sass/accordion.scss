@@ -1,0 +1,216 @@
+@use "variables" as v;
+
+.simple-accordion {
+	.accordion-button {
+		font-weight: 700;
+		font-style: Bold;
+		font-size: 20px;
+		line-height: 28px;
+		letter-spacing: 0%;
+		color: v.$primary-color;
+		border-bottom: 1px solid #AAAAAA !important;
+		&:not(.collapsed) {
+			background-color: transparent;
+			color: v.$primary-color;
+		}
+		&:focus {
+			box-shadow: none;
+		}
+	}
+	.accordion-body {
+		font-weight: 400;
+		font-style: Regular;
+		font-size: 16px;
+		line-height: 24px;
+		letter-spacing: 0%;
+		color: #2A2A2A;
+	}
+}
+.search-results-accordion {
+	.filter-form{
+		.input-form-group{
+			    display: flex;
+				align-items: stretch;
+				color: v.$primary-color;
+				text-align: left;
+				>div{
+					&:first-child{
+						display: flex;
+						align-items: center;
+						flex-grow: 1;
+						width:35%;
+						text-align: left;
+
+						.dropdown{
+							width:50%;
+
+							&:first-child{
+								button{
+									border-radius:10px 0 0 10px;
+								}
+							}
+							&:last-child{
+								button{
+									border-radius:0;
+								}
+							}
+							.dropdown-menu{
+								min-width:100%;
+							}
+							button{
+								background-color: v.$light-grey-color;
+								text-align: left;
+								width: 100%;
+								display: flex;
+								align-items: center;
+								justify-content: space-between;
+								padding-left:30px;
+
+								&:focus{
+									box-shadow:none;
+									border: 0;
+									outline: 0;
+								}
+
+								&::after{
+								    content: "\f107";
+									font-family: FontAwesome;
+									margin-left: 0;
+									vertical-align: auto;
+									border: 0;
+									right: 0;
+								}
+							}
+						}
+					}
+					&:last-child{
+						width: 65%;
+						display: flex;
+						align-items: center;
+
+						input{
+							background-color: v.$light-grey-color;
+							padding:10px 30px;
+							border:1px solid v.$light-grey-color;
+							border-radius:0 0;
+							text-align: left;
+						}
+						button{
+							min-width: 48px;
+							width:48px;
+							background-color: v.$light-blue-color;
+							border-radius:0 10px 10px 0;
+						}
+					}
+				}
+		}
+	}
+	.accordion-button {
+		font-weight: 700;
+		font-style: Bold;
+		font-size: 20px;
+		line-height: 28px;
+		letter-spacing: 0%;
+		color: v.$primary-color;
+		&:not(.collapsed) {
+			background-color: transparent;
+			color: v.$primary-color;
+		}
+		&:focus {
+			box-shadow: none;
+		}
+	}
+	.accordion-item{
+		opacity: 1;
+		padding-top: 24px;
+		padding-right: 40px;
+		padding-bottom: 24px;
+		padding-left: 40px;
+		border-radius: 20px;
+		margin-bottom:20px;
+		background-color: transparent;
+		border:1px solid #AAAAAA;
+
+		&.item-hide{
+			display:none;
+		}
+
+		.accordion-header{
+			margin-bottom:0 !important;
+			.accordion-button{
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 0;
+				&:after{
+					display: none;
+				}
+				h4{
+					font-weight: 700;
+					font-style: Bold;
+					font-size: 24px;
+					line-height: 32px;
+					letter-spacing: 0%;
+
+				}
+			}
+		}
+		.accordion-collapse{
+			&:focus{
+				box-shadow:none;
+			}
+		}
+		.accordion-button{
+			box-shadow:none;
+
+			&:focus{
+				box-shadow:none;
+			}
+		}
+		.accordion-body{
+			padding:0;
+			&:focus{
+				box-shadow:none;
+			}
+			.result-info{
+				display: flex;
+				flex-wrap: wrap;
+				align-items: center;
+				justify-content: space-between;
+				width: 100%;
+				padding-left: 0;
+
+				li{
+					text-align: center;
+					display: flex;
+					flex-direction: column;
+					padding: 25px;
+					background-color: v.$light-grey-color;
+					border-radius: 10px;
+					width: 278px;
+					@media screen and (max-width: 768px) {
+						width: 100%;
+					}
+
+					.title{
+						
+						font-weight: 400;
+						font-style: Regular;
+						font-size: 16px;
+						line-height: 24px;
+						letter-spacing: 0%;
+
+					}
+					.stat{
+						font-weight: 700;
+						font-style: Bold;
+						font-size: 24px;
+						line-height: 32px;
+						letter-spacing: 0%;
+
+					}
+				}
+			}
+		}
+	}
+}

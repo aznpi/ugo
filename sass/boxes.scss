@@ -24,13 +24,48 @@ $color_1: #6b7280;
 		margin-top: 1rem;
 	}
     h5{
-        margin-bottom:30px;
+        margin-bottom:20px;
+    }
+    p{
+        &:last-child{
+            margin-bottom:0px;
+        }
     }
     .icon-container{
         &.rounded-circle{
-            width: fit-content;
-            padding:10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding:20px;
             margin:0 auto;
+        }
+        img{
+            width:56px;
         }
     }
 }
+.box{
+    &:not(:last-child){
+        .box-container{
+            &.arrow-enabled{
+                position: relative;
+                &:after{
+                    content: '\f04b';
+                    font-family: FontAwesome;
+                    font-size: 36px;
+                    color: v.$primary-color;
+                    position: absolute;
+                    right: -25px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    @media (max-width: 768px) {
+                        display: none;
+                    }
+                }
+                
+            }
+            
+        }
+    }
+}
+

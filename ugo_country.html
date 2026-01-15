@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Country Template</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="/ugo_dev/stylesheets/main.css" rel="stylesheet" />
+    <link href="/ugo_dev/stylesheets/top_navigation.css" rel="stylesheet" />
+    <link href="/ugo_dev/stylesheets/testimonials.css" rel="stylesheet" />
+    <link href="/ugo_dev/stylesheets/boxes.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .hero {
+        background: linear-gradient(135deg, #0d6efd 0%, #6610f2 100%);
+        color: white;
+        padding: 4rem 0;
+      }
+      .card-img-top {
+        object-fit: cover;
+        height: 180px;
+      }
+      footer {
+        background: #f8f9fa;
+        padding: 2rem 0;
+      }
+      /* Two-row section */
+      .two-row-section {
+        padding: 3rem 0;
+      }
+      .two-row-section .image-left {
+        display: flex;
+        align-items: center;
+      }
+      .two-row-section .image-left img {
+        width: 100%;
+        height: auto;
+        border-radius: 6px;
+      }
+      .photo-slider .slider-item img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 6px;
+      }
+      @media (max-width: 768px) {
+        .photo-slider .slider-item img {
+          height: 100px;
+        }
+      }
+    </style>
+  </head>
+  <body class="ugo-template">
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm border-bottom"
+    >
+      <div class="container">
+        <a class="navbar-brand text-dark" href="#"
+          ><img src="/ugo_dev/images/logo_ugo.png" alt="Logo"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#nav"
+          aria-controls="nav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="main-nav">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown"
+                href="#"
+                id="schoolsDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Schools</a
+              >
+              <div
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="schoolsDropdown"
+              >
+                <div class="container">
+                  <div class="row">
+                    <div class="col icon-container">
+                      <div class="image-container">
+                        <img
+                          src="/ugo_dev/images/icons/icon_school.png"
+                          alt="School Icon"
+                          class="img-fluid mb-2"
+                        />
+                      </div>
+                      <div class="link-title">Schools</div>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#"
+                            >Undergraduate - Associate degree</a
+                          >
+                        </li>
+                        <li>
+                          <a class="link-item" href="#"
+                            >Undergraduate - Bachelor's degree</a
+                          >
+                        </li>
+                        <li>
+                          <a class="link-item" href="#"
+                            >Graduate - Master's degree</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#"
+                            >Graduate - Doctorate degree</a
+                          >
+                        </li>
+                        <li><a class="link-item" href="#">Big Cities</a></li>
+                        <li>
+                          <a class="link-item" href="#">Value for Money</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#"
+                            >Saudi Sponsored Students</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="countriesDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Countries</a
+              >
+              <div
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="countriesDropdown"
+              >
+                <div class="container">
+                  <div class="row">
+                    <div class="col icon-container">
+                      <div class="image-container">
+                        <img
+                          src="/ugo_dev/images/icons/icon_globe.png"
+                          alt="Globe Icon"
+                          class="img-fluid mb-2"
+                        />
+                      </div>
+                      <div class="link-title">Countries</div>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li><a class="link-item" href="#">Australia</a></li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li><a class="link-item" href="#">Canada</a></li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li><a class="link-item" href="#">USA</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="servicesDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Services</a
+              >
+              <div
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="servicesDropdown"
+              >
+                <div class="container">
+                  <div class="row">
+                    <div class="col icon-container">
+                      <div class="image-container">
+                        <img
+                          src="/ugo_dev/images/icons/icon_services.png"
+                          alt="Services Icon"
+                          class="img-fluid mb-2"
+                        />
+                      </div>
+                      <div class="link-title">Services</div>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#"
+                            >Conditional Admission USA</a
+                          >
+                        </li>
+                        <li>
+                          <a class="link-item" href="#">Direct Admission USA</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#">2 + 2 Program USA</a>
+                        </li>
+                        <li>
+                          <a class="link-item" href="#"
+                            >College Year Program USA</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#"
+                            >University Pathway Program Australia</a
+                          >
+                        </li>
+                        <li>
+                          <a class="link-item" href="#"
+                            >University Pathway Program Canada</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="admissionsDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Admissions</a
+              >
+              <div
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="admissionsDropdown"
+              >
+                <div class="container">
+                  <div class="row">
+                    <div class="col icon-container">
+                      <div class="image-container">
+                        <img
+                          src="/ugo_dev/images/icons/icon_admissions.png"
+                          alt="Admissions Icon"
+                          class="img-fluid mb-2"
+                        />
+                      </div>
+                      <div class="link-title">Admissions</div>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#">Tuition & Fees</a>
+                        </li>
+                        <li>
+                          <a class="link-item" href="#"
+                            >Student Visa Information</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li><a class="link-item" href="#">How to Apply</a></li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#">Terms & Conditions</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">FAQ</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="languageDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >EN</a
+              >
+              <ul
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="languageDropdown"
+              >
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">Something else</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-primary" href="#">Find your school</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="main-hero hero section-form" style=" background-image: url('/ugo_dev/images/img_golden_gate.jpg');background-size: cover; background-position: top center;">
+      <div class="hero-inner">
+        <div class="container h-100">
+          <div class="row hero-row">
+           <div class="col-md-12 text-center align-items-center justify-content-center d-flex">
+              <div class="bg-blue px-3 py-2">
+                <h1 class="title-lg mb-0">
+                  Why Study in the USA
+                </h1>
+              </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-container full-form bg-white p-3 rounded-4 shadow position-relative" id="hero-school-search" style="top:30px">
+              <form>
+                <input
+                  type="hidden"
+                  value=""
+                  name="heroSchoolPrimarySearch"
+                  required
+                />
+                <input type="hidden" value="" name="heroDegreeType" required />
+                <ul class="btn-list d-flex justify-content-between flex-wrap">
+                  <li>
+                    <a href="#" class="btn btn-grey btn-lg" data-value="USA"
+                      >USA Schools</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="btn btn-grey btn-lg"
+                      data-value="Australia"
+                      >Australia Schools</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="btn btn-grey btn-lg" data-value="Canada"
+                      >Canada Schools</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="btn btn-grey btn-lg"
+                      data-value="English Courses"
+                      >English Courses</a
+                    >
+                  </li>
+                </ul>
+                <div class="input-form-group mt-3">
+                  <div>
+                    <div class="dropdown">
+                      <button
+                        class="btn dropdown-toggle bg-light-grey"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        Degree Type
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a
+                            class="dropdown-item"
+                            href="#"
+                            data-value="Undergraduate"
+                            >Undergraduate</a
+                          >
+                        </li>
+                        <li>
+                          <a
+                            class="dropdown-item"
+                            href="#"
+                            data-value="Graduate"
+                            >Graduate</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      name="heroStudyAreaSearchTerm"
+                      class="form-control bg-light-blue"
+                      placeholder="Search Area of Study"
+                    />
+                    <button class="btn btn-blue btn-lg" type="submit">
+                      <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Two-row section: top row 2 columns (image left), bottom row photo slider (5-up) -->
+    <section class="two-row-section pb-0 mt-5">
+      <div class="container">
+        <div class="row mb-4 row-reverse">
+          <div class="col-lg-6 image-right">
+            <div class="image-box">
+              <img
+                src="/ugo_dev/images/img_stadium.png"
+                alt="Left image"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+          <div class="col-lg-6 align-items-center">
+            <div class="text-box">
+              <h2>Enjoy An American University Student Experience</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Praesent ultrices blandit ipsum, et dignissim dolor ultricies
+                ac. Mauris dolor nunc, venenatis vel mi quis, tincidunt
+                fermentum ex. Mauris placerat risus non leo porta lacinia. Lorem
+                ipsum dolor sit amet, consectetur adipiscing elit.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Praesent ultrices blandit ipsum, et dignissim dolor ultricies
+                ac.
+              </p>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2x3 Boxes Section -->
+    <section class="py-5 bg-white text-center pt-0">
+      <div class="container">
+        <div class="row g-4 mt-5">
+          <div class="col-md-4">
+            <div
+              class="box-card h-100 d-flex flex-column border border-0 shadow-none"
+            >
+              <div class="icon-container mb-4 bg-light-grey rounded-circle">
+                <img src="/ugo_dev/images/icons/icon_english.png" />
+              </div>
+              <h5>Immersive Language Environment</h5>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit
+                amet quam nulla. Aliquam erat volutpat. Aliquam mollis, leo in
+                scelerisque consequat.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div
+              class="box-card h-100 d-flex flex-column border border-0 shadow-none"
+            >
+              <div class="icon-container mb-4 bg-light-grey rounded-circle">
+                <img src="/ugo_dev/images/icons/icon_citites.png" />
+              </div>
+              <h5>World Class Cities</h5>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit
+                amet quam nulla. Aliquam erat volutpat. Aliquam mollis, leo in
+                scelerisque consequat.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div
+              class="box-card h-100 d-flex flex-column border border-0 shadow-none"
+            >
+              <div class="icon-container mb-4 bg-light-grey rounded-circle">
+                <img src="/ugo_dev/images/icons/icon_people.png" />
+              </div>
+              <h5>Diverse Culture and People</h5>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit
+                amet quam nulla. Aliquam erat volutpat. Aliquam mollis, leo in
+                scelerisque consequat.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4 mt-1">
+          <div class="col-md-4">
+            <div
+              class="box-card h-100 d-flex flex-column border border-0 shadow-none"
+            >
+              <div class="icon-container mb-4 bg-light-grey rounded-circle">
+                <img src="/ugo_dev/images/icons/icon_medal.png" />
+              </div>
+              <h5>Quality Education</h5>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit
+                amet quam nulla. Aliquam erat volutpat. Aliquam mollis, leo in
+                scelerisque consequat.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div
+              class="box-card h-100 d-flex flex-column border border-0 shadow-none"
+            >
+              <div class="icon-container mb-4 bg-light-grey rounded-circle">
+                <img src="/ugo_dev/images/icons/icon_landscape.png" />
+              </div>
+              <h5>Amazing Landscapes & Attractions</h5>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit
+                amet quam nulla. Aliquam erat volutpat. Aliquam mollis, leo in
+                scelerisque consequat.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div
+              class="box-card h-100 d-flex flex-column border border-0 shadow-none"
+            >
+              <div class="icon-container mb-4 bg-light-grey rounded-circle">
+                <img src="/ugo_dev/images/icons/icon_happy.png" />
+              </div>
+              <h5>High Quality of Life</h5>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit
+                amet quam nulla. Aliquam erat volutpat. Aliquam mollis, leo in
+                scelerisque consequat.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-light-grey">
+      <div class="container">
+        <div class="row mb-4">
+          <div class="col-md-12 text-center mb-4 d-flex flex-column align-items-center">
+            <h2>How It Works</h2>
+            <p class="w-75">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliquam mollis, leo in scelerisque consequat, risus metus vulputate urna, eu molestie erat neque eu ex. Sed sed dui sit amet enim feugiat mattis quis eget leo. Quisque eget tortor interdum, elementum mauris nec.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 box">
+            <div class="box-container arrow-enabled d-flex flex-column align-items-center text-center bg-white p-4 rounded-4">
+              <div class="icon-container"><img src="/ugo_dev/images/icons/icon_share.png" /></div>
+              <h5 class="my-4">Step 1</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit in sit amet quam nulla aliquam erat volutpat aliquam mollis, leo in scelerisque.</p>
+            </div>
+          </div>
+          <div class="col-md-3 box">
+            <div class="box-container arrow-enabled d-flex flex-column align-items-center text-center bg-white p-4 rounded-4">
+              <div class="icon-container"><img src="/ugo_dev/images/icons/icon_form.png" /></div>
+              <h5 class="my-4">Step 2</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit in sit amet quam nulla aliquam erat volutpat aliquam mollis, leo in scelerisque.</p>
+            </div>
+          </div>
+          <div class="col-md-3 box">
+            <div class="box-container arrow-enabled flex-column align-items-center text-center bg-white p-4 rounded-4">
+              <div class="icon-container"><img src="/ugo_dev/images/icons/icon_lecture.png" /></div>
+              <h5 class="my-4">Step 3</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit in sit amet quam nulla aliquam erat volutpat aliquam mollis, leo in scelerisque.</p>
+            </div>
+          </div>
+          <div class="col-md-3 box">
+            <div class="box-container arrow-enabled d-flex flex-column align-items-center text-center bg-white p-4 rounded-4">
+              <div class="icon-container"><img src="/ugo_dev/images/icons/icon_school_2.png" /></div>
+              <h5 class="my-4">Step 4</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit in sit amet quam nulla aliquam erat volutpat aliquam mollis, leo in scelerisque.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+     <!-- Two-row section: top row 2 columns (image left), bottom row photo slider (5-up) -->
+    <section class="two-row-section bg-light-grey">
+      <div class="container">
+        <div class="row mb-4">
+          <div class="col-md-6 image-left">
+            <div class="image-box">
+              <img
+                src="/ugo_dev/images/img_university_building.jpg"
+                alt="Left image"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+          <div class="col-md-6 align-items-center">
+            <div class="text-box">
+              <h2>University Admissions Assistance</h2>
+              <p>
+                Before you even leave home to learn English, you can take full advantage of securing your direct admission to one of ELS's many partner colleges and universities in the USA. You can apply for direct admission for both undergraduate and graduate degree programs. Our Direct Admission service is for students who already meet the English language entry requirement for their chosen ELS partner college or university. If you don't meet the requirement yet, consider ELS Conditional Admission.
+              </p>
+              <p>
+                Our Direct Admission support offers you:
+              </p>
+              <ul class="list-bullet">
+                <li>Support with selecting a college or university and completing the application process.</li>
+                <li>A full study plan that includes both English language studies and university plans before leaving your home country.</li>
+                <li>A smooth transition upon graduating with your ELS Certificate of Completion.</li>
+                <li>A university program start date for which semester you will begin your studies.</li>
+                <li>A chance to brush up on your English at one of our university campus-based centers, providing a smooth and supported transition into American student life.</li>
+              </ul>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+   
+    
+
+    <section class="testimonials bg-white">
+      <div class="container-xl">
+        <div class="row mb-4">
+          <div class="col text-center">
+            <h2>Student Stories</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="testimonial-slider slider-viewport">
+              <div class="slider-track slick-slider-container">
+                <div class="testimonial-item">
+                  <div class="row align-items-center">
+                    <div class="col-md-4">
+                      <div class="image-container">
+                        <img
+                          src="/ugo_dev/images/img_testimonial_1.png"
+                          alt="Avatar"
+                          class="testimonial-avatar img-fluid rounded-circle"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <h5 class="testimonial-author">Name Surname</h5>
+                      <p class="testimonial-role">
+                        Student at Name of the School, City
+                      </p>
+                      <p class="testimonial-quote">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Praesent ultrices blandit ipsum, et dignissim dolor
+                        ultricies ac. Mauris dolor nunc, venenatis vel mi quis,
+                        tincidunt fermentum ex. Mauris placerat risus non leo
+                        porta lacinia. Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="testimonial-item">
+                  <div class="row align-items-center">
+                    <div class="col-md-4">
+                      <div class="image-container">
+                        <img
+                          src="/ugo_dev/images/img_testimonial_2.png"
+                          alt="Avatar"
+                          class="testimonial-avatar img-fluid rounded-circle"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <h5 class="testimonial-author">Name Surname</h5>
+                      <p class="testimonial-role">
+                        Student at Name of the School, City
+                      </p>
+                      <p class="testimonial-quote">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Praesent ultrices blandit ipsum, et dignissim dolor
+                        ultricies ac. Mauris dolor nunc, venenatis vel mi quis,
+                        tincidunt fermentum ex. Mauris placerat risus non leo
+                        porta lacinia. Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="testimonial-item">
+                  <div class="row align-items-center">
+                    <div class="col-md-4">
+                      <div class="image-container">
+                        <img
+                          src="/ugo_dev/images/img_testimonial_1.png"
+                          alt="Avatar"
+                          class="testimonial-avatar img-fluid rounded-circle"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <h5 class="testimonial-author">Name Surname</h5>
+                      <p class="testimonial-role">
+                        Student at Name of the School, City
+                      </p>
+                      <p class="testimonial-quote">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Praesent ultrices blandit ipsum, et dignissim dolor
+                        ultricies ac. Mauris dolor nunc, venenatis vel mi quis,
+                        tincidunt fermentum ex. Mauris placerat risus non leo
+                        porta lacinia. Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="testimonial-item">
+                  <div class="row align-items-center">
+                    <div class="col-md-4">
+                      <div class="image-container">
+                        <img
+                          src="/ugo_dev/images/img_testimonial_2.png"
+                          alt="Avatar"
+                          class="testimonial-avatar img-fluid rounded-circle"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <h5 class="testimonial-author">Name Surname</h5>
+                      <p class="testimonial-role">
+                        Student at Name of the School, City
+                      </p>
+                      <p class="testimonial-quote">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Praesent ultrices blandit ipsum, et dignissim dolor
+                        ultricies ac. Mauris dolor nunc, venenatis vel mi quis,
+                        tincidunt fermentum ex. Mauris placerat risus non leo
+                        porta lacinia. Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="testimonial-item">
+                  <div class="row align-items-center">
+                    <div class="col-md-4">
+                      <div class="image-container">
+                        <img
+                          src="/ugo_dev/images/img_testimonial_1.png"
+                          alt="Avatar"
+                          class="testimonial-avatar img-fluid rounded-circle"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <h5 class="testimonial-author">Name Surname</h5>
+                      <p class="testimonial-role">
+                        Student at Name of the School, City
+                      </p>
+                      <p class="testimonial-quote">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Praesent ultrices blandit ipsum, et dignissim dolor
+                        ultricies ac. Mauris dolor nunc, venenatis vel mi quis,
+                        tincidunt fermentum ex. Mauris placerat risus non leo
+                        porta lacinia. Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-0">
+      <div class="container">
+        <div class="row">
+          <div class="col text-center mb-1">
+            <h2>Partner Schools</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="icon-container">
+              <ul class="d-flex flex-wrap justify-content-between list-unstyled mb-0">
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_harvard.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_state_college.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_freedom_university.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_mit.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_acadia.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_stanford.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_iacbe.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_harvard.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_acadia.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_stanford.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_iacbe.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_mit.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_acadia.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_stanford.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_iacbe.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+               <li>
+                  <img src="/ugo_dev/images/logos/logo_harvard.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_acadia.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_stanford.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_iacbe.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_mit.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_acadia.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_stanford.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_iacbe.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_harvard.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_acadia.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_stanford.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_iacbe.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_mit.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_acadia.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_stanford.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_mit.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_acadia.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_stanford.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_iacbe.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                 <li>
+                  <img src="/ugo_dev/images/logos/logo_stanford.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_iacbe.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                 <li>
+                  <img src="/ugo_dev/images/logos/logo_stanford.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_iacbe.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+                <li>
+                  <img src="/ugo_dev/images/logos/logo_acadia.png" alt="Accredited" class="img-fluid mx-3 my-2" />
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+     <!-- Centered CTA with background image and dark overlay -->
+    <section
+      class="cta-section position-relative text-white parallax"
+      style="
+        background-image: url('/ugo_dev/images/img_photo_reception.jpg');
+        background-size: cover;
+        background-position: center;
+        min-height: 400px;
+      "
+    >
+      <div
+        class="overlay position-absolute w-100 h-100"
+        style="background: rgba(0, 0, 0, 0.55); top: 0; left: 0; z-index: 1"
+      ></div>
+      <div
+        class="container position-relative d-flex align-items-center justify-content-center"
+        style="min-height: 400px; z-index: 2"
+      >
+        <div class="text-center">
+          <h2 class="mb-5 text-white">Ready to Apply?</h2>
+          <a href="#" class="btn btn-lg btn-blue">Ask a Question</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Two-column section with form -->
+
+    <section class="py-5 bg-white section-form section-contact-form">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-9">
+            <h5 class="mb-4">Looking for quick answers? <a href="#">Visit our FAQ</a></h5>
+            <h3>Ask an Advisor for More Information</h3>
+            <div class="form-container">
+              <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+              <script>
+                hbspt.forms.create({
+                  portalId: "5020112",
+                  formId: "581db5f8-c9df-431c-a197-68c701699eb6",
+                  region: "na1"
+                });
+              </script>
+            </div>
+            
+          </div>
+          <div class="col-md-3 d-none d-md-block">
+            <div class="image-container float-right">
+              <img src="/ugo_dev/images/img_side_triangles.png" alt="Advisor" class="img-fluid" />
+            </div>
+        </div>
+      </div>
+    </section>
+
+   
+
+    <!-- Footer: 5-column menu -->
+    <footer class="border-top">
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-6 col-md-3 mb-3">
+            <div class="image-container">
+              <img src="/ugo_dev/images/logo_ugo_footer.png" alt="Logo" />
+            </div>
+            <h5>Our Network</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >ELS Language Centers</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >ILSC Education Group</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >ILSC Language Schools</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">Greystone College</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-3 mb-3">
+            <h5>Schools</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Undergraduate - Associate degree</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Undergraduate - Bachelor's degree</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Graduate - Master's degree</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Graduate - Master's degree</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">Big Cities</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">Value for Money</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Saudi Sponsored Students</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-2 mb-3">
+            <h5>Countries</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-decoration-none">Australia</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">Canada</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">USA</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-2 mb-3">
+            <h5>Services</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Conditional Admission USA</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Direct Admission USA</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">2 + 2 Program USA</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >College Year Program USA</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >University Pathway Program Australia</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >University Pathway Program Canada</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-2 mb-3">
+            <h5>Admissions</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-decoration-none">Tuition & Fees</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Student Visa Information</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">How to Apply</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">Terms & Conditions</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8 small mt-2 footer-copy">
+            &copy; <span id="year"></span> ILSC Education Group. All Rights
+            Reserved.<br /><br />
+            ILSC Language Schools: The ILSC Education Group Inc.
+            (ILSC-Vancouver, ILSC-Toronto, ILSC-Montréal); ILSC India Private
+            LTD. Greystone College of Business and Technology (Toronto) Inc.
+            (Greystone College (Toronto)); Greystone College of Business and
+            Technology (Greystone College (Vancouver)); and Greystone College
+            (Greystone College (Montréal)) herein collectively referred to as
+            “Greystone College” ILSC (Brisbane) PTY LTD is trading as
+            ILSC-Adelaide, ILSC-Brisbane, ILSC-Melbourne, ILSC-Sydney,
+            ILSC-Perth, Greystone College and ILSC Australia RTO Number 31564,
+            CRICOS Code: 02137M<br />
+            Tara International Education Services Ltd trading as Berlitz Dublin
+            Language Centre (registered number 548215) and/or ILSC Dublin
+          </div>
+          <div class="col-4 small mt-2">
+            <ul class="sub-footer-links">
+              <li class="d-inline me-3">
+                <a href="#" class="text-decoration-none">Privacy Policy</a>
+              </li>
+              <li class="d-inline me-3">
+                <a href="#" class="text-decoration-none">Terms of Use</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/ugo_dev/script/top_navigation.js"></script>
+    <script src="/ugo_dev/script/form_search.js"></script>
+    <script>
+      // set current year
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // simple client-side validation display
+      (function () {
+        "use strict";
+        var forms = document.querySelectorAll(".needs-validation");
+        Array.prototype.slice.call(forms).forEach(function (form) {
+          form.addEventListener(
+            "submit",
+            function (event) {
+              if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add("was-validated");
+            },
+            false
+          );
+        });
+      })();
+    </script>
+
+    <script>
+      $(document).ready(function () {
+        $(".photo-slider-track").slick({
+          slidesToShow: 5,
+          slidesToScroll: 5,
+          infinite: false,
+          dots: true,
+          arrows: false,
+          prevArrow: $(".photo-slider .prev"),
+          nextArrow: $(".photo-slider .next"),
+          responsive: [
+            {
+              breakpoint: 992,
+              settings: { slidesToShow: 3, slidesToScroll: 3 },
+            },
+            {
+              breakpoint: 768,
+              settings: { slidesToShow: 2, slidesToScroll: 2 },
+            },
+            {
+              breakpoint: 480,
+              settings: { slidesToShow: 1, slidesToScroll: 1 },
+            },
+          ],
+        });
+        // Testimonial slider: show 3 on desktop, responsive down to 1
+        $(".testimonial-slider .slider-track").slick({
+          centerMode: true,
+          centerPadding: "20%",
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
+          infinite: true,
+          dots: false,
+          arrows: false,
+          autoplay: true,
+          autoplaySpeed: 4000,
+          responsive: [
+            { breakpoint: 992, settings: { slidesToShow: 2 } },
+            { breakpoint: 768, settings: { slidesToShow: 1 } },
+          ],
+        });
+      });
+    </script>
+  </body>
+</html>

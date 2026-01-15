@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>School Template</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="/ugo_dev/stylesheets/main.css" rel="stylesheet" />
+    <link href="/ugo_dev/stylesheets/top_navigation.css" rel="stylesheet" />
+    <link href="/ugo_dev/stylesheets/nav_anchor.css" rel="stylesheet" />
+    <link href="/ugo_dev/stylesheets/accordion.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .hero {
+        background: linear-gradient(135deg, #0d6efd 0%, #6610f2 100%);
+        color: white;
+        padding: 4rem 0;
+      }
+      .card-img-top {
+        object-fit: cover;
+        height: 180px;
+      }
+      footer {
+        background: #f8f9fa;
+        padding: 2rem 0;
+      }
+      /* Two-row section */
+      .two-row-section {
+        padding: 3rem 0;
+      }
+      .two-row-section .image-left {
+        display: flex;
+        align-items: center;
+      }
+      .two-row-section .image-left img {
+        width: 100%;
+        height: auto;
+        border-radius: 6px;
+      }
+      .photo-slider .slider-item img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 6px;
+      }
+      @media (max-width: 768px) {
+        .photo-slider .slider-item img {
+          height: 100px;
+        }
+      }
+      
+    </style>
+  </head>
+  <body class="ugo-template">
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm border-bottom"
+    >
+      <div class="container">
+        <a class="navbar-brand text-dark" href="#"
+          ><img src="/ugo_dev/images/logo_ugo.png" alt="Logo"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#nav"
+          aria-controls="nav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="main-nav">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown"
+                href="#"
+                id="schoolsDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Schools</a
+              >
+              <div
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="schoolsDropdown"
+              >
+                <div class="container">
+                  <div class="row">
+                    <div class="col icon-container">
+                      <div class="image-container">
+                        <img
+                          src="/ugo_dev/images/icons/icon_school.png"
+                          alt="School Icon"
+                          class="img-fluid mb-2"
+                        />
+                      </div>
+                      <div class="link-title">Schools</div>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#"
+                            >Undergraduate - Associate degree</a
+                          >
+                        </li>
+                        <li>
+                          <a class="link-item" href="#"
+                            >Undergraduate - Bachelor's degree</a
+                          >
+                        </li>
+                        <li>
+                          <a class="link-item" href="#"
+                            >Graduate - Master's degree</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#"
+                            >Graduate - Doctorate degree</a
+                          >
+                        </li>
+                        <li><a class="link-item" href="#">Big Cities</a></li>
+                        <li>
+                          <a class="link-item" href="#">Value for Money</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#"
+                            >Saudi Sponsored Students</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="countriesDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Countries</a
+              >
+              <div
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="countriesDropdown"
+              >
+                <div class="container">
+                  <div class="row">
+                    <div class="col icon-container">
+                      <div class="image-container">
+                        <img
+                          src="/ugo_dev/images/icons/icon_globe.png"
+                          alt="Globe Icon"
+                          class="img-fluid mb-2"
+                        />
+                      </div>
+                      <div class="link-title">Countries</div>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li><a class="link-item" href="#">Australia</a></li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li><a class="link-item" href="#">Canada</a></li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li><a class="link-item" href="#">USA</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="servicesDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Services</a
+              >
+              <div
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="servicesDropdown"
+              >
+                <div class="container">
+                  <div class="row">
+                    <div class="col icon-container">
+                      <div class="image-container">
+                        <img
+                          src="/ugo_dev/images/icons/icon_services.png"
+                          alt="Services Icon"
+                          class="img-fluid mb-2"
+                        />
+                      </div>
+                      <div class="link-title">Services</div>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#"
+                            >Conditional Admission USA</a
+                          >
+                        </li>
+                        <li>
+                          <a class="link-item" href="#">Direct Admission USA</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#">2 + 2 Program USA</a>
+                        </li>
+                        <li>
+                          <a class="link-item" href="#"
+                            >College Year Program USA</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#"
+                            >University Pathway Program Australia</a
+                          >
+                        </li>
+                        <li>
+                          <a class="link-item" href="#"
+                            >University Pathway Program Canada</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="admissionsDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Admissions</a
+              >
+              <div
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="admissionsDropdown"
+              >
+                <div class="container">
+                  <div class="row">
+                    <div class="col icon-container">
+                      <div class="image-container">
+                        <img
+                          src="/ugo_dev/images/icons/icon_admissions.png"
+                          alt="Admissions Icon"
+                          class="img-fluid mb-2"
+                        />
+                      </div>
+                      <div class="link-title">Admissions</div>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#">Tuition & Fees</a>
+                        </li>
+                        <li>
+                          <a class="link-item" href="#"
+                            >Student Visa Information</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li><a class="link-item" href="#">How to Apply</a></li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#">Terms & Conditions</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">FAQ</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="languageDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >EN</a
+              >
+              <ul
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="languageDropdown"
+              >
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">Something else</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-primary" href="#">Find your school</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- Site hero: 600px height with image background and two columns -->
+    <section class="main-hero hero" style=" background-image: url('/ugo_dev/images/img_hero_john_hopkins.png');background-size: cover; background-position: top center;">
+      <div class="hero-inner">
+        <div class="container h-100">
+          <div class="row hero-row">
+            <div class="col-md-6 d-flex flex-column justify-content-end">
+              <div class="image-container mb-3">
+                <img src="/ugo_dev/images/logos/logo_john_hopkins.png" alt="John Hopkins University Logo" class="img-fluid" />
+              </div>
+              <h1>John Hopkins University</h1>
+              <h3>Baltimore, Maryland</h3>
+            </div>
+            <div class="col-md-6 d-flex justify-content-end align-items-end">
+              <a href="#" class="btn btn-blue arrow-right">Complete Your English Requirement Here</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="anchor-nav" id="anchor-nav">
+      <div class="container">
+        <ul class="nav nav-pills justify-content-start">
+          <li class="nav-item">
+            <a class="nav-link nav-anchor-link active" href="#About"><span>About</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-anchor-link" href="#Campus-Life"><span>Campus Life</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-anchor-link" href="#Costs"><span>Costs</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-anchor-link" href="#Application-Requirements"><span>Application Requirements</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-anchor-link" href="#Degrees-and-Majors"><span>Degrees and Majors</span></a>
+          </li>
+        </ul>
+      </div>
+    </section>
+<style>
+  .school-about-info .icon-container {
+            list-style: none;
+            padding: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+  .school-about-info .icon-container li{
+    margin:0 10px
+  }
+  .school-about-info .icon-container li:first-child {
+      margin-left: 0;
+  }
+  .school-about-info .awards-container {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: start;
+      align-items: center;
+      padding-left:30px;
+
+  }
+  .school-about-info .awards-container li {
+      background-color: #F2F2F2;
+      border-radius: 100px;
+      gap:8px;
+      font-weight: 400;
+      font-style: Regular;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: 0%;
+      padding: 5px 15px;
+      margin: 5px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: start;
+  }
+    .school-about-info .awards-container li:before {
+      width:16px;
+      height:16px;
+      content: url('/ugo_dev/images/icons/icon_trophy.png');
+      }
+</style>
+    <section id="About" class="section-anchor school-about-info">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-1 align-items-center d-flex">
+            <ul class="icon-container">
+              <li><img src="/ugo_dev/images/icons/icon_letters.png" alt="Letters Icon"></li>
+              <li><img src="/ugo_dev/images/icons/icon_breifcase.png" alt="Campus Icon"></li>
+            </ul>
+          </div>
+          <div class="col-md-11 align-items-center d-flex border-left">
+            <ul class="awards-container">
+              <li>Top 100 Best Value University U.S. News & World Report</li>
+              <li>17th in U.S. Graduate Employability Global Employability University Ranking</li>
+              <li>Top 6% Best Return on Investment Payscale</li>
+              <li>#231 in National Universities U.S. News & World Report</li>
+            </ul>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-md-6">
+            <div class="text-box">
+              <h2>About the School</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Praesent ultrices blandit ipsum, et dignissim dolor ultricies
+                ac. Mauris dolor nunc, venenatis vel mi quis, tincidunt
+                fermentum ex. Mauris placerat risus non leo porta lacinia. Lorem
+                ipsum dolor sit amet, consectetur adipiscing elit.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Praesent ultrices blandit ipsum, et dignissim dolor ultricie.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 image-right">
+            <div class="image-box">
+              <img src="/ugo_dev/images/img_campus_john_hopkins.png" alt="About John Hopkins University" class="img-fluid" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="Campus-Life" class="section-anchor bg-light-grey">
+      <div class="container">
+        <div class="row mt-5 row-reverse">
+          <div class="col-md-6">
+            <div class="text-box">
+              <h2>Campus Life</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Praesent ultrices blandit ipsum, et dignissim dolor ultricies
+                ac. Mauris dolor nunc, venenatis vel mi quis, tincidunt
+                fermentum ex. Mauris placerat risus non leo porta lacinia. Lorem
+                ipsum dolor sit amet, consectetur adipiscing elit.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Praesent ultrices blandit ipsum, et dignissim dolor ultricie.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 image-left">
+            <div class="image-box">
+              <img src="/ugo_dev/images/img_map_john_hopkins.png" alt="About John Hopkins University" class="img-fluid" />
+            </div>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-md-6">
+            <div class="text-box">
+              <h2>Student Life</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Praesent ultrices blandit ipsum, et dignissim dolor ultricies
+                ac. Mauris dolor nunc, venenatis vel mi quis, tincidunt
+                fermentum ex. Mauris placerat risus non leo porta lacinia. Lorem
+                ipsum dolor sit amet, consectetur adipiscing elit.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Praesent ultrices blandit ipsum, et dignissim dolor ultricie.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 image-right">
+            <div class="image-box">
+              <img src="/ugo_dev/images/img_student_life_john_hopkins.png" alt="About John Hopkins University" class="img-fluid" />
+            </div>
+          </div>
+        </div>
+        <div class="row mt-5 row-reverse">
+          <div class="col-md-6">
+            <div class="text-box">
+              <h2>Housing</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Praesent ultrices blandit ipsum, et dignissim dolor ultricies
+                ac. Mauris dolor nunc, venenatis vel mi quis, tincidunt
+                fermentum ex. Mauris placerat risus non leo porta lacinia. Lorem
+                ipsum dolor sit amet, consectetur adipiscing elit.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Praesent ultrices blandit ipsum, et dignissim dolor ultricie.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 image-left">
+            <div class="image-box">
+              <img src="/ugo_dev/images/img_housing.png" alt="About John Hopkins University" class="img-fluid" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="Costs" class="section-anchor">
+      <div class="container">
+        <div class="row mt-5">
+          <div class="col-md-12 text-center">
+            <h2>Costs</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="text-box pb-2">
+              <ul class="p-0">
+                <li>Approximate Annual <span class="fw-bold">Undergraduate</span> Tuition Fees</li>
+                <li class="fs-5 fw-bold">Total $65,000</li>
+                <li class="footer-txt">Proof of Funding required for I-20 issuance</li>
+              </ul>
+            </div>
+            <div class="table-container">
+              <table>
+                <tr>
+                  <td>Tuition and Fees</td>
+                  <td>$50,000</td>
+                </tr>
+                <tr>
+                  <td>Housing and Meals</td>
+                  <td>$10,000</td>
+                </tr>
+                <tr>
+                  <td>Books and Supplies</td>
+                  <td>$10,000</td>
+                </tr>
+                <tr>
+                  <td>Other</td>
+                  <td>$5,000</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="text-box pb-2">
+              <ul class="p-0">
+                <li>Approximate Annual <span class="fw-bold">Graduate</span> Tuition Fees</li>
+                <li class="fs-5 fw-bold">Total $65,000</li>
+                <li class="footer-txt">Proof of Funding required for I-20 issuance</li>
+              </ul>
+            </div>
+            <div class="table-container">
+              <table>
+                <tr>
+                  <td>Tuition and Fees</td>
+                  <td>$50,000</td>
+                </tr>
+                <tr>
+                  <td>Housing and Meals</td>
+                  <td>$10,000</td>
+                </tr>
+                <tr>
+                  <td>Books and Supplies</td>
+                  <td>$10,000</td>
+                </tr>
+                <tr>
+                  <td>Other</td>
+                  <td>$5,000</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="text-box pb-2">
+              <span class="fw-bold">Scholarships</span>
+            </div>
+            <div class="table-container">
+              <table>
+                <tr>
+                  <td class="w-25">Type</td>
+                  <td class="fw-bold">Undergraduate Scholarships</td>
+                </tr>
+                <tr>
+                  <td class="w-25">Value</td>
+                  <td class="fw-bold">Up to $15,000</td>
+                </tr>
+                <tr>
+                  <td class="w-25">Details</td>
+                  <td class="fw-bold">Undergraduate applicants are automatically reviewed for merit-based scholarships up to $12,500 - renewable annually.</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="Application-Requirements" class="section-anchor bg-light-grey simple-accordion">
+      <div class="container">
+        <div class="row text-center mt-5">
+          <div class="col-md-12">
+            <h2>Application Requirements</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="accordion bg-light-grey" id="accordionExample">
+              <div class="accordion-item bg-transparent border-0">
+                <h2 class="accordion-header">
+                  <button class="accordion-button bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Undergraduate Application Requirements
+                  </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item bg-transparent border-0">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Graduate Application Requirements
+                  </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="Degrees-and-Majors" class="section-anchor search-results-accordion">
+      <div class="container">
+        <div class="row mt-5">
+        <div class="col-md-12 text-center">
+          <h2>Degrees and Majors</h2>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-md-12">
+          <div class="filter-form">
+            <div class="input-form-group mt-3">
+                <div>
+                  <div class="dropdown">
+                    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Degree Type
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a class="dropdown-item" href="#" data-value="Undergraduate">Bachelor</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#" data-value="Graduate">Master</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="dropdown">
+                    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Level
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a class="dropdown-item" href="#" data-value="Undergraduate">Undergraduate</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#" data-value="Graduate">Graduate</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div>
+                  <input type="text" name="schoolStudyAreaSearchTerm" class="form-control" placeholder="Search Area of Study">
+                  <button class="btn btn-blue btn-lg" type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </button>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+        <div class="row mt-4">
+          <div class="col-md-12">
+            <div class="accordion" id="accordion-degrees-majors">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#resultOne" aria-expanded="false" aria-controls="collapseOne">
+                    <div class="title">
+                      <h4>Bachelor of Business</h4>
+                      <p>Undergraduate - Bachelor's degree</p>
+                    </div>
+                    <div class="btn-container">
+                      <a href="#" class="btn btn-primary">Apply Now</a>
+                    </div>
+                  </button>
+                </h2>
+                <div id="resultOne" class="accordion-collapse collapse show" data-bs-parent="#accordion-degrees-majors">
+                  <div class="accordion-body">
+                    <ul class="result-info">
+                      <li><div class="title">GPA requirement</div><div class="stat">3.0</div></li>
+                      <li><div class="title">ELS Level accepted</div><div class="stat">112</div></li>
+                      <li><div class="title">Conditional Admission offered</div><div class="stat">YES</div></li>
+                      <li><div class="title">Test Score requirement</div><div class="stat">NONE</div></li>
+                    </ul>
+                    <p><span class="fw-bold">Note:</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu leo, suscipit at pulvinar quis, scelerisque a diam. Cras vitae metus sed mi condimentum maximus sit amet a tellus. Vestibulum non est vel sapien bibendum ultricies et in diam. Etiam dictum, purus fermentum cursus gravida, turpis neque luctus orci, vitae.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#resultTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <div class="title">
+                      <h4>Bachelor of Business Management</h4>
+                      <p>Undergraduate - Bachelor's degree</p>
+                    </div>
+                    <div class="btn-container">
+                      <a href="#" class="btn btn-primary">Apply Now</a>
+                    </div>
+                  </button>
+                </h2>
+                <div id="resultTwo" class="accordion-collapse collapse" data-bs-parent="#accordion-degrees-majors">
+                  <div class="accordion-body">
+                    <ul class="result-info">
+                      <li><div class="title">GPA requirement</div><div class="stat">3.0</div></li>
+                      <li><div class="title">ELS Level accepted</div><div class="stat">112</div></li>
+                      <li><div class="title">Conditional Admission offered</div><div class="stat">YES</div></li>
+                      <li><div class="title">Test Score requirement</div><div class="stat">NONE</div></li>
+                    </ul>
+                    <p><span class="fw-bold">Note:</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu leo, suscipit at pulvinar quis, scelerisque a diam. Cras vitae metus sed mi condimentum maximus sit amet a tellus. Vestibulum non est vel sapien bibendum ultricies et in diam. Etiam dictum, purus fermentum cursus gravida, turpis neque luctus orci, vitae.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#resultThree" aria-expanded="false" aria-controls="collapseThree">
+                    <div class="title">
+                      <h4>Bachelor of Business Studies</h4>
+                      <p>Undergraduate - Bachelor's degree</p>
+                    </div>
+                    <div class="btn-container">
+                      <a href="#" class="btn btn-primary">Apply Now</a>
+                    </div>
+                  </button>
+                </h2>
+                <div id="resultThree" class="accordion-collapse collapse" data-bs-parent="#accordion-degrees-majors">
+                  <div class="accordion-body">
+                    <ul class="result-info">
+                      <li><div class="title">GPA requirement</div><div class="stat">3.0</div></li>
+                      <li><div class="title">ELS Level accepted</div><div class="stat">112</div></li>
+                      <li><div class="title">Conditional Admission offered</div><div class="stat">YES</div></li>
+                      <li><div class="title">Test Score requirement</div><div class="stat">NONE</div></li>
+                    </ul>
+                    <p><span class="fw-bold">Note:</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu leo, suscipit at pulvinar quis, scelerisque a diam. Cras vitae metus sed mi condimentum maximus sit amet a tellus. Vestibulum non est vel sapien bibendum ultricies et in diam. Etiam dictum, purus fermentum cursus gravida, turpis neque luctus orci, vitae.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#resultFour" aria-expanded="false" aria-controls="collapseFour">
+                    <div class="title">
+                      <h4>Bachelor of Business Administration</h4>
+                      <p>Undergraduate - Bachelor's degree</p>
+                    </div>
+                    <div class="btn-container">
+                      <a href="#" class="btn btn-primary">Apply Now</a>
+                    </div>
+                  </button>
+                </h2>
+                <div id="resultFour" class="accordion-collapse collapse" data-bs-parent="#accordion-degrees-majors">
+                  <div class="accordion-body">
+                    <ul class="result-info">
+                      <li><div class="title">GPA requirement</div><div class="stat">3.0</div></li>
+                      <li><div class="title">ELS Level accepted</div><div class="stat">112</div></li>
+                      <li><div class="title">Conditional Admission offered</div><div class="stat">YES</div></li>
+                      <li><div class="title">Test Score requirement</div><div class="stat">NONE</div></li>
+                    </ul>
+                    <p><span class="fw-bold">Note:</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu leo, suscipit at pulvinar quis, scelerisque a diam. Cras vitae metus sed mi condimentum maximus sit amet a tellus. Vestibulum non est vel sapien bibendum ultricies et in diam. Etiam dictum, purus fermentum cursus gravida, turpis neque luctus orci, vitae.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#resultFive" aria-expanded="false" aria-controls="collapseFive">
+                    <div class="title">
+                      <h4>Bachelor of International Business</h4>
+                      <p>Undergraduate - Bachelor's degree</p>
+                    </div>
+                    <div class="btn-container">
+                      <a href="#" class="btn btn-primary">Apply Now</a>
+                    </div>
+                  </button>
+                </h2>
+                <div id="resultFive" class="accordion-collapse collapse" data-bs-parent="#accordion-degrees-majors">
+                  <div class="accordion-body">
+                    <ul class="result-info">
+                      <li><div class="title">GPA requirement</div><div class="stat">3.0</div></li>
+                      <li><div class="title">ELS Level accepted</div><div class="stat">112</div></li>
+                      <li><div class="title">Conditional Admission offered</div><div class="stat">YES</div></li>
+                      <li><div class="title">Test Score requirement</div><div class="stat">NONE</div></li>
+                    </ul>
+                    <p><span class="fw-bold">Note:</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu leo, suscipit at pulvinar quis, scelerisque a diam. Cras vitae metus sed mi condimentum maximus sit amet a tellus. Vestibulum non est vel sapien bibendum ultricies et in diam. Etiam dictum, purus fermentum cursus gravida, turpis neque luctus orci, vitae.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#resultSix" aria-expanded="false" aria-controls="collapseSix">
+                    <div class="title">
+                      <h4>Bachelor of Marketing</h4>
+                      <p>Undergraduate - Bachelor's degree</p>
+                    </div>
+                    <div class="btn-container">
+                      <a href="#" class="btn btn-primary">Apply Now</a>
+                    </div>
+                  </button>
+                </h2>
+                <div id="resultSix" class="accordion-collapse collapse" data-bs-parent="#accordion-degrees-majors">
+                  <div class="accordion-body">
+                    <ul class="result-info">
+                      <li><div class="title">GPA requirement</div><div class="stat">3.0</div></li>
+                      <li><div class="title">ELS Level accepted</div><div class="stat">112</div></li>
+                      <li><div class="title">Conditional Admission offered</div><div class="stat">YES</div></li>
+                      <li><div class="title">Test Score requirement</div><div class="stat">NONE</div></li>
+                    </ul>
+                    <p><span class="fw-bold">Note:</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu leo, suscipit at pulvinar quis, scelerisque a diam. Cras vitae metus sed mi condimentum maximus sit amet a tellus. Vestibulum non est vel sapien bibendum ultricies et in diam. Etiam dictum, purus fermentum cursus gravida, turpis neque luctus orci, vitae.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#resultSeven" aria-expanded="false" aria-controls="collapseSeven">
+                    <div class="title">
+                      <h4>Bachelor of Human Resource Management</h4>
+                      <p>Undergraduate - Bachelor's degree</p>
+                    </div>
+                    <div class="btn-container">
+                      <a href="#" class="btn btn-primary">Apply Now</a>
+                    </div>
+                  </button>
+                </h2>
+                <div id="resultSeven" class="accordion-collapse collapse" data-bs-parent="#accordion-degrees-majors">
+                  <div class="accordion-body">
+                    <ul class="result-info">
+                      <li><div class="title">GPA requirement</div><div class="stat">3.0</div></li>
+                      <li><div class="title">ELS Level accepted</div><div class="stat">112</div></li>
+                      <li><div class="title">Conditional Admission offered</div><div class="stat">YES</div></li>
+                      <li><div class="title">Test Score requirement</div><div class="stat">NONE</div></li>
+                    </ul>
+                    <p><span class="fw-bold">Note:</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu leo, suscipit at pulvinar quis, scelerisque a diam. Cras vitae metus sed mi condimentum maximus sit amet a tellus. Vestibulum non est vel sapien bibendum ultricies et in diam. Etiam dictum, purus fermentum cursus gravida, turpis neque luctus orci, vitae.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item item-hide">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#resultEight" aria-expanded="false" aria-controls="collapseEight">
+                    <div class="title">
+                      <h4>Bachelor of Technology</h4>
+                      <p>Undergraduate - Bachelor's degree</p>
+                    </div>
+                    <div class="btn-container">
+                      <a href="#" class="btn btn-primary">Apply Now</a>
+                    </div>
+                  </button>
+                </h2>
+                <div id="resultEight" class="accordion-collapse collapse" data-bs-parent="#accordion-degrees-majors">
+                  <div class="accordion-body">
+                    <ul class="result-info">
+                      <li><div class="title">GPA requirement</div><div class="stat">3.0</div></li>
+                      <li><div class="title">ELS Level accepted</div><div class="stat">112</div></li>
+                      <li><div class="title">Conditional Admission offered</div><div class="stat">YES</div></li>
+                      <li><div class="title">Test Score requirement</div><div class="stat">NONE</div></li>
+                    </ul>
+                    <p><span class="fw-bold">Note:</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu leo, suscipit at pulvinar quis, scelerisque a diam. Cras vitae metus sed mi condimentum maximus sit amet a tellus. Vestibulum non est vel sapien bibendum ultricies et in diam. Etiam dictum, purus fermentum cursus gravida, turpis neque luctus orci, vitae.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item item-hide">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#resultNine" aria-expanded="false" aria-controls="collapseNine">
+                    <div class="title">
+                      <h4>Bachelor of Film</h4>
+                      <p>Undergraduate - Bachelor's degree</p>
+                    </div>
+                    <div class="btn-container">
+                      <a href="#" class="btn btn-primary">Apply Now</a>
+                    </div>
+                  </button>
+                </h2>
+                <div id="resultNine" class="accordion-collapse collapse" data-bs-parent="#accordion-degrees-majors">
+                  <div class="accordion-body">
+                    <ul class="result-info">
+                      <li><div class="title">GPA requirement</div><div class="stat">3.0</div></li>
+                      <li><div class="title">ELS Level accepted</div><div class="stat">112</div></li>
+                      <li><div class="title">Conditional Admission offered</div><div class="stat">YES</div></li>
+                      <li><div class="title">Test Score requirement</div><div class="stat">NONE</div></li>
+                    </ul>
+                    <p><span class="fw-bold">Note:</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu leo, suscipit at pulvinar quis, scelerisque a diam. Cras vitae metus sed mi condimentum maximus sit amet a tellus. Vestibulum non est vel sapien bibendum ultricies et in diam. Etiam dictum, purus fermentum cursus gravida, turpis neque luctus orci, vitae.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="align-items-center d-flex justify-content-center w-100">
+            <a href="" class="btn btn-primary mt-4 btn-load-more">Show More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const loadMoreBtn = document.querySelector(".btn-load-more");
+        const hiddenItems = document.querySelectorAll(
+          ".accordion-item.item-hide"
+        );
+        let isExpanded = false;
+
+        loadMoreBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          if (!isExpanded) {
+            hiddenItems.forEach((item) => {
+              item.style.display = "block";
+            });
+            loadMoreBtn.textContent = "Show Less";
+            isExpanded = true;
+          } else {
+            hiddenItems.forEach((item) => {
+              item.style.display = "none";
+            });
+            loadMoreBtn.textContent = "Show More";
+            isExpanded = false;
+          }
+        });
+      });
+    </script>
+
+
+
+    <!-- Centered CTA with background image and dark overlay -->
+    <section
+      class="cta-section position-relative text-white parallax"
+      style="
+        background-image: url('/ugo_dev/images/img_photo_reception.jpg');
+        background-size: cover;
+        background-position: center;
+        min-height: 400px;
+      "
+    >
+      <div
+        class="overlay position-absolute w-100 h-100"
+        style="background: rgba(0, 0, 0, 0.55); top: 0; left: 0; z-index: 1"
+      ></div>
+      <div
+        class="container position-relative d-flex align-items-center justify-content-center"
+        style="min-height: 400px; z-index: 2"
+      >
+        <div class="text-center">
+          <h2 class="mb-5 text-white">Ready to Apply?</h2>
+          <a href="#" class="btn btn-lg btn-blue">Ask a Question</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Two-column section with form -->
+
+    <section class="py-5 bg-white section-form section-contact-form">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-9">
+            <h5 class="mb-4">Looking for quick answers? <a href="#">Visit our FAQ</a></h5>
+            <h3>Ask an Advisor for More Information</h3>
+            <div class="form-container">
+              <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+              <script>
+                hbspt.forms.create({
+                  portalId: "5020112",
+                  formId: "581db5f8-c9df-431c-a197-68c701699eb6",
+                  region: "na1"
+                });
+              </script>
+            </div>
+            
+          </div>
+          <div class="col-md-3 d-none d-md-block">
+            <div class="image-container float-right">
+              <img src="/ugo_dev/images/img_side_triangles.png" alt="Advisor" class="img-fluid" />
+            </div>
+        </div>
+      </div>
+    </section>
+
+   
+
+    <!-- Footer: 5-column menu -->
+    <footer class="border-top">
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-6 col-md-3 mb-3">
+            <div class="image-container">
+              <img src="/ugo_dev/images/logo_ugo_footer.png" alt="Logo" />
+            </div>
+            <h5>Our Network</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >ELS Language Centers</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >ILSC Education Group</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >ILSC Language Schools</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">Greystone College</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-3 mb-3">
+            <h5>Schools</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Undergraduate - Associate degree</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Undergraduate - Bachelor's degree</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Graduate - Master's degree</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Graduate - Master's degree</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">Big Cities</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">Value for Money</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Saudi Sponsored Students</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-2 mb-3">
+            <h5>Countries</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-decoration-none">Australia</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">Canada</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">USA</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-2 mb-3">
+            <h5>Services</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Conditional Admission USA</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Direct Admission USA</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">2 + 2 Program USA</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >College Year Program USA</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >University Pathway Program Australia</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >University Pathway Program Canada</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-2 mb-3">
+            <h5>Admissions</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-decoration-none">Tuition & Fees</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Student Visa Information</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">How to Apply</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">Terms & Conditions</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8 small mt-2 footer-copy">
+            &copy; <span id="year"></span> ILSC Education Group. All Rights
+            Reserved.<br /><br />
+            ILSC Language Schools: The ILSC Education Group Inc.
+            (ILSC-Vancouver, ILSC-Toronto, ILSC-Montréal); ILSC India Private
+            LTD. Greystone College of Business and Technology (Toronto) Inc.
+            (Greystone College (Toronto)); Greystone College of Business and
+            Technology (Greystone College (Vancouver)); and Greystone College
+            (Greystone College (Montréal)) herein collectively referred to as
+            “Greystone College” ILSC (Brisbane) PTY LTD is trading as
+            ILSC-Adelaide, ILSC-Brisbane, ILSC-Melbourne, ILSC-Sydney,
+            ILSC-Perth, Greystone College and ILSC Australia RTO Number 31564,
+            CRICOS Code: 02137M<br />
+            Tara International Education Services Ltd trading as Berlitz Dublin
+            Language Centre (registered number 548215) and/or ILSC Dublin
+          </div>
+          <div class="col-4 small mt-2">
+            <ul class="sub-footer-links">
+              <li class="d-inline me-3">
+                <a href="#" class="text-decoration-none">Privacy Policy</a>
+              </li>
+              <li class="d-inline me-3">
+                <a href="#" class="text-decoration-none">Terms of Use</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/ugo_dev/script/top_navigation.js"></script>
+    <script>
+      // set current year
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // simple client-side validation display
+      (function () {
+        "use strict";
+        var forms = document.querySelectorAll(".needs-validation");
+        Array.prototype.slice.call(forms).forEach(function (form) {
+          form.addEventListener(
+            "submit",
+            function (event) {
+              if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add("was-validated");
+            },
+            false
+          );
+        });
+      })();
+    </script>
+    <script>
+      window.onscroll = function() { myFunction() };
+
+      var navbar = document.getElementById("anchor-nav");
+      var sticky = navbar.offsetTop;
+
+      function myFunction() {
+        if (window.pageYOffset >= sticky) {
+          navbar.classList.add("sticky");
+        } else {
+          navbar.classList.remove("sticky");
+        }
+      }
+      // Select all sections and navigation links
+      const sections = document.querySelectorAll('.section-anchor');
+      const navLinks = document.querySelectorAll('.nav-anchor-link');
+
+      // Callback function for the Intersection Observer
+      const observerCallback = (entries) => {
+          entries.forEach(entry => {
+              // If the section is intersecting (in view)
+              if (entry.isIntersecting) {
+                  // Remove 'active' class from all links
+                  navLinks.forEach(link => {
+                      link.classList.remove('active');
+                  });
+                  // Add 'active' class to the corresponding link
+                  const currentLink = document.querySelector(`.nav-anchor-link[href="#${entry.target.id}"]`);
+                  if (currentLink) {
+                      currentLink.classList.add('active');
+                  }
+              }
+          });
+      };
+
+      // Options for the observer (adjust threshold as needed)
+      const observerOptions = {
+          root: null, // observe intersections relative to the viewport
+          rootMargin: '0px',
+          // A threshold of 0.5 means 50% of the section must be visible
+          threshold: 0.5 
+      };
+
+      // Create the Intersection Observer instance
+      const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+      // Observe each section
+      sections.forEach(section => {
+          observer.observe(section);
+      });
+
+    </script>
+
+  </body>
+</html>
