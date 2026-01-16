@@ -4,6 +4,10 @@
     font-family: v.$primary-font;
     color:v.$secondary-color;
 
+    .primary-font-color{
+        color:v.$secondary-color
+    }
+
     h1,h2{
         font-family: v.$title-font;
         font-weight: 500;
@@ -130,6 +134,23 @@
                 background-color: darken(v.$light-grey-color, 10%);
                 border-color: darken(v.$light-grey-color, 10%);
             }
+        }
+        &.btn-outline{
+            
+            padding-right: 16px;
+            padding-left: 16px;
+            border-radius: 10px;
+            border-width: 1px;
+            border: 1px solid v.$primary-color;
+            background-color: #FFF;
+            color:v.$primary-color;
+
+            &:hover{
+                background-color: darken(v.$primary-color, 10%);
+                border-color: darken(v.$primary-color, 10%);
+                color: #FFF;
+            }
+
         }
         
         &.btn-primary{
@@ -290,6 +311,36 @@
         position: relative;
         color: #FFFFFF;
         padding-bottom: 100px;
+        &.float-polygon{
+            .container{
+                position: relative;
+                &:after{
+                    content: '';
+                    position: absolute;
+                    width: 529px;
+                    height: 481px;
+                    background-image: url('/ugo_dev/images/img_polygon.png');
+                    background-repeat: no-repeat;
+                    background-position: bottom right;
+                    background-size: auto 100%;
+                    background-color: transparent;
+                    transform: scaleX(-1) rotate(166deg);
+                }
+            }
+        &.float-polygon-top-right{
+            .container{
+                &:after{
+                    top: -340px;
+                    right: -155px;
+                }
+            }
+            
+        }
+            
+        }
+        &.slim-hero{
+            height: 245px;
+        }
         @media (max-width: 768px) {
             height: 450px;
             padding-bottom:50px;
@@ -661,6 +712,68 @@
                 
             }
         }
+        .filter-details-container{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom:50px;
+            >div{
+                display: flex;
+                align-items: center;
+            }
+            #filter-action{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-radius: 10px;
+                background: v.$light-grey-color;
+                &:after{
+                    content: '';
+                    background-image: url(/ugo_dev/images/icons/icon_filter.png);
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+            .dropdown{
+                #sort-drop{
+                    width: 236;
+                    height: 48;
+                    border: 0;
+                    justify-content: space-between;
+                    padding-right: 16px;
+                    padding-left: 16px;
+                    border-radius: 10px;
+                    background: v.$light-grey-color;
+                    color:v.$primary-color;
+                    font-family: Source Sans Pro;
+                    font-weight: 400;
+                    font-style: Regular;
+                    font-size: 16px;
+                    line-height: 24px;
+                    letter-spacing: 0%;
+                    text-align: left;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    &:after{
+                            content: "\f107";
+                            font-family: FontAwesome;
+                            margin-left: 0;
+                            vertical-align: auto;
+                            border: 0;
+                            right: 0;
+                    }
+
+                }
+                .dropdown-menu{
+                    width:100%;
+                }
+            }
+            
+        }
     }
 
     //Slick Slider Overrides
@@ -681,5 +794,19 @@
         /* Compensate with a negative margin on the parent container */
     .slick-list {
         margin: 0 -10px;
+    }
+
+    //Modal
+    .modal-content{
+        border-radius: 30px;
+    }
+    .modal-header{
+        border-color:v.$grey-color;
+    }
+    .modal-dialog{
+        &.modal-50vw {
+            width: 50vw;
+            max-width: none; 
+        }/* Important for Bootstrap 4/5 to override defaults */
     }
 }

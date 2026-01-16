@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Search Results Template</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="/ugo_dev/stylesheets/main.css" rel="stylesheet" />
+    <link href="/ugo_dev/stylesheets/top_navigation.css" rel="stylesheet" />
+    <link href="/ugo_dev/stylesheets/accordion.css" rel="stylesheet" />
+    <link href="/ugo_dev/stylesheets/testimonials.css" rel="stylesheet" />
+    <link href="/ugo_dev/stylesheets/boxes.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .card-img-top {
+        object-fit: cover;
+        height: 180px;
+      }
+      footer {
+        background: #f8f9fa;
+        padding: 2rem 0;
+      }
+      /* Two-row section */
+      .two-row-section {
+        padding: 3rem 0;
+      }
+      .two-row-section .image-left {
+        display: flex;
+        align-items: center;
+      }
+      .two-row-section .image-left img {
+        width: 100%;
+        height: auto;
+        border-radius: 6px;
+      }
+      .photo-slider .slider-item img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 6px;
+      }
+      @media (max-width: 768px) {
+        .photo-slider .slider-item img {
+          height: 100px;
+        }
+      }
+    </style>
+  </head>
+  <body class="ugo-template">
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm border-bottom"
+    >
+      <div class="container">
+        <a class="navbar-brand text-dark" href="#"
+          ><img src="/ugo_dev/images/logo_ugo.png" alt="Logo"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#nav"
+          aria-controls="nav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="main-nav">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown"
+                href="#"
+                id="schoolsDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Schools</a
+              >
+              <div
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="schoolsDropdown"
+              >
+                <div class="container">
+                  <div class="row">
+                    <div class="col icon-container">
+                      <div class="image-container">
+                        <img
+                          src="/ugo_dev/images/icons/icon_school.png"
+                          alt="School Icon"
+                          class="img-fluid mb-2"
+                        />
+                      </div>
+                      <div class="link-title">Schools</div>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#"
+                            >Undergraduate - Associate degree</a
+                          >
+                        </li>
+                        <li>
+                          <a class="link-item" href="#"
+                            >Undergraduate - Bachelor's degree</a
+                          >
+                        </li>
+                        <li>
+                          <a class="link-item" href="#"
+                            >Graduate - Master's degree</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#"
+                            >Graduate - Doctorate degree</a
+                          >
+                        </li>
+                        <li><a class="link-item" href="#">Big Cities</a></li>
+                        <li>
+                          <a class="link-item" href="#">Value for Money</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#"
+                            >Saudi Sponsored Students</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="countriesDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Countries</a
+              >
+              <div
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="countriesDropdown"
+              >
+                <div class="container">
+                  <div class="row">
+                    <div class="col icon-container">
+                      <div class="image-container">
+                        <img
+                          src="/ugo_dev/images/icons/icon_globe.png"
+                          alt="Globe Icon"
+                          class="img-fluid mb-2"
+                        />
+                      </div>
+                      <div class="link-title">Countries</div>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li><a class="link-item" href="#">Australia</a></li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li><a class="link-item" href="#">Canada</a></li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li><a class="link-item" href="#">USA</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="servicesDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Services</a
+              >
+              <div
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="servicesDropdown"
+              >
+                <div class="container">
+                  <div class="row">
+                    <div class="col icon-container">
+                      <div class="image-container">
+                        <img
+                          src="/ugo_dev/images/icons/icon_services.png"
+                          alt="Services Icon"
+                          class="img-fluid mb-2"
+                        />
+                      </div>
+                      <div class="link-title">Services</div>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#"
+                            >Conditional Admission USA</a
+                          >
+                        </li>
+                        <li>
+                          <a class="link-item" href="#">Direct Admission USA</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#">2 + 2 Program USA</a>
+                        </li>
+                        <li>
+                          <a class="link-item" href="#"
+                            >College Year Program USA</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#"
+                            >University Pathway Program Australia</a
+                          >
+                        </li>
+                        <li>
+                          <a class="link-item" href="#"
+                            >University Pathway Program Canada</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="admissionsDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Admissions</a
+              >
+              <div
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="admissionsDropdown"
+              >
+                <div class="container">
+                  <div class="row">
+                    <div class="col icon-container">
+                      <div class="image-container">
+                        <img
+                          src="/ugo_dev/images/icons/icon_admissions.png"
+                          alt="Admissions Icon"
+                          class="img-fluid mb-2"
+                        />
+                      </div>
+                      <div class="link-title">Admissions</div>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#">Tuition & Fees</a>
+                        </li>
+                        <li>
+                          <a class="link-item" href="#"
+                            >Student Visa Information</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li><a class="link-item" href="#">How to Apply</a></li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#">Terms & Conditions</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">FAQ</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="languageDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >EN</a
+              >
+              <ul
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="languageDropdown"
+              >
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">Something else</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-primary" href="#">Find your school</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="main-hero hero section-form slim-hero float-polygon float-polygon-top-right" style="background-color: #163D5C;">
+      <div class="hero-inner">
+        <div class="container h-100">
+          <div class="row hero-row">
+           <div class="col-md-12 text-left align-items-center justify-content-start d-flex">
+                <h1 class="mb-0 position-relative" style="top:20px;">
+                  Graduate Degree and Certificate Programs
+                </h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-container full-form bg-white p-3 rounded-4 shadow position-relative" id="hero-school-search" style="top:30px">
+              <form>
+                <input
+                  type="hidden"
+                  value=""
+                  name="heroSchoolPrimarySearch"
+                  required
+                />
+                <input type="hidden" value="" name="heroDegreeType" required />
+                <ul class="btn-list d-flex justify-content-between flex-wrap">
+                  <li>
+                    <a href="#" class="btn btn-grey btn-lg" data-value="USA"
+                      >USA Schools</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="btn btn-grey btn-lg"
+                      data-value="Australia"
+                      >Australia Schools</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="btn btn-grey btn-lg" data-value="Canada"
+                      >Canada Schools</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="btn btn-grey btn-lg"
+                      data-value="English Courses"
+                      >English Courses</a
+                    >
+                  </li>
+                </ul>
+                <div class="input-form-group mt-3">
+                  <div>
+                    <div class="dropdown">
+                      <button
+                        class="btn dropdown-toggle bg-light-grey"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        Degree Type
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a
+                            class="dropdown-item"
+                            href="#"
+                            data-value="Undergraduate"
+                            >Undergraduate</a
+                          >
+                        </li>
+                        <li>
+                          <a
+                            class="dropdown-item"
+                            href="#"
+                            data-value="Graduate"
+                            >Graduate</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      name="heroStudyAreaSearchTerm"
+                      class="form-control bg-light-blue"
+                      placeholder="Search Area of Study"
+                    />
+                    <button class="btn btn-blue btn-lg" type="submit">
+                      <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-5 section-form">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 filter-details-container">
+            <div>
+              <span id="result-number" class="me-3">36 Results</span>
+              <button id="filter-action" class="py-2 px-3 border-0 text-start" style="width:216px"  data-bs-toggle="modal" data-bs-target="#filterOptionPanel"><span>Filters(<span class="filter-number fw-bold">3</span>)</span></button>
+            </div>
+            <div>
+              <span class="me-3">Sort by</span>
+              <div class="dropdown">
+                <button id="sort-drop" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  -----
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Cost: Low to High</a></li>
+                  <li><a class="dropdown-item" href="#">Cost: High to Low</a></li>
+                  <li><a class="dropdown-item" href="#">School Name: A to Z</a></li>
+                  <li><a class="dropdown-item" href="#">School Name: Z to A</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row search-result-container" id="search-result-container">
+          <div class="col-md-3">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+              <div class="description">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu leo, suscipit at pulvinar quis, scelerisque a diam. Cras vitae metus sed mi condimentum maximus sit amet a tellus. Vestibulum non est vel sapien bibendum ultricies et in diam. Etiam dictum, purus fermentum cursus gravida, turpis neque luctus orci, vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                </div>
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline">Learn More</a>
+                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                  <input type="checkbox" id="btncheck1" name="school_compare" autocomplete="off">
+                  <label for="btncheck1">Compare</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+              <div class="description">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu leo, suscipit at pulvinar quis, scelerisque a diam. Cras vitae metus sed mi condimentum maximus sit amet a tellus. Vestibulum non est vel sapien bibendum ultricies et in diam. Etiam dictum, purus fermentum cursus gravida, turpis neque luctus orci, vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                </div>
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline">Learn More</a>
+                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                  <input type="checkbox" id="btncheck1" name="school_compare" autocomplete="off">
+                  <label for="btncheck1">Compare</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+              <div class="description">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu leo, suscipit at pulvinar quis, scelerisque a diam. Cras vitae metus sed mi condimentum maximus sit amet a tellus. Vestibulum non est vel sapien bibendum ultricies et in diam. Etiam dictum, purus fermentum cursus gravida, turpis neque luctus orci, vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                </div>
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline">Learn More</a>
+                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                  <input type="checkbox" id="btncheck1" name="school_compare" autocomplete="off">
+                  <label for="btncheck1">Compare</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+              <div class="description">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu leo, suscipit at pulvinar quis, scelerisque a diam. Cras vitae metus sed mi condimentum maximus sit amet a tellus. Vestibulum non est vel sapien bibendum ultricies et in diam. Etiam dictum, purus fermentum cursus gravida, turpis neque luctus orci, vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                </div>
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline">Learn More</a>
+                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                  <input type="checkbox" id="btncheck1" name="school_compare" autocomplete="off">
+                  <label for="btncheck1">Compare</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+              <div class="description">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu leo, suscipit at pulvinar quis, scelerisque a diam. Cras vitae metus sed mi condimentum maximus sit amet a tellus. Vestibulum non est vel sapien bibendum ultricies et in diam. Etiam dictum, purus fermentum cursus gravida, turpis neque luctus orci, vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                </div>
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline">Learn More</a>
+                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                  <input type="checkbox" id="btncheck1" name="school_compare" autocomplete="off">
+                  <label for="btncheck1">Compare</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+              <div class="description">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu leo, suscipit at pulvinar quis, scelerisque a diam. Cras vitae metus sed mi condimentum maximus sit amet a tellus. Vestibulum non est vel sapien bibendum ultricies et in diam. Etiam dictum, purus fermentum cursus gravida, turpis neque luctus orci, vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                </div>
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline">Learn More</a>
+                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                  <input type="checkbox" id="btncheck1" name="school_compare" autocomplete="off">
+                  <label for="btncheck1">Compare</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+              <div class="description">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu leo, suscipit at pulvinar quis, scelerisque a diam. Cras vitae metus sed mi condimentum maximus sit amet a tellus. Vestibulum non est vel sapien bibendum ultricies et in diam. Etiam dictum, purus fermentum cursus gravida, turpis neque luctus orci, vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                </div>
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline">Learn More</a>
+                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                  <input type="checkbox" id="btncheck1" name="school_compare" autocomplete="off">
+                  <label for="btncheck1">Compare</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+              <div class="description">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu leo, suscipit at pulvinar quis, scelerisque a diam. Cras vitae metus sed mi condimentum maximus sit amet a tellus. Vestibulum non est vel sapien bibendum ultricies et in diam. Etiam dictum, purus fermentum cursus gravida, turpis neque luctus orci, vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                </div>
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline">Learn More</a>
+                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                  <input type="checkbox" id="btncheck1" name="school_compare" autocomplete="off">
+                  <label for="btncheck1">Compare</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+              <div class="description">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu leo, suscipit at pulvinar quis, scelerisque a diam. Cras vitae metus sed mi condimentum maximus sit amet a tellus. Vestibulum non est vel sapien bibendum ultricies et in diam. Etiam dictum, purus fermentum cursus gravida, turpis neque luctus orci, vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                </div>
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline">Learn More</a>
+                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                  <input type="checkbox" id="btncheck1" name="school_compare" autocomplete="off">
+                  <label for="btncheck1">Compare</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+              <div class="description">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu leo, suscipit at pulvinar quis, scelerisque a diam. Cras vitae metus sed mi condimentum maximus sit amet a tellus. Vestibulum non est vel sapien bibendum ultricies et in diam. Etiam dictum, purus fermentum cursus gravida, turpis neque luctus orci, vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                </div>
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline">Learn More</a>
+                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                  <input type="checkbox" id="btncheck1" name="school_compare" autocomplete="off">
+                  <label for="btncheck1">Compare</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+              <div class="description">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu leo, suscipit at pulvinar quis, scelerisque a diam. Cras vitae metus sed mi condimentum maximus sit amet a tellus. Vestibulum non est vel sapien bibendum ultricies et in diam. Etiam dictum, purus fermentum cursus gravida, turpis neque luctus orci, vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                </div>
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline">Learn More</a>
+                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                  <input type="checkbox" id="btncheck1" name="school_compare" autocomplete="off">
+                  <label for="btncheck1">Compare</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+              <div class="description">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu leo, suscipit at pulvinar quis, scelerisque a diam. Cras vitae metus sed mi condimentum maximus sit amet a tellus. Vestibulum non est vel sapien bibendum ultricies et in diam. Etiam dictum, purus fermentum cursus gravida, turpis neque luctus orci, vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                </div>
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline">Learn More</a>
+                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                  <input type="checkbox" id="btncheck1" name="school_compare" autocomplete="off">
+                  <label for="btncheck1">Compare</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+              <div class="description">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu leo, suscipit at pulvinar quis, scelerisque a diam. Cras vitae metus sed mi condimentum maximus sit amet a tellus. Vestibulum non est vel sapien bibendum ultricies et in diam. Etiam dictum, purus fermentum cursus gravida, turpis neque luctus orci, vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                </div>
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline">Learn More</a>
+                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                  <input type="checkbox" id="btncheck1" name="school_compare" autocomplete="off">
+                  <label for="btncheck1">Compare</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+              <div class="description">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu leo, suscipit at pulvinar quis, scelerisque a diam. Cras vitae metus sed mi condimentum maximus sit amet a tellus. Vestibulum non est vel sapien bibendum ultricies et in diam. Etiam dictum, purus fermentum cursus gravida, turpis neque luctus orci, vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                </div>
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline">Learn More</a>
+                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                  <input type="checkbox" id="btncheck1" name="school_compare" autocomplete="off">
+                  <label for="btncheck1">Compare</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+              <div class="description">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu leo, suscipit at pulvinar quis, scelerisque a diam. Cras vitae metus sed mi condimentum maximus sit amet a tellus. Vestibulum non est vel sapien bibendum ultricies et in diam. Etiam dictum, purus fermentum cursus gravida, turpis neque luctus orci, vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                </div>
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline">Learn More</a>
+                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                  <input type="checkbox" id="btncheck1" name="school_compare" autocomplete="off">
+                  <label for="btncheck1">Compare</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+              <div class="description">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu leo, suscipit at pulvinar quis, scelerisque a diam. Cras vitae metus sed mi condimentum maximus sit amet a tellus. Vestibulum non est vel sapien bibendum ultricies et in diam. Etiam dictum, purus fermentum cursus gravida, turpis neque luctus orci, vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                </div>
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline">Learn More</a>
+                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                  <input type="checkbox" id="btncheck1" name="school_compare" autocomplete="off">
+                  <label for="btncheck1">Compare</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 item-hide">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+              <div class="description">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu leo, suscipit at pulvinar quis, scelerisque a diam. Cras vitae metus sed mi condimentum maximus sit amet a tellus. Vestibulum non est vel sapien bibendum ultricies et in diam. Etiam dictum, purus fermentum cursus gravida, turpis neque luctus orci, vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                </div>
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline">Learn More</a>
+                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                  <input type="checkbox" id="btncheck1" name="school_compare" autocomplete="off">
+                  <label for="btncheck1">Compare</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 item-hide">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+              <div class="description">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu leo, suscipit at pulvinar quis, scelerisque a diam. Cras vitae metus sed mi condimentum maximus sit amet a tellus. Vestibulum non est vel sapien bibendum ultricies et in diam. Etiam dictum, purus fermentum cursus gravida, turpis neque luctus orci, vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                </div>
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline">Learn More</a>
+                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                  <input type="checkbox" id="btncheck1" name="school_compare" autocomplete="off">
+                  <label for="btncheck1">Compare</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 item-hide">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+              <div class="description">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu leo, suscipit at pulvinar quis, scelerisque a diam. Cras vitae metus sed mi condimentum maximus sit amet a tellus. Vestibulum non est vel sapien bibendum ultricies et in diam. Etiam dictum, purus fermentum cursus gravida, turpis neque luctus orci, vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                </div>
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline">Learn More</a>
+                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                  <input type="checkbox" id="btncheck1" name="school_compare" autocomplete="off">
+                  <label for="btncheck1">Compare</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 item-hide">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+              <div class="description">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas arcu leo, suscipit at pulvinar quis, scelerisque a diam. Cras vitae metus sed mi condimentum maximus sit amet a tellus. Vestibulum non est vel sapien bibendum ultricies et in diam. Etiam dictum, purus fermentum cursus gravida, turpis neque luctus orci, vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                </div>
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline">Learn More</a>
+                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                  <input type="checkbox" id="btncheck1" name="school_compare" autocomplete="off">
+                  <label for="btncheck1">Compare</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="align-items-center d-flex justify-content-center w-100">
+              <a href="" class="btn btn-primary mt-4 btn-load-more">Show More</a>
+          </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <div class="modal fade simple-accordion" id="filterOptionPanel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="filterOptionPanelLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="px-4 py-4">
+            <div class="modal-header">
+              <h4 class="modal-title">Filters</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="accordion" id="filterSearchOptions">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      School
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse show">
+                    <div class="accordion-body">
+                      <div class="input-group mb-3">
+                        <input type="text" class="form-control input-search" placeholder="Search for a school" aria-label="School Name" aria-describedby="basic-addon2">
+                        <span class="input-group-text" id="basic-addon2"><i class="fa-solid fa-magnifying-glass"></i></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      City
+                    </button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                      <div class="input-group mb-3">
+                        <input type="text" class="form-control input-search" placeholder="Search for a city" aria-label="City Name" aria-describedby="basic-addon2">
+                        <span class="input-group-text" id="basic-addon2"><i class="fa-solid fa-magnifying-glass"></i></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      Location Type
+                    </button>
+                  </h2>
+                  <div id="collapseThree" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                      <div class="input-check-container">
+                        <div class="input-group mb-3 w-50">
+                          <div class="input-group-text">
+                            <input class="form-check-input mt-0" name="filterLocationType" type="checkbox" value="" aria-label="Checkbox for following text input"><label class="ms-2">Large city (>50,000 pop)</label>
+                          </div>
+                          
+                        </div>
+                        <div class="input-group mb-3 w-50">
+                          <div class="input-group-text">
+                            <input class="form-check-input mt-0" name="filterLocationType" type="checkbox" value="" aria-label="Checkbox for following text input"><label class="ms-2">Midsize city (5,000 - 50,000 pop)</label>
+                          </div>
+                          
+                        </div>
+                        <div class="input-group mb-3 w-50">
+                          <div class="input-group-text">
+                            <input class="form-check-input mt-0" name="filterLocationType" type="checkbox" value="" aria-label="Checkbox for following text input"><label class="ms-2">Small town (<5,000 pop)</label>
+                          </div>
+                          
+                        </div>
+
+                      </div>
+                      
+
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                      Tuition
+                    </button>
+                  </h2>
+                  <div id="collapseFour" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                      <div class="double_range_slider_box">
+                        <div class="double_range_slider">
+                          <span class="range_track" id="range_track"></span>
+
+                          <input type="range" class="min input-amount" min="0" max="50000" value="0" step="500">
+                          <input type="range" class="max input-amount" min="0" max="50000" value="10000" step="500">
+
+                          <div class="minvalue"></div>
+                          <div class="maxvalue"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer d-flex justify-content-between align-items-center">
+            <a href="#" class="text-decoration-underline fs-6 primary-font-color">Clear Filters</a>
+            <button type="button" class="btn btn-primary" style="width:280px;">Show Results</button>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+    <style>
+      #filterOptionPanel .modal-dialog {
+        width: 50vw;
+        max-width: none; /* Important for Bootstrap 4/5 to override defaults */
+      }
+      @media (max-width: 768px) {
+         #filterOptionPanel .modal-dialog {
+          width: 90vw;
+          max-width: none; /* Important for Bootstrap 4/5 to override defaults */
+        }
+      }
+    </style>
+
+   
+    <!-- Two-column section with form -->
+
+    <section class="py-5 bg-white section-form section-contact-form">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-9">
+            <h5 class="mb-4">Looking for quick answers? <a href="#">Visit our FAQ</a></h5>
+            <h3>Ask an Advisor for More Information</h3>
+            <div class="form-container">
+              <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+              <script>
+                hbspt.forms.create({
+                  portalId: "5020112",
+                  formId: "581db5f8-c9df-431c-a197-68c701699eb6",
+                  region: "na1"
+                });
+              </script>
+            </div>
+            
+          </div>
+          <div class="col-md-3 d-none d-md-block">
+            <div class="image-container float-right">
+              <img src="/ugo_dev/images/img_side_triangles.png" alt="Advisor" class="img-fluid" />
+            </div>
+        </div>
+      </div>
+    </section>
+
+   
+
+    <!-- Footer: 5-column menu -->
+    <footer class="border-top">
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-6 col-md-3 mb-3">
+            <div class="image-container">
+              <img src="/ugo_dev/images/logo_ugo_footer.png" alt="Logo" />
+            </div>
+            <h5>Our Network</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >ELS Language Centers</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >ILSC Education Group</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >ILSC Language Schools</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">Greystone College</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-3 mb-3">
+            <h5>Schools</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Undergraduate - Associate degree</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Undergraduate - Bachelor's degree</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Graduate - Master's degree</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Graduate - Master's degree</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">Big Cities</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">Value for Money</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Saudi Sponsored Students</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-2 mb-3">
+            <h5>Countries</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-decoration-none">Australia</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">Canada</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">USA</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-2 mb-3">
+            <h5>Services</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Conditional Admission USA</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Direct Admission USA</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">2 + 2 Program USA</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >College Year Program USA</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >University Pathway Program Australia</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >University Pathway Program Canada</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-2 mb-3">
+            <h5>Admissions</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-decoration-none">Tuition & Fees</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Student Visa Information</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">How to Apply</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">Terms & Conditions</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8 small mt-2 footer-copy">
+            &copy; <span id="year"></span> ILSC Education Group. All Rights
+            Reserved.<br /><br />
+            ILSC Language Schools: The ILSC Education Group Inc.
+            (ILSC-Vancouver, ILSC-Toronto, ILSC-Montréal); ILSC India Private
+            LTD. Greystone College of Business and Technology (Toronto) Inc.
+            (Greystone College (Toronto)); Greystone College of Business and
+            Technology (Greystone College (Vancouver)); and Greystone College
+            (Greystone College (Montréal)) herein collectively referred to as
+            “Greystone College” ILSC (Brisbane) PTY LTD is trading as
+            ILSC-Adelaide, ILSC-Brisbane, ILSC-Melbourne, ILSC-Sydney,
+            ILSC-Perth, Greystone College and ILSC Australia RTO Number 31564,
+            CRICOS Code: 02137M<br />
+            Tara International Education Services Ltd trading as Berlitz Dublin
+            Language Centre (registered number 548215) and/or ILSC Dublin
+          </div>
+          <div class="col-4 small mt-2">
+            <ul class="sub-footer-links">
+              <li class="d-inline me-3">
+                <a href="#" class="text-decoration-none">Privacy Policy</a>
+              </li>
+              <li class="d-inline me-3">
+                <a href="#" class="text-decoration-none">Terms of Use</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/ugo_dev/script/top_navigation.js"></script>
+    <script src="/ugo_dev/script/form_search.js"></script>
+    <script src="/ugo_dev/script/helper.js"></script>
+
+    <script src="/ugo_dev/script/ranger_slider.js"></script>
+<script>
+      // set current year
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // simple client-side validation display
+      (function () {
+        "use strict";
+        var forms = document.querySelectorAll(".needs-validation");
+        Array.prototype.slice.call(forms).forEach(function (form) {
+          form.addEventListener(
+            "submit",
+            function (event) {
+              if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add("was-validated");
+            },
+            false
+          );
+        });
+      })();
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const loadMoreBtn = document.querySelector(".btn-load-more");
+        const hiddenItems = document.querySelectorAll(
+          ".item-hide"
+        );
+        let isExpanded = false;
+
+        loadMoreBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          if (!isExpanded) {
+            hiddenItems.forEach((item) => {
+              item.style.display = "block";
+            });
+            loadMoreBtn.textContent = "Show Less";
+            isExpanded = true;
+          } else {
+            hiddenItems.forEach((item) => {
+              item.style.display = "none";
+            });
+            loadMoreBtn.textContent = "Show More";
+            isExpanded = false;
+          }
+        });
+      });
+    </script>
+
+    
+  </body>
+</html>

@@ -4,15 +4,11 @@
 }
 
 .box-card {
-  background: #fff;
-  border: 1px solid #e6eef5;
-  border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 15px 15px 0;
+  opacity: 1;
+  border-radius: 10px;
+  padding: 16px;
+  border-width: 1px;
+  border: 1px solid #DCDCDC;
 }
 @media (max-width: 576px) {
   .box-card {
@@ -56,4 +52,75 @@
   .box:not(:last-child) .box-container.arrow-enabled:after {
     display: none;
   }
+}
+
+.search-result-container .item-hide {
+  display: none;
+}
+.search-result-container .box-card {
+  margin-bottom: 30px;
+}
+.search-result-container .box-card > div:not(:last-child) {
+  margin-bottom: 20px;
+}
+.search-result-container .box-card .result-header {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-bottom: 20px;
+}
+.search-result-container .box-card .result-header h5 {
+  margin-bottom: 0;
+}
+.search-result-container .box-card .result-header > div:first-child {
+  width: 80%;
+}
+.search-result-container .box-card .result-header .logo-container {
+  width: 20%;
+}
+.search-result-container .box-card .result-header .logo-container img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+}
+.search-result-container .box-card .school-details {
+  margin-bottom: 0;
+}
+.search-result-container .box-card .school-details ul {
+  padding: 0;
+  margin-bottom: 0;
+}
+.search-result-container .box-card .description {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 10; /* Number of lines to show */
+  text-overflow: ellipsis; /* Optional, adds the '...' */
+}
+.search-result-container .box-card .btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+}
+.search-result-container .box-card .btn-container .btn {
+  width: 50%;
+  min-width: unset !important;
+}
+.search-result-container .box-card .btn-container .btn-group {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #575757;
+  font-family: Source Sans Pro;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0%;
+}
+.search-result-container .box-card .btn-container .btn-group label {
+  margin-left: 15px;
 }/*# sourceMappingURL=boxes.css.map */

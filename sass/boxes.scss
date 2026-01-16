@@ -8,15 +8,13 @@ $color_1: #6b7280;
 	padding: 3rem 0;
 }
 .box-card {
-	background: #fff;
-	border: 1px solid #e6eef5;
-	border-radius: 8px;
-	padding: 1.5rem;
-	box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-    padding:15px 15px 0;
+
+    opacity: 1;
+    border-radius: 10px;
+    padding: 16px;
+    border-width: 1px;
+    border: 1px solid #DCDCDC;
+
     @media (max-width: 576px) {
             padding: 1rem;
     }
@@ -68,4 +66,84 @@ $color_1: #6b7280;
         }
     }
 }
+.search-result-container{
+    .item-hide{
+        display: none;
+    }
+    .box-card{
+       margin-bottom:30px;
+        >div{
+            &:not(:last-child){
+                margin-bottom:20px;
+            }
+        }
+        .result-header{
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            margin-bottom:20px;
+            h5{
+                margin-bottom:0;
+            }
+            >div{
+                &:first-child{
+                    width:80%
+                }
+
+            }
+            .logo-container{
+                width: 20%;
+                img{
+                    width: 100%;
+                    object-fit: cover;
+                    height: 100%;
+                }
+            }
+        }
+        .school-details{
+            margin-bottom:0;
+            ul{
+                padding:0;
+                margin-bottom:0;
+            }
+        }
+        .description{
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 10; /* Number of lines to show */
+            text-overflow: ellipsis; /* Optional, adds the '...' */
+        }
+        .btn-container{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex:1;
+            .btn{
+                width: 50%;
+                min-width: unset !important;
+            }
+            .btn-group{
+                width: 50%;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                color: v.$anchor-link-color;
+                font-family: Source Sans Pro;
+                font-weight: 700;
+                font-style: Bold;
+                font-size: 14px;
+                line-height: 20px;
+                letter-spacing: 0%;
+
+                label{
+                    margin-left:15px;
+                }
+            
+
+            }
+        }
+    }
+}
+
 

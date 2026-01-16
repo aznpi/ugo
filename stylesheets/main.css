@@ -4,6 +4,9 @@
   /* Site hero: 600px height with image background and two columns */
   /* Compensate with a negative margin on the parent container */
 }
+.ugo-template .primary-font-color {
+  color: #2A2A2A;
+}
 .ugo-template h1, .ugo-template h2 {
   font-family: "Barlow Condensed", sans-serif;
   font-weight: 500;
@@ -132,6 +135,20 @@
 .ugo-template .btn.btn-grey:hover {
   background-color: rgb(216.5, 216.5, 216.5);
   border-color: rgb(216.5, 216.5, 216.5);
+}
+.ugo-template .btn.btn-outline {
+  padding-right: 16px;
+  padding-left: 16px;
+  border-radius: 10px;
+  border-width: 1px;
+  border: 1px solid #163D5C;
+  background-color: #FFF;
+  color: #163D5C;
+}
+.ugo-template .btn.btn-outline:hover {
+  background-color: rgb(12.1578947368, 33.7105263158, 50.8421052632);
+  border-color: rgb(12.1578947368, 33.7105263158, 50.8421052632);
+  color: #FFF;
 }
 .ugo-template .btn.btn-primary {
   background-color: #163D5C;
@@ -270,6 +287,28 @@
   position: relative;
   color: #FFFFFF;
   padding-bottom: 100px;
+}
+.ugo-template .main-hero.float-polygon .container {
+  position: relative;
+}
+.ugo-template .main-hero.float-polygon .container:after {
+  content: "";
+  position: absolute;
+  width: 529px;
+  height: 481px;
+  background-image: url("/ugo_dev/images/img_polygon.png");
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-size: auto 100%;
+  background-color: transparent;
+  transform: scaleX(-1) rotate(166deg);
+}
+.ugo-template .main-hero.float-polygon.float-polygon-top-right .container:after {
+  top: -340px;
+  right: -155px;
+}
+.ugo-template .main-hero.slim-hero {
+  height: 245px;
 }
 @media (max-width: 768px) {
   .ugo-template .main-hero {
@@ -581,6 +620,64 @@
 .ugo-template .section-form.section-contact-form .form-container form .hs-form-required {
   display: none;
 }
+.ugo-template .section-form .filter-details-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+.ugo-template .section-form .filter-details-container > div {
+  display: flex;
+  align-items: center;
+}
+.ugo-template .section-form .filter-details-container #filter-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  background: #F2F2F2;
+}
+.ugo-template .section-form .filter-details-container #filter-action:after {
+  content: "";
+  background-image: url(/ugo_dev/images/icons/icon_filter.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 20px;
+  height: 20px;
+}
+.ugo-template .section-form .filter-details-container .dropdown #sort-drop {
+  width: 236;
+  height: 48;
+  border: 0;
+  justify-content: space-between;
+  padding-right: 16px;
+  padding-left: 16px;
+  border-radius: 10px;
+  background: #F2F2F2;
+  color: #163D5C;
+  font-family: Source Sans Pro;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ugo-template .section-form .filter-details-container .dropdown #sort-drop:after {
+  content: "\f107";
+  font-family: FontAwesome;
+  margin-left: 0;
+  vertical-align: auto;
+  border: 0;
+  right: 0;
+}
+.ugo-template .section-form .filter-details-container .dropdown .dropdown-menu {
+  width: 100%;
+}
 .ugo-template .slick-slider-container {
   opacity: 0;
   visibility: hidden;
@@ -595,4 +692,17 @@
 }
 .ugo-template .slick-list {
   margin: 0 -10px;
+}
+.ugo-template .modal-content {
+  border-radius: 30px;
+}
+.ugo-template .modal-header {
+  border-color: #7A7A7A;
+}
+.ugo-template .modal-dialog {
+  /* Important for Bootstrap 4/5 to override defaults */
+}
+.ugo-template .modal-dialog.modal-50vw {
+  width: 50vw;
+  max-width: none;
 }/*# sourceMappingURL=main.css.map */
