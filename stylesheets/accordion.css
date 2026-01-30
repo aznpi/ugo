@@ -4,12 +4,14 @@
   font-size: 20px;
   line-height: 28px;
   letter-spacing: 0%;
-  color: #163D5C;
+  color: #2A2A2A;
   border-bottom: 1px solid #AAAAAA !important;
+  padding-left: 0;
+  padding-right: 0;
 }
 .simple-accordion .accordion-button:not(.collapsed) {
   background-color: transparent;
-  color: #163D5C;
+  color: #2A2A2A;
 }
 .simple-accordion .accordion-button:focus {
   box-shadow: none;

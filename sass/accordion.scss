@@ -7,11 +7,13 @@
 		font-size: 20px;
 		line-height: 28px;
 		letter-spacing: 0%;
-		color: v.$primary-color;
+		color: v.$secondary-color;
 		border-bottom: 1px solid #AAAAAA !important;
+		padding-left:0;
+		padding-right:0;
 		&:not(.collapsed) {
 			background-color: transparent;
-			color: v.$primary-color;
+			color: v.$secondary-color;
 		}
 		&:focus {
 			box-shadow: none;
@@ -23,7 +25,7 @@
 		font-size: 16px;
 		line-height: 24px;
 		letter-spacing: 0%;
-		color: #2A2A2A;
+		color: v.$secondary-color;;
 	}
 	&#filterOptionPanel{
 		.accordion-header{

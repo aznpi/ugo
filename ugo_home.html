@@ -28,6 +28,7 @@
     <link href="/ugo_dev/stylesheets/top_navigation.css" rel="stylesheet" />
     <link href="/ugo_dev/stylesheets/testimonials.css" rel="stylesheet" />
     <link href="/ugo_dev/stylesheets/boxes.css" rel="stylesheet" />
+    <link href="/ugo_dev/stylesheets/quiz.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -483,24 +484,559 @@
     <!-- Centered single-column box section -->
     <section class="center-box-section bg-light-grey">
       <div class="container">
-        <div class="center-box">
-          <div>
-            <h2 class="mb-3">Find Your Perfect Schools and Programs</h2>
-            <p>
-              Answer a few simple questions and we'll provide you with matches
-              for target, reach, and safety schools.
-            </p>
-            <p>To find your matches, we'll ask you:</p>
-            <ul class="list-bullet">
-              <li>about you and your preferences</li>
-              <li>your estimated GPA</li>
-              <li>and your english English test scores</li>
-            </ul>
-            <div class="btn-container mt-5">
-              <a href="#" class="btn btn-primary btn-lg w-100">Start Quiz</a>
+       <div class="center-box" id="quizSchoolSearch">
+        
+            <div id="carouselQuiz" class="carousel slide" data-bs-wrap="false" data-bs-interval="false">
+              <div class="carousel-inner">
+
+                <!--Start Quiz-->
+                <div class="carousel-item active">
+                  <div class="form-container">
+                    <form class="needs-validation" novalidate>
+                      <div class="text-box">
+                        <h1>Find Your Perfect Schools and Programs</h1>
+                        <p>Answer a few simple questions and we'll provide you with matches for target, reach, and safety schools.</p>
+                        <p>To find your matches, we'll ask you about you and your preferences.</p>
+
+                        <p>To start finding your perfect schools, enter your information below:</p>
+                        <div class="input-form-group">
+                          <div class="input-group input-group-lg">
+                            <input type="text" class="form-control me-1" name="quiz_first_name" placeholder="First Name" aria-label="First Name" aria-describedby="inputGroup-sizing-lg" required>
+                            <input type="text" class="form-control ms-1" name="quiz_last_name" placeholder="Last Name" aria-label="Last Name" aria-describedby="inputGroup-sizing-lg" required>
+                          </div>
+                          <div class="input-group input-group-lg mt-3">
+                            <input type="email" class="form-control" name="quiz_email" placeholder="Email" aria-label="Email" aria-describedby="inputGroup-sizing-lg" required>
+                          </div>
+                        </div>
+                        
+                      </div>
+                      <div class="btn-container w-100">
+                        <button class="btn btn-primary w-100 next-slide" type="button">Start Quiz</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+                <!--Country-->
+                <div class="carousel-item">
+                  <div class="text-box">
+                    <h3>Which country would you like to study in?</h3>
+                  </div>
+                  <div class="input-form-group">
+                    <div class="input-group input-group-lg flex-column" role="group">
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="country-option" value="USA" id="country-1">
+                          <label for="country-1">USA</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="country-option" value="Australia" id="country-2">
+                          <label for="country-2">Australia</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="country-option" value="Canada" id="country-3">
+                          <label for="country-3">Canada</label>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+                
+                <!--Degree-->
+                <div class="carousel-item">
+                  <div class="text-box">
+                    <h3>What type of degree are you pursuing?</h3>
+                    <p>Choose Undergraduate for Bachelor's or English as a Second Language, or choose Graduate for Master's, Professional Development, or PhD.</p>
+                  </div>
+                  <div class="input-form-group">
+                    <div class="input-group input-group-lg flex-column" role="group">
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-degree-type" value="Undergraduate - Associate degree" id="degree-type-1">
+                          <label for="degree-type-1">Undergraduate - Associate degree</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-degree-type" value="Undergraduate - Bachelor's degree" id="degree-type-2">
+                          <label for="degree-type-2">Undergraduate - Bachelor's degree</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-degree-type" value="Graduate - Master's degree" id="degree-type-3">
+                          <label for="degree-type-3">Graduate - Master's degree</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-degree-type" value="Graduate - Doctorate degree" id="degree-type-4">
+                          <label for="degree-type-4">Graduate - Doctorate degree</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!--Major-->
+                <div class="carousel-item">
+                  <div class="text-box">
+                    <h3>What major are you interested in?</h3>
+                  </div>
+                  <div class="input-form-group">
+                    <div class="input-group input-group-lg search-input">
+                      <input type="text" name="school-major-search-result" class="form-control" aria-label="Search for an area of study" placeholder="Search for an area of study" aria-describedby="inputGroup-sizing-lg">
+                    </div>
+                    <p class="mt-5">Popular subjects:</p>
+                    <div class="input-group input-group-lg flex-wrap mt-1" role="group">
+                      
+                      <div class="input-group-radio w-25">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-major" value="Engineering" id="major-1">
+                          <label for="major-1">Engineering</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-25">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-major" value="Economics" id="major-2">
+                          <label for="major-2">Economics</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-25">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-major" value="Finance" id="major-3">
+                          <label for="major-3">Finance</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-25">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-major" value="Marketing" id="major-4">
+                          <label for="major-4">Marketing</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-25">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-major" value="Computer Science" id="major-5">
+                          <label for="major-5">Computer Science</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-25">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-major" value="Business" id="major-6">
+                          <label for="major-6">Business</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-25">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-major" value="Engineering Advanced" id="major-7">
+                          <label for="major-7">Engineering Advanced</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-25">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-major" value="Engineering" id="major-8">
+                          <label for="major-8">Economics Advanced</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-100 mt-4">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-major" value="undecided" id="major-9">
+                          <label for="major-9">I'm undecided at this time</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!--Citizenship-->
+                <div class="carousel-item">
+                  <div class="text-box">
+                    <h3>What is your citizenship or nationality?</h3>
+                    <p>Please select your country of legal citizenship. If you hold dual citizenship, only select one.</p>
+                  </div>
+                  <div class="input-form-group">
+                    <select class="form-select form-select-lg mb-3" name="nationality" aria-label=".form-select-lg example">
+                      <option selected disabled>Select your citizenship / nationality</option>
+                      <option value="Canadian">Canadian</option>
+                      <option value="American">American</option>
+                      <option value="Mexican">Mexican</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!--English Tests-->
+                <div class="carousel-item">
+                  <div class="text-box">
+                    <h3>Which English tests have you taken or plan on taking?</h3>
+                    <p>English tests evaluate your proficiency in the English language to determine your readiness to pursue studies in the US. The IELTS test and the TOEFL test are the most common tests taken.</p>
+                  </div>
+                  <div class="input-form-group">
+                    <div class="input-group input-group-lg flex-column" role="group">
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-test-type" value="IELTS" id="test-type-1">
+                          <label for="test-type-1">IELTS</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-test-type" value="TOEFL" id="test-type-2">
+                          <label for="test-type-2">Undergraduate - Bachelor's degree</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-test-type" value="Other/ Not take yet" id="test-type-3">
+                          <label for="test-type-3">Other/ Not take yet</label>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+
+                <!--Outcomes-->
+                <div class="carousel-item">
+                  <div class="text-box">
+                    <h3>Which of these outcomes is most important to you?</h3>
+                    <p>Select the top three qualities that hold the greatest importance for you. Select up to 3.</p>
+                  </div>
+                  <div class="form-container">
+                    <form class="needs-validation checkbox-group" novalidate>
+                      <div class="input-form-group" data-check-limit="3">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="Getting a job quickly after graduation" id="outcomeCheck-1" name="school-outcome-option">
+                          <label class="form-check-label" for="outcomeCheck-1">
+                            Getting a job quickly after graduation
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="Earning a prestigious degree" id="outcomeCheck-2" name="school-outcome-option">
+                          <label class="form-check-label" for="outcomeCheck-2">
+                            Earning a prestigious degree
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="Gaining real-world experience while studying" id="outcomeCheck-3" name="school-outcome-option">
+                          <label class="form-check-label" for="outcomeCheck-3">
+                            Gaining real-world experience while studying
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="Transferring to a university after starting at a college" id="outcomeCheck-4" name="school-outcome-option">
+                          <label class="form-check-label" for="outcomeCheck-4">
+                            Transferring to a university after starting at a college
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="Qualifying for immigration after graduation" id="outcomeCheck-5" name="school-outcome-option">
+                          <label class="form-check-label" for="outcomeCheck-5">
+                            Qualifying for immigration after graduation
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="Studying something I enjoy in a new country" id="outcomeCheck-6" name="school-outcome-option">
+                          <label class="form-check-label" for="outcomeCheck-6">
+                            Studying something I enjoy in a new country
+                          </label>
+                        </div>
+                      </div>
+                      <div class="btn-container w-100 mt-4">
+                        <button class="btn btn-primary w-100 next-slide" type="button">Continue</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <!--Tuition-->
+                <div class="carousel-item">
+                  <div class="text-box">
+                    <h3>What is your expected annual tuition (USD)?</h3>
+                    <p>The ranges below are based on the options offered by universities within Shorelight's portfolio and fall within the average first-year tuition range in the United States. We want to help you find the right fit for your budget.</p>
+                  </div>
+                   <div class="input-form-group">
+                    <div class="input-group input-group-lg flex-wrap mt-1" role="group">
+                      <div class="input-group-radio w-33">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-tuition" value="< 1000" id="tuition-1">
+                          <label for="tuition-1">
+                            Less than $10,000
+                          </label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-33">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-tuition" value="<20000" id="tuition-2">
+                          <label for="tuition-2">
+                            Up to $20,000
+                          </label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-33">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-gpa" value="<30000" id="tuition-3">
+                          <label for="tuition-3">
+                            Up to $30,000
+                          </label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-33">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-gpa" value="<40000" id="tuition-4">
+                          <label for="tuition-4">
+                            Up to $40,000
+                          </label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-33">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-gpa" value=">40000" id="tuition-5">
+                          <label for="tuition-5">
+                            $40,000 or higher
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+
+                <!--Work Study-->
+                <div class="carousel-item test" id="carousel-work-study">
+                  <div class="text-box">
+                    <h3>Do you want to work while you study?</h3>
+                  </div>
+                  <div class="input-form-group">
+                    <div class="input-group input-group-lg flex-column" role="group">
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-work-study" value="Yes" id="work-study-1">
+                          <label for="work-study-1">Yes</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-work-study" value="No" id="work-study-2">
+                          <label for="work-study-2">No</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!--Location Type-->
+                <div class="carousel-item">
+                  <div class="text-box">
+                    <h3>What type of location do you prefer for your studies?</h3>
+                  </div>
+                  <div class="input-form-group">
+                    <div class="input-group input-group-lg flex-column" role="group">
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="location-type-option" value="Big city" id="location-type-1">
+                          <label for="location-type-1">Big city</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="location-type-option" value="Medium size city" id="location-type-2">
+                          <label for="location-type-2">Medium size city</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="location-type-option" value="Small town" id="location-type-3">
+                          <label for="location-type-3">Small town</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="location-type-option" value="No preference" id="location-type-4">
+                          <label for="location-type-4">No preference</label>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+
+                <!--School Results-->
+                <div class="carousel-item results-item">
+                  <div class="lds-loader position-absolute top-50 start-50 translate-middle"><div></div><div></div><div></div></div>
+                  <div class="results-container">
+                    <div class="text-box">
+                      <h3>We've found <span id="search-count">26</span> school matches that are perfect for you!</h3>
+                      <p>Based on the information that you entered, we were able to find you:</p>
+                    </div>
+                    <div class="p-5 border border-white rounded-4 d-flex justify-content-center align-items-center">
+                      <h5 class="text-white"><span id="search-count">26</span> Schools</h5>
+                    </div>
+                    <div class="btn-container w-100 mt-4">
+                      <button class="btn btn-white w-100" data-submit="view-matches" type="button" data-bs-target="#carouselQuiz" data-bs-slide="next">View My Matches</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!--School List Result-->
+                <div class="carousel-item results-list">
+                  <div class="header d-flex justify-content-between">
+                    <div class="text-box pt-0">
+                      <h3>Here are your school matches!</h3>
+                      <p>Your profile exceeds the requirements and you have an excellent chance of admission.</p>
+                    </div>
+                    <div class="btn-container">
+                      <button class="btn btn-outline" type="button" id="restartQuiz">Take the Quiz Again</button>
+                    </div>
+                  </div>
+                  <div class="school-results-container search-results-container position-relative">
+                    <div class="lds-loader position-absolute top-50 start-50 translate-middle"><div></div><div></div><div></div></div>
+                    <div class="school-results-list">
+                      <!--item-->
+                      <div>
+                        <div class="box-card">
+                          <div class="result-header">
+                            <div class="title">
+                              <h6>Cleveland State University</h6>
+                              <p>Cleveland, Ohio</p>
+                            </div>
+                            <div class="logo-container">
+                              <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                            </div>
+                          </div>
+                          <div class="school-details">
+                            <ul>
+                              <li class="tuition fw-bold">Average Tuition $7,524</li>
+                              <li class="ranking">Ranking, Special features, etc.</li>
+                            </ul>
+                            
+                          </div>
+                          
+                          <div class="btn-container">
+                            <a href="#" class="btn btn-primary">Contact an Advisor</a>
+                            <a href="#" class="btn btn-outline">Learn More</a>
+                          </div>
+                        </div>
+                      </div>
+                      <!--item-->
+                      <div>
+                        <div class="box-card">
+                          <div class="result-header">
+                            <div class="title">
+                              <h6>Cleveland State University</h6>
+                              <p>Cleveland, Ohio</p>
+                            </div>
+                            <div class="logo-container">
+                              <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                            </div>
+                          </div>
+                          <div class="school-details">
+                            <ul>
+                              <li class="tuition fw-bold">Average Tuition $7,524</li>
+                              <li class="ranking">Ranking, Special features, etc.</li>
+                            </ul>
+                            
+                          </div>
+                          
+                          <div class="btn-container">
+                            <a href="#" class="btn btn-primary">Contact an Advisor</a>
+                            <a href="#" class="btn btn-outline">Learn More</a>
+                          </div>
+                        </div>
+                      </div>
+                      <!--item-->
+                      <div>
+                        <div class="box-card">
+                          <div class="result-header">
+                            <div class="title">
+                              <h6>Cleveland State University</h6>
+                              <p>Cleveland, Ohio</p>
+                            </div>
+                            <div class="logo-container">
+                              <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                            </div>
+                          </div>
+                          <div class="school-details">
+                            <ul>
+                              <li class="tuition fw-bold">Average Tuition $7,524</li>
+                              <li class="ranking">Ranking, Special features, etc.</li>
+                            </ul>
+                            
+                          </div>
+                          
+                          <div class="btn-container">
+                            <a href="#" class="btn btn-primary">Contact an Advisor</a>
+                            <a href="#" class="btn btn-outline">Learn More</a>
+                          </div>
+                        </div>
+                      </div>
+                      <!--item-->
+                      <div>
+                        <div class="box-card">
+                          <div class="result-header">
+                            <div class="title">
+                              <h6>Cleveland State University</h6>
+                              <p>Cleveland, Ohio</p>
+                            </div>
+                            <div class="logo-container">
+                              <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                            </div>
+                          </div>
+                          <div class="school-details">
+                            <ul>
+                              <li class="tuition fw-bold">Average Tuition $7,524</li>
+                              <li class="ranking">Ranking, Special features, etc.</li>
+                            </ul>
+                            
+                          </div>
+                          
+                          <div class="btn-container">
+                            <a href="#" class="btn btn-primary">Contact an Advisor</a>
+                            <a href="#" class="btn btn-outline">Learn More</a>
+                          </div>
+                        </div>
+                      </div>
+                      <!--item-->
+                      <div>
+                        <div class="box-card">
+                          <div class="result-header">
+                            <div class="title">
+                              <h6>Cleveland State University</h6>
+                              <p>Cleveland, Ohio</p>
+                            </div>
+                            <div class="logo-container">
+                              <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                            </div>
+                          </div>
+                          <div class="school-details">
+                            <ul>
+                              <li class="tuition fw-bold">Average Tuition $7,524</li>
+                              <li class="ranking">Ranking, Special features, etc.</li>
+                            </ul>
+                            
+                          </div>
+                          
+                          <div class="btn-container">
+                            <a href="#" class="btn btn-primary">Contact an Advisor</a>
+                            <a href="#" class="btn btn-outline">Learn More</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="btn-container w-100">
+                    <button class="btn btn-primary w-100 mt-5" type="button" id="email-quiz-results">Email the result</button>
+                  </div>
+                </div>
+
+                
+              </div>
+              
             </div>
-          </div>
-        </div>
+       </div>
       </div>
     </section>
 
@@ -1283,6 +1819,7 @@
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/ugo_dev/script/top_navigation.js"></script>
+    <script src="/ugo_dev/script/quiz.js"></script>
     <script>
       // set current year
       document.getElementById("year").textContent = new Date().getFullYear();

@@ -1,0 +1,335 @@
+<!-- Quiz Modal with Slick Slider -->
+<div class="modal fade" id="quizModal" tabindex="-1" aria-labelledby="quizModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header border-bottom">
+        <h5 class="modal-title" id="quizModalLabel">UGO Quiz</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Quiz Progress Bar -->
+        <div class="quiz-progress mb-4">
+          <div class="progress" style="height: 6px;">
+            <div class="progress-bar progress-bar-animated" id="quizProgressBar" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <small class="text-muted mt-2 d-block">
+            Question <span id="currentStep">1</span> of <span id="totalSteps">5</span>
+          </small>
+        </div>
+
+        <!-- Quiz Slider -->
+        <div class="quiz-slider" id="quizSlider">
+          <!-- Question 1 -->
+          <div class="quiz-step">
+            <div class="question-card">
+              <h6 class="fw-bold mb-3">What is your highest level of education?</h6>
+              <div class="quiz-options">
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q1" id="q1_a" value="High School" />
+                  <label class="form-check-label" for="q1_a">High School Diploma</label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q1" id="q1_b" value="Associate" />
+                  <label class="form-check-label" for="q1_b">Associate's Degree</label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q1" id="q1_c" value="Bachelor" />
+                  <label class="form-check-label" for="q1_c">Bachelor's Degree</label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q1" id="q1_d" value="Master" />
+                  <label class="form-check-label" for="q1_d">Master's Degree or Higher</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Question 2 -->
+          <div class="quiz-step">
+            <div class="question-card">
+              <h6 class="fw-bold mb-3">Which country interests you the most?</h6>
+              <div class="quiz-options">
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q2" id="q2_a" value="USA" />
+                  <label class="form-check-label" for="q2_a">United States</label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q2" id="q2_b" value="Canada" />
+                  <label class="form-check-label" for="q2_b">Canada</label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q2" id="q2_c" value="Australia" />
+                  <label class="form-check-label" for="q2_c">Australia</label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q2" id="q2_d" value="Not Sure" />
+                  <label class="form-check-label" for="q2_d">Not Sure Yet</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Question 3 -->
+          <div class="quiz-step">
+            <div class="question-card">
+              <h6 class="fw-bold mb-3">What is your preferred program type?</h6>
+              <div class="quiz-options">
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q3" id="q3_a" value="Undergraduate" />
+                  <label class="form-check-label" for="q3_a">Undergraduate</label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q3" id="q3_b" value="Graduate" />
+                  <label class="form-check-label" for="q3_b">Graduate</label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q3" id="q3_c" value="Certificate" />
+                  <label class="form-check-label" for="q3_c">Certificate or Diploma</label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q3" id="q3_d" value="Undecided" />
+                  <label class="form-check-label" for="q3_d">Not Sure</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Question 4 -->
+          <div class="quiz-step">
+            <div class="question-card">
+              <h6 class="fw-bold mb-3">When do you plan to study?</h6>
+              <div class="quiz-options">
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q4" id="q4_a" value="Next 3 months" />
+                  <label class="form-check-label" for="q4_a">Next 3 months</label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q4" id="q4_b" value="3-6 months" />
+                  <label class="form-check-label" for="q4_b">3-6 months</label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q4" id="q4_c" value="6-12 months" />
+                  <label class="form-check-label" for="q4_c">6-12 months</label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q4" id="q4_d" value="Over 1 year" />
+                  <label class="form-check-label" for="q4_d">Over 1 year away</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Question 5 -->
+          <div class="quiz-step">
+            <div class="question-card">
+              <h6 class="fw-bold mb-3">What is your primary concern?</h6>
+              <div class="quiz-options">
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q5" id="q5_a" value="Tuition Cost" />
+                  <label class="form-check-label" for="q5_a">Tuition Cost</label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q5" id="q5_b" value="Program Quality" />
+                  <label class="form-check-label" for="q5_b">Program Quality</label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q5" id="q5_c" value="Location" />
+                  <label class="form-check-label" for="q5_c">Location</label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q5" id="q5_d" value="Visa Support" />
+                  <label class="form-check-label" for="q5_d">Visa Support</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer border-top">
+        <button type="button" class="btn btn-outline-secondary" id="quizPrevBtn" disabled>
+          <i class="fas fa-chevron-left me-2"></i>Previous
+        </button>
+        <button type="button" class="btn btn-primary" id="quizNextBtn">
+          Next<i class="fas fa-chevron-right ms-2"></i>
+        </button>
+        <button type="button" class="btn btn-success d-none" id="quizSubmitBtn">
+          <i class="fas fa-check me-2"></i>Complete Quiz
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Quiz Modal Styles */
+  .quiz-slider {
+    min-height: 300px;
+  }
+
+  .quiz-step {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .quiz-step.slick-active {
+    display: block;
+    opacity: 1;
+  }
+
+  .question-card {
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .quiz-progress {
+    padding: 15px 0;
+  }
+
+  .form-check-label {
+    cursor: pointer;
+    user-select: none;
+    padding-left: 8px;
+    font-size: 15px;
+  }
+
+  .form-check-input {
+    cursor: pointer;
+    width: 1.25em;
+    height: 1.25em;
+  }
+
+  .form-check-input:checked {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+  }
+
+  .progress-bar-animated {
+    background: linear-gradient(90deg, #0d6efd, #0dcaf0);
+  }
+
+  /* Slick overrides for quiz */
+  .quiz-slider .slick-arrow {
+    display: none !important;
+  }
+
+  .quiz-slider .slick-dots {
+    display: none;
+  }
+
+  /* Modal adjustments */
+  #quizModal .modal-dialog {
+    max-width: 600px;
+  }
+
+  #quizModal .modal-body {
+    padding: 2rem;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Slick Slider for Quiz
+    const quizSlider = $('#quizSlider');
+    const totalSteps = $('.quiz-step').length;
+    let currentStep = 0;
+
+    // Initialize Slick
+    quizSlider.slick({
+      infinite: false,
+      speed: 300,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      dots: false,
+      swipe: false,
+      draggable: false,
+      accessibility: false,
+      touchMove: false
+    });
+
+    // Update UI on slide change
+    quizSlider.on('afterChange', function(event, slick, currentSlide) {
+      currentStep = currentSlide;
+      updateQuizUI();
+    });
+
+    // Next Button Click
+    document.getElementById('quizNextBtn').addEventListener('click', function() {
+      if (currentStep < totalSteps - 1) {
+        quizSlider.slick('slickNext');
+      } else {
+        // Last step - show submit
+        showSubmitButton();
+      }
+    });
+
+    // Previous Button Click
+    document.getElementById('quizPrevBtn').addEventListener('click', function() {
+      if (currentStep > 0) {
+        quizSlider.slick('slickPrev');
+      }
+    });
+
+    // Submit Button Click
+    document.getElementById('quizSubmitBtn').addEventListener('click', function() {
+      const answers = collectAnswers();
+      console.log('Quiz Submitted:', answers);
+      alert('Quiz submitted! Answers: ' + JSON.stringify(answers, null, 2));
+      // Here you can send data to your server
+    });
+
+    // Update Quiz UI
+    function updateQuizUI() {
+      const progressPercent = ((currentStep + 1) / totalSteps) * 100;
+      document.getElementById('quizProgressBar').style.width = progressPercent + '%';
+      document.getElementById('currentStep').textContent = currentStep + 1;
+      document.getElementById('totalSteps').textContent = totalSteps;
+
+      // Disable/enable prev button
+      document.getElementById('quizPrevBtn').disabled = currentStep === 0;
+
+      // Show/hide next button on last step
+      if (currentStep === totalSteps - 1) {
+        document.getElementById('quizNextBtn').classList.add('d-none');
+        showSubmitButton();
+      } else {
+        document.getElementById('quizNextBtn').classList.remove('d-none');
+        document.getElementById('quizSubmitBtn').classList.add('d-none');
+      }
+    }
+
+    // Show Submit Button
+    function showSubmitButton() {
+      document.getElementById('quizSubmitBtn').classList.remove('d-none');
+    }
+
+    // Collect Answers
+    function collectAnswers() {
+      const answers = {};
+      for (let i = 1; i <= totalSteps; i++) {
+        const checkedRadio = document.querySelector(`input[name="q${i}"]:checked`);
+        answers[`question_${i}`] = checkedRadio ? checkedRadio.value : null;
+      }
+      return answers;
+    }
+
+    // Initialize UI on modal open
+    const quizModal = document.getElementById('quizModal');
+    quizModal.addEventListener('show.bs.modal', function() {
+      updateQuizUI();
+    });
+  });
+</script>

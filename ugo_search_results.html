@@ -369,7 +369,7 @@
     </nav>
 
     <!-- Hero -->
-    <section class="main-hero hero section-form slim-hero float-polygon float-polygon-top-right" style="background-color: #163D5C;">
+    <section class="main-hero hero section-form slim-hero hero-form-bottom float-polygon float-polygon-top-right" style="background-color: #163D5C;">
       <div class="hero-inner">
         <div class="container h-100">
           <div class="row hero-row">
@@ -474,7 +474,7 @@
           <div class="col-md-12 filter-details-container">
             <div>
               <span id="result-number" class="me-3">36 Results</span>
-              <button id="filter-action" class="py-2 px-3 border-0 text-start" style="width:216px"  data-bs-toggle="modal" data-bs-target="#filterOptionPanel"><span>Filters(<span class="filter-number fw-bold">3</span>)</span></button>
+              <button id="filter-action" class="py-2 px-3 border-0 text-start" style="width:216px"  data-bs-toggle="modal" data-bs-target="#filterOptionPanel"><span>Filters(<span class="filter-count fw-bold">0</span>)</span></button>
             </div>
             <div>
               <span class="me-3">Sort by</span>
@@ -1123,7 +1123,7 @@
                   <div id="collapseOne" class="accordion-collapse collapse show">
                     <div class="accordion-body">
                       <div class="input-group mb-3">
-                        <input type="text" class="form-control input-search" placeholder="Search for a school" aria-label="School Name" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control input-search filter-field" placeholder="Search for a school" aria-label="School Name" aria-describedby="basic-addon2">
                         <span class="input-group-text" id="basic-addon2"><i class="fa-solid fa-magnifying-glass"></i></span>
                       </div>
                     </div>
@@ -1138,7 +1138,7 @@
                   <div id="collapseTwo" class="accordion-collapse collapse">
                     <div class="accordion-body">
                       <div class="input-group mb-3">
-                        <input type="text" class="form-control input-search" placeholder="Search for a city" aria-label="City Name" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control input-search filter-field" placeholder="Search for a city" aria-label="City Name" aria-describedby="basic-addon2">
                         <span class="input-group-text" id="basic-addon2"><i class="fa-solid fa-magnifying-glass"></i></span>
                       </div>
                     </div>
@@ -1155,19 +1155,19 @@
                       <div class="input-check-container">
                         <div class="input-group mb-3 w-50">
                           <div class="input-group-text">
-                            <input class="form-check-input mt-0" name="filterLocationType" type="checkbox" value="" aria-label="Checkbox for following text input"><label class="ms-2">Large city (>50,000 pop)</label>
+                            <input class="form-check-input mt-0 filter-field" name="filterLocationType" type="checkbox" value="" aria-label="Checkbox for following text input"><label class="ms-2">Large city (>50,000 pop)</label>
                           </div>
                           
                         </div>
                         <div class="input-group mb-3 w-50">
                           <div class="input-group-text">
-                            <input class="form-check-input mt-0" name="filterLocationType" type="checkbox" value="" aria-label="Checkbox for following text input"><label class="ms-2">Midsize city (5,000 - 50,000 pop)</label>
+                            <input class="form-check-input mt-0 filter-field" name="filterLocationType" type="checkbox" value="" aria-label="Checkbox for following text input"><label class="ms-2">Midsize city (5,000 - 50,000 pop)</label>
                           </div>
                           
                         </div>
                         <div class="input-group mb-3 w-50">
                           <div class="input-group-text">
-                            <input class="form-check-input mt-0" name="filterLocationType" type="checkbox" value="" aria-label="Checkbox for following text input"><label class="ms-2">Small town (<5,000 pop)</label>
+                            <input class="form-check-input mt-0 filter-field" name="filterLocationType" type="checkbox" value="" aria-label="Checkbox for following text input"><label class="ms-2">Small town (<5,000 pop)</label>
                           </div>
                           
                         </div>
@@ -1191,8 +1191,8 @@
                         <div class="double_range_slider">
                           <span class="range_track" id="range_track"></span>
 
-                          <input type="range" class="min input-amount" min="0" max="50000" value="0" step="500">
-                          <input type="range" class="max input-amount" min="0" max="50000" value="10000" step="500">
+                          <input type="range" class="min input-amount filter-field" min="0" max="50000" value="0" step="500">
+                          <input type="range" class="max input-amount filter-field-2" min="0" max="50000" value="10000" step="500">
 
                           <div class="minvalue"></div>
                           <div class="maxvalue"></div>
@@ -1205,8 +1205,8 @@
             </div>
           </div>
           <div class="modal-footer d-flex justify-content-between align-items-center">
-            <a href="#" class="text-decoration-underline fs-6 primary-font-color">Clear Filters</a>
-            <button type="button" class="btn btn-primary" style="width:280px;">Show Results</button>
+            <a href="#" class="text-decoration-underline fs-6 primary-font-color clear-filter">Clear Filters</a>
+            <button id="filter-submit" type="button" class="btn btn-primary filter-submit" style="width:280px;">Show Results</button>
           </div>
         </div>
       </div>

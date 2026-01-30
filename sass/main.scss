@@ -29,11 +29,20 @@
         letter-spacing: 0%;
 
     }
+   
     h5{
         font-weight: 700;
         font-style: Bold;
         font-size: 24px;
         line-height: 32px;
+        letter-spacing: 0%;
+
+    }
+    h6{
+        font-weight: 700;
+        font-style: Bold;
+        font-size: 20px;
+        line-height: 28px;
         letter-spacing: 0%;
 
     }
@@ -83,6 +92,22 @@
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+    }
+    a{
+        color: v.$primary-color;
+
+        &.right-arrow{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            &:after{
+                content: '\f105';
+                font-family: FontAwesome;
+                font-weight: 500;
+                margin-left:5px;
+            }
+        }
     }
     .btn{
         border-radius: 10px;
@@ -170,6 +195,18 @@
                 border-color: darken(v.$primary-color, 10%);
             }
         }
+    }
+    .image-container{
+        border-radius: 10px;
+        overflow: hidden;
+        img{
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .w-33{
+        width:33.33% !important;
     }
     //table 
     .table-container{
@@ -263,11 +300,13 @@
         }
     }
     .image-left{
+        padding-left:0;
         .image-box{
             justify-content: start;
         }
     }
     .image-right{
+        padding-right:0;
         .image-box{
             justify-content: end;
         }
@@ -282,9 +321,13 @@
         background-color: v.$light-grey-color;
     }
     .bg-light-blue{
-        background-color: v.$light-blue-color;
+        background-color: v.$light-blue-color !important;
         h1,h2,h3,p{
             color: #FFFFFF;
+        }
+        .lds-loader {
+        /* change color here */
+            color: #fff;
         }
     }
     .center-box-section {
@@ -311,6 +354,7 @@
         position: relative;
         color: #FFFFFF;
         padding-bottom: 100px;
+
         &.float-polygon{
             .container{
                 position: relative;
@@ -340,6 +384,10 @@
         }
         &.slim-hero{
             height: 245px;
+            padding-bottom: 0;
+            &.hero-form-bottom{
+                padding-bottom:100px;
+            }
         }
         @media (max-width: 768px) {
             height: 450px;
@@ -361,6 +409,11 @@
             height: 100%;
             display: flex;
             align-items: center;
+
+            .school-logo-container{
+                width: 120px;
+                height: 120px;
+            }
         }
         .hero-row {
             height: 100%;
@@ -809,4 +862,55 @@
             max-width: none; 
         }/* Important for Bootstrap 4/5 to override defaults */
     }
+    .lds-loader {
+    /* change color here */
+        color: v.$primary-color;
+    }
+    .lds-loader,
+    .lds-loader div {
+    box-sizing: border-box;
+    }
+    .lds-loader {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    }
+    .lds-loader div {
+    display: inline-block;
+    position: absolute;
+    left: 8px;
+    width: 16px;
+    background: currentColor;
+    animation: lds-loader 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+    }
+    .lds-loader div:nth-child(1) {
+    left: 8px;
+    animation-delay: -0.24s;
+    }
+    .lds-loader div:nth-child(2) {
+    left: 32px;
+    animation-delay: -0.12s;
+    }
+    .lds-loader div:nth-child(3) {
+    left: 56px;
+    animation-delay: 0s;
+    }
+    @keyframes lds-loader {
+    0% {
+        top: 8px;
+        height: 64px;
+    }
+    50%, 100% {
+        top: 24px;
+        height: 32px;
+    }
+    }
+
+    .form-check-input.is-valid~.form-check-label, .was-validated .form-check-input:valid~.form-check-label{
+        color: v.$secondary-color;
+    }
+
+
+
 }

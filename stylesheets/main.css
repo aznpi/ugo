@@ -33,6 +33,13 @@
   line-height: 32px;
   letter-spacing: 0%;
 }
+.ugo-template h6 {
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 0%;
+}
 .ugo-template h1 {
   margin-bottom: 50px;
 }
@@ -86,6 +93,20 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+.ugo-template a {
+  color: #163D5C;
+}
+.ugo-template a.right-arrow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ugo-template a.right-arrow:after {
+  content: "\f105";
+  font-family: FontAwesome;
+  font-weight: 500;
+  margin-left: 5px;
 }
 .ugo-template .btn {
   border-radius: 10px;
@@ -166,6 +187,19 @@
   background-color: rgb(12.1578947368, 33.7105263158, 50.8421052632);
   border-color: rgb(12.1578947368, 33.7105263158, 50.8421052632);
 }
+.ugo-template .image-container {
+  border-radius: 10px;
+  overflow: hidden;
+}
+.ugo-template .image-container img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.ugo-template .w-33 {
+  width: 33.33% !important;
+}
 .ugo-template .table-container table {
   width: 100%;
   border-collapse: separate;
@@ -242,8 +276,14 @@
   width: 100%;
   height: 100%;
 }
+.ugo-template .image-left {
+  padding-left: 0;
+}
 .ugo-template .image-left .image-box {
   justify-content: start;
+}
+.ugo-template .image-right {
+  padding-right: 0;
 }
 .ugo-template .image-right .image-box {
   justify-content: end;
@@ -258,10 +298,14 @@
   background-color: #F2F2F2;
 }
 .ugo-template .bg-light-blue {
-  background-color: #0082C8;
+  background-color: #0082C8 !important;
 }
 .ugo-template .bg-light-blue h1, .ugo-template .bg-light-blue h2, .ugo-template .bg-light-blue h3, .ugo-template .bg-light-blue p {
   color: #FFFFFF;
+}
+.ugo-template .bg-light-blue .lds-loader {
+  /* change color here */
+  color: #fff;
 }
 .ugo-template .center-box-section {
   padding: 3rem 0;
@@ -309,6 +353,10 @@
 }
 .ugo-template .main-hero.slim-hero {
   height: 245px;
+  padding-bottom: 0;
+}
+.ugo-template .main-hero.slim-hero.hero-form-bottom {
+  padding-bottom: 100px;
 }
 @media (max-width: 768px) {
   .ugo-template .main-hero {
@@ -332,6 +380,10 @@
   height: 100%;
   display: flex;
   align-items: center;
+}
+.ugo-template .main-hero .hero-inner .school-logo-container {
+  width: 120px;
+  height: 120px;
 }
 .ugo-template .main-hero .hero-row {
   height: 100%;
@@ -705,4 +757,51 @@
 .ugo-template .modal-dialog.modal-50vw {
   width: 50vw;
   max-width: none;
+}
+.ugo-template .lds-loader {
+  /* change color here */
+  color: #163D5C;
+}
+.ugo-template .lds-loader,
+.ugo-template .lds-loader div {
+  box-sizing: border-box;
+}
+.ugo-template .lds-loader {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.ugo-template .lds-loader div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: currentColor;
+  animation: lds-loader 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.ugo-template .lds-loader div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+.ugo-template .lds-loader div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+.ugo-template .lds-loader div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0s;
+}
+@keyframes lds-loader {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+  50%, 100% {
+    top: 24px;
+    height: 32px;
+  }
+}
+.ugo-template .form-check-input.is-valid ~ .form-check-label, .ugo-template .was-validated .form-check-input:valid ~ .form-check-label {
+  color: #2A2A2A;
 }/*# sourceMappingURL=main.css.map */

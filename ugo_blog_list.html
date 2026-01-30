@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blog List Template</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="/ugo_dev/stylesheets/main.css" rel="stylesheet" />
+    <link href="/ugo_dev/stylesheets/blog.css" rel="stylesheet" />
+    <link href="/ugo_dev/stylesheets/top_navigation.css" rel="stylesheet" />
+    <link href="/ugo_dev/stylesheets/accordion.css" rel="stylesheet" />
+    <link href="/ugo_dev/stylesheets/testimonials.css" rel="stylesheet" />
+    <link href="/ugo_dev/stylesheets/boxes.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .card-img-top {
+        object-fit: cover;
+        height: 180px;
+      }
+      footer {
+        background: #f8f9fa;
+        padding: 2rem 0;
+      }
+      /* Two-row section */
+      .two-row-section {
+        padding: 3rem 0;
+      }
+      .two-row-section .image-left {
+        display: flex;
+        align-items: center;
+      }
+      .two-row-section .image-left img {
+        width: 100%;
+        height: auto;
+        border-radius: 6px;
+      }
+      .photo-slider .slider-item img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 6px;
+      }
+      @media (max-width: 768px) {
+        .photo-slider .slider-item img {
+          height: 100px;
+        }
+      }
+    </style>
+  </head>
+  <body class="ugo-template blog-template">
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm border-bottom"
+    >
+      <div class="container">
+        <a class="navbar-brand text-dark" href="#"
+          ><img src="/ugo_dev/images/logo_ugo.png" alt="Logo"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#nav"
+          aria-controls="nav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="main-nav">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown"
+                href="#"
+                id="schoolsDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Schools</a
+              >
+              <div
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="schoolsDropdown"
+              >
+                <div class="container">
+                  <div class="row">
+                    <div class="col icon-container">
+                      <div class="image-container">
+                        <img
+                          src="/ugo_dev/images/icons/icon_school.png"
+                          alt="School Icon"
+                          class="img-fluid mb-2"
+                        />
+                      </div>
+                      <div class="link-title">Schools</div>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#"
+                            >Undergraduate - Associate degree</a
+                          >
+                        </li>
+                        <li>
+                          <a class="link-item" href="#"
+                            >Undergraduate - Bachelor's degree</a
+                          >
+                        </li>
+                        <li>
+                          <a class="link-item" href="#"
+                            >Graduate - Master's degree</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#"
+                            >Graduate - Doctorate degree</a
+                          >
+                        </li>
+                        <li><a class="link-item" href="#">Big Cities</a></li>
+                        <li>
+                          <a class="link-item" href="#">Value for Money</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#"
+                            >Saudi Sponsored Students</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="countriesDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Countries</a
+              >
+              <div
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="countriesDropdown"
+              >
+                <div class="container">
+                  <div class="row">
+                    <div class="col icon-container">
+                      <div class="image-container">
+                        <img
+                          src="/ugo_dev/images/icons/icon_globe.png"
+                          alt="Globe Icon"
+                          class="img-fluid mb-2"
+                        />
+                      </div>
+                      <div class="link-title">Countries</div>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li><a class="link-item" href="#">Australia</a></li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li><a class="link-item" href="#">Canada</a></li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li><a class="link-item" href="#">USA</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="servicesDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Services</a
+              >
+              <div
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="servicesDropdown"
+              >
+                <div class="container">
+                  <div class="row">
+                    <div class="col icon-container">
+                      <div class="image-container">
+                        <img
+                          src="/ugo_dev/images/icons/icon_services.png"
+                          alt="Services Icon"
+                          class="img-fluid mb-2"
+                        />
+                      </div>
+                      <div class="link-title">Services</div>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#"
+                            >Conditional Admission USA</a
+                          >
+                        </li>
+                        <li>
+                          <a class="link-item" href="#">Direct Admission USA</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#">2 + 2 Program USA</a>
+                        </li>
+                        <li>
+                          <a class="link-item" href="#"
+                            >College Year Program USA</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#"
+                            >University Pathway Program Australia</a
+                          >
+                        </li>
+                        <li>
+                          <a class="link-item" href="#"
+                            >University Pathway Program Canada</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="admissionsDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Admissions</a
+              >
+              <div
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="admissionsDropdown"
+              >
+                <div class="container">
+                  <div class="row">
+                    <div class="col icon-container">
+                      <div class="image-container">
+                        <img
+                          src="/ugo_dev/images/icons/icon_admissions.png"
+                          alt="Admissions Icon"
+                          class="img-fluid mb-2"
+                        />
+                      </div>
+                      <div class="link-title">Admissions</div>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#">Tuition & Fees</a>
+                        </li>
+                        <li>
+                          <a class="link-item" href="#"
+                            >Student Visa Information</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li><a class="link-item" href="#">How to Apply</a></li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#">Terms & Conditions</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">FAQ</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="languageDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >EN</a
+              >
+              <ul
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="languageDropdown"
+              >
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">Something else</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-primary" href="#">Find your school</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="main-hero hero section-form slim-hero hero-form-bottom float-polygon float-polygon-top-right" style="background-color: #163D5C;">
+      <div class="hero-inner">
+        <div class="container h-100">
+          <div class="row hero-row">
+           <div class="col-md-12 text-left align-items-center justify-content-start d-flex">
+                <h1 class="mb-0 position-relative" style="top:20px;">
+                  ELS Blog
+                </h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-container full-form bg-white p-3 rounded-4 shadow position-relative" id="blog-list" style="top:60px">
+              <form>
+                <div class="input-form-group">
+                  <div class="blog-search d-flex align-items-center justify-content-start">
+                    <input
+                      type="text"
+                      name="blogSearchText"
+                      class="form-control bg-light-blue"
+                      placeholder="What are you looking for?"
+                    />
+                    <button class="btn btn-blue btn-lg" type="submit">
+                      <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tag-nav pb-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="tag-nav-list d-flex align-items-center justify-content-between">
+              <li class="tag-all" onClick="window.open('#')">All</li>
+              <li class="tag-english-programs" onClick="window.open('#')">English Programs</li>
+              <li class="tag-student-stories" onClick="window.open('#')">Student Stories</li>
+              <li class="tag-travel-and-study" onClick="window.open('#')">Travel and Study</li>
+              <li class="tag-university-admissions" onClick="window.open('#')">University Admissions</li>
+              <li class="tag-english-learning-tips" onClick="window.open('#')">English Learning Tips</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <style>
+      ul.tag-nav-list li.tag-all:before{
+        background-image: url(/ugo_dev/images/icons/icon_tag_all.png);
+      }
+      ul.tag-nav-list li.tag-english-programs:before{
+        background-image: url(/ugo_dev/images/icons/icon_tag_english.png);
+      }
+      ul.tag-nav-list li.tag-student-stories:before{
+        background-image: url(/ugo_dev/images/icons/icon_tag_student_stories.png);
+      }
+      ul.tag-nav-list li.tag-travel-and-study:before{
+        background-image: url(/ugo_dev/images/icons/icon_tag_travel.png);
+      }
+      ul.tag-nav-list li.tag-university-admissions:before{
+        background-image: url(/ugo_dev/images/icons/icon_tag_admissions.png);
+      }
+      ul.tag-nav-list li.tag-english-learning-tips:before{
+        background-image: url(/ugo_dev/images/icons/icon_tag_english_learning_tips.png);
+      }
+
+    </style>
+
+    <section class="blog-feature pt-0">
+      <div class="container">
+        <div class="row align-items-center mb-4">
+          <div class="col-md-6 image-left">
+            <div class="image-container">
+              <img src="/ugo_dev/images/img_blog_feature.png" class="img-fluid">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="description-container">
+              <div class="header d-flex justify-content-between">
+                <div class="tag">English Programs</div>
+                <div class="date">May 18, 2024</div>
+              </div>
+              <div class="text-box">
+                <h1>Stay Up To Date With Your English Skills With These Three Activities</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliquam mollis, leo in scelerisque consequat.</p>
+              </div>
+              <div class="bottom d-flex justify-content-between">
+                <div class="time-duration">6 MIN READ</div>
+                <div class="btn-container">
+                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="blog-list pt-0">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 box-container">
+            <div class="image-container">
+              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
+            </div>
+            <div class="description-container">
+              <div class="header d-flex justify-content-between">
+                <div class="tag">English Programs</div>
+                <div class="date">May 18, 2024</div>
+              </div>
+              <div class="text-box">
+                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
+              </div>
+              <div class="bottom d-flex justify-content-between">
+                <div class="time-duration">6 MIN READ</div>
+                <div class="btn-container">
+                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 box-container">
+            <div class="image-container">
+              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
+            </div>
+            <div class="description-container">
+              <div class="header d-flex justify-content-between">
+                <div class="tag">English Programs</div>
+                <div class="date">May 18, 2024</div>
+              </div>
+              <div class="text-box">
+                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
+              </div>
+              <div class="bottom d-flex justify-content-between">
+                <div class="time-duration">6 MIN READ</div>
+                <div class="btn-container">
+                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 box-container">
+            <div class="image-container">
+              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
+            </div>
+            <div class="description-container">
+              <div class="header d-flex justify-content-between">
+                <div class="tag">English Programs</div>
+                <div class="date">May 18, 2024</div>
+              </div>
+              <div class="text-box">
+                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
+              </div>
+              <div class="bottom d-flex justify-content-between">
+                <div class="time-duration">6 MIN READ</div>
+                <div class="btn-container">
+                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 box-container">
+            <div class="image-container">
+              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
+            </div>
+            <div class="description-container">
+              <div class="header d-flex justify-content-between">
+                <div class="tag">English Programs</div>
+                <div class="date">May 18, 2024</div>
+              </div>
+              <div class="text-box">
+                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
+              </div>
+              <div class="bottom d-flex justify-content-between">
+                <div class="time-duration">6 MIN READ</div>
+                <div class="btn-container">
+                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 box-container">
+            <div class="image-container">
+              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
+            </div>
+            <div class="description-container">
+              <div class="header d-flex justify-content-between">
+                <div class="tag">English Programs</div>
+                <div class="date">May 18, 2024</div>
+              </div>
+              <div class="text-box">
+                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
+              </div>
+              <div class="bottom d-flex justify-content-between">
+                <div class="time-duration">6 MIN READ</div>
+                <div class="btn-container">
+                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 box-container">
+            <div class="image-container">
+              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
+            </div>
+            <div class="description-container">
+              <div class="header d-flex justify-content-between">
+                <div class="tag">English Programs</div>
+                <div class="date">May 18, 2024</div>
+              </div>
+              <div class="text-box">
+                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
+              </div>
+              <div class="bottom d-flex justify-content-between">
+                <div class="time-duration">6 MIN READ</div>
+                <div class="btn-container">
+                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 box-container">
+            <div class="image-container">
+              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
+            </div>
+            <div class="description-container">
+              <div class="header d-flex justify-content-between">
+                <div class="tag">English Programs</div>
+                <div class="date">May 18, 2024</div>
+              </div>
+              <div class="text-box">
+                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
+              </div>
+              <div class="bottom d-flex justify-content-between">
+                <div class="time-duration">6 MIN READ</div>
+                <div class="btn-container">
+                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 box-container">
+            <div class="image-container">
+              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
+            </div>
+            <div class="description-container">
+              <div class="header d-flex justify-content-between">
+                <div class="tag">English Programs</div>
+                <div class="date">May 18, 2024</div>
+              </div>
+              <div class="text-box">
+                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
+              </div>
+              <div class="bottom d-flex justify-content-between">
+                <div class="time-duration">6 MIN READ</div>
+                <div class="btn-container">
+                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 box-container">
+            <div class="image-container">
+              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
+            </div>
+            <div class="description-container">
+              <div class="header d-flex justify-content-between">
+                <div class="tag">English Programs</div>
+                <div class="date">May 18, 2024</div>
+              </div>
+              <div class="text-box">
+                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
+              </div>
+              <div class="bottom d-flex justify-content-between">
+                <div class="time-duration">6 MIN READ</div>
+                <div class="btn-container">
+                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 box-container">
+            <div class="image-container">
+              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
+            </div>
+            <div class="description-container">
+              <div class="header d-flex justify-content-between">
+                <div class="tag">English Programs</div>
+                <div class="date">May 18, 2024</div>
+              </div>
+              <div class="text-box">
+                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
+              </div>
+              <div class="bottom d-flex justify-content-between">
+                <div class="time-duration">6 MIN READ</div>
+                <div class="btn-container">
+                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 box-container">
+            <div class="image-container">
+              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
+            </div>
+            <div class="description-container">
+              <div class="header d-flex justify-content-between">
+                <div class="tag">English Programs</div>
+                <div class="date">May 18, 2024</div>
+              </div>
+              <div class="text-box">
+                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
+              </div>
+              <div class="bottom d-flex justify-content-between">
+                <div class="time-duration">6 MIN READ</div>
+                <div class="btn-container">
+                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 box-container">
+            <div class="image-container">
+              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
+            </div>
+            <div class="description-container">
+              <div class="header d-flex justify-content-between">
+                <div class="tag">English Programs</div>
+                <div class="date">May 18, 2024</div>
+              </div>
+              <div class="text-box">
+                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
+              </div>
+              <div class="bottom d-flex justify-content-between">
+                <div class="time-duration">6 MIN READ</div>
+                <div class="btn-container">
+                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 box-container item-hide">
+            <div class="image-container">
+              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
+            </div>
+            <div class="description-container">
+              <div class="header d-flex justify-content-between">
+                <div class="tag">English Programs</div>
+                <div class="date">May 18, 2024</div>
+              </div>
+              <div class="text-box">
+                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
+              </div>
+              <div class="bottom d-flex justify-content-between">
+                <div class="time-duration">6 MIN READ</div>
+                <div class="btn-container">
+                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 box-container item-hide">
+            <div class="image-container">
+              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
+            </div>
+            <div class="description-container">
+              <div class="header d-flex justify-content-between">
+                <div class="tag">English Programs</div>
+                <div class="date">May 18, 2024</div>
+              </div>
+              <div class="text-box">
+                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
+              </div>
+              <div class="bottom d-flex justify-content-between">
+                <div class="time-duration">6 MIN READ</div>
+                <div class="btn-container">
+                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 box-container item-hide">
+            <div class="image-container">
+              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
+            </div>
+            <div class="description-container">
+              <div class="header d-flex justify-content-between">
+                <div class="tag">English Programs</div>
+                <div class="date">May 18, 2024</div>
+              </div>
+              <div class="text-box">
+                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
+              </div>
+              <div class="bottom d-flex justify-content-between">
+                <div class="time-duration">6 MIN READ</div>
+                <div class="btn-container">
+                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 box-container item-hide">
+            <div class="image-container">
+              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
+            </div>
+            <div class="description-container">
+              <div class="header d-flex justify-content-between">
+                <div class="tag">English Programs</div>
+                <div class="date">May 18, 2024</div>
+              </div>
+              <div class="text-box">
+                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
+              </div>
+              <div class="bottom d-flex justify-content-between">
+                <div class="time-duration">6 MIN READ</div>
+                <div class="btn-container">
+                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 d-flex justify-content-center">
+            <div class="btn-container">
+              <button class="btn btn-primary btn-load-more" id="btn-load-more">Show More</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+   
+
+    <!-- Footer: 5-column menu -->
+    <footer class="border-top">
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-6 col-md-3 mb-3">
+            <div class="image-container">
+              <img src="/ugo_dev/images/logo_ugo_footer.png" alt="Logo" />
+            </div>
+            <h5>Our Network</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >ELS Language Centers</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >ILSC Education Group</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >ILSC Language Schools</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">Greystone College</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-3 mb-3">
+            <h5>Schools</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Undergraduate - Associate degree</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Undergraduate - Bachelor's degree</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Graduate - Master's degree</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Graduate - Master's degree</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">Big Cities</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">Value for Money</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Saudi Sponsored Students</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-2 mb-3">
+            <h5>Countries</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-decoration-none">Australia</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">Canada</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">USA</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-2 mb-3">
+            <h5>Services</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Conditional Admission USA</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Direct Admission USA</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">2 + 2 Program USA</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >College Year Program USA</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >University Pathway Program Australia</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >University Pathway Program Canada</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-2 mb-3">
+            <h5>Admissions</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-decoration-none">Tuition & Fees</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none"
+                  >Student Visa Information</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">How to Apply</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none">Terms & Conditions</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8 small mt-2 footer-copy">
+            &copy; <span id="year"></span> ILSC Education Group. All Rights
+            Reserved.<br /><br />
+            ILSC Language Schools: The ILSC Education Group Inc.
+            (ILSC-Vancouver, ILSC-Toronto, ILSC-Montréal); ILSC India Private
+            LTD. Greystone College of Business and Technology (Toronto) Inc.
+            (Greystone College (Toronto)); Greystone College of Business and
+            Technology (Greystone College (Vancouver)); and Greystone College
+            (Greystone College (Montréal)) herein collectively referred to as
+            “Greystone College” ILSC (Brisbane) PTY LTD is trading as
+            ILSC-Adelaide, ILSC-Brisbane, ILSC-Melbourne, ILSC-Sydney,
+            ILSC-Perth, Greystone College and ILSC Australia RTO Number 31564,
+            CRICOS Code: 02137M<br />
+            Tara International Education Services Ltd trading as Berlitz Dublin
+            Language Centre (registered number 548215) and/or ILSC Dublin
+          </div>
+          <div class="col-4 small mt-2">
+            <ul class="sub-footer-links">
+              <li class="d-inline me-3">
+                <a href="#" class="text-decoration-none">Privacy Policy</a>
+              </li>
+              <li class="d-inline me-3">
+                <a href="#" class="text-decoration-none">Terms of Use</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/ugo_dev/script/top_navigation.js"></script>
+    <script src="/ugo_dev/script/form_search.js"></script>
+    <script src="/ugo_dev/script/helper.js"></script>
+
+    <script src="/ugo_dev/script/ranger_slider.js"></script>
+<script>
+      // set current year
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // simple client-side validation display
+      (function () {
+        "use strict";
+        var forms = document.querySelectorAll(".needs-validation");
+        Array.prototype.slice.call(forms).forEach(function (form) {
+          form.addEventListener(
+            "submit",
+            function (event) {
+              if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add("was-validated");
+            },
+            false
+          );
+        });
+      })();
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const loadMoreBtn = document.querySelector(".btn-load-more");
+        const hiddenItems = document.querySelectorAll(
+          ".item-hide"
+        );
+        let isExpanded = false;
+
+        loadMoreBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          if (!isExpanded) {
+            hiddenItems.forEach((item) => {
+              item.style.display = "block";
+            });
+            loadMoreBtn.textContent = "Show Less";
+            isExpanded = true;
+          } else {
+            hiddenItems.forEach((item) => {
+              item.style.display = "none";
+            });
+            loadMoreBtn.textContent = "Show More";
+            isExpanded = false;
+          }
+        });
+      });
+    </script>
+
+    
+  </body>
+</html>

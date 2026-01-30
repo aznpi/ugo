@@ -1,0 +1,612 @@
+<!-- Integration Example for UGO Quiz Modal -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quiz Modal Integration Example</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link href="/ugo_dev/stylesheets/main.css" rel="stylesheet" />
+  <link href="/ugo_dev/stylesheets/quiz.css" rel="stylesheet" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+  <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<body class="ugo-template">
+  <!-- Your existing page content here -->
+  <div class="container py-5">
+    <h1>Welcome to UGO</h1>
+    <p>Click the button below to take a quiz about your educational preferences.</p>
+    
+    <!-- Button to trigger quiz modal -->
+    <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#quizModal">
+      <i class="fas fa-graduation-cap me-2"></i>Take the Quiz
+    </button>
+  </div>
+
+  <!-- Include the quiz modal component here (copy the content from quiz-modal.html) -->
+  <!-- OR use an iframe or JavaScript to load it dynamically -->
+  <div class="modal fade" id="quizModal" tabindex="-1" aria-labelledby="quizModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header border-bottom">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form name="schoolSearchQuiz">
+            <div id="carouselQuiz" class="carousel slide" data-bs-wrap="false" data-bs-interval="false">
+              <div class="carousel-inner">
+
+                <!--Start Quiz-->
+                <div class="carousel-item active">
+                  <div class="text-box">
+                    <h1>Find Your Perfect Schools and Programs</h1>
+                    <p>Answer a few simple questions and we'll provide you with matches for target, reach, and safety schools.</p>
+                    <p>To find your matches, we'll ask you:</p>
+                    <ul class="list-bullet">
+                      <li>about you and your preferences</li>
+                      <li>your estimated GPA</li>
+                      <li>and your English test scores</li>
+                    </uL>
+                  </div>
+                  <div class="btn-container w-100">
+                    <button class="btn btn-primary w-100" type="button" data-bs-target="#carouselQuiz" data-bs-slide="next">Start Quiz</button>
+                  </div>
+                </div>
+
+                <!--Country-->
+                <div class="carousel-item">
+                  <div class="text-box">
+                    <h3>Which country would you like to study in?</h3>
+                  </div>
+                  <div class="input-form-group">
+                    <div class="input-group input-group-lg flex-column" role="group">
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="country-option" value="USA" id="country-1">
+                          <label for="country-1">USA</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="country-option" value="Australia" id="country-2">
+                          <label for="country-2">Australia</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="country-option" value="Canada" id="country-3">
+                          <label for="country-3">Canada</label>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+                
+                <!--Degree-->
+                <div class="carousel-item">
+                  <div class="text-box">
+                    <h3>What type of degree are you pursuing?</h3>
+                    <p>Choose Undergraduate for Bachelor's or English as a Second Language, or choose Graduate for Master's, Professional Development, or PhD.</p>
+                  </div>
+                  <div class="input-form-group">
+                    <div class="input-group input-group-lg flex-column" role="group">
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-degree-type" value="Undergraduate - Associate degree" id="degree-type-1">
+                          <label for="degree-type-1">Undergraduate - Associate degree</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-degree-type" value="Undergraduate - Bachelor's degree" id="degree-type-2">
+                          <label for="degree-type-2">Undergraduate - Bachelor's degree</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-degree-type" value="Graduate - Master's degree" id="degree-type-3">
+                          <label for="degree-type-3">Graduate - Master's degree</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-degree-type" value="Graduate - Doctorate degree" id="degree-type-4">
+                          <label for="degree-type-4">Graduate - Doctorate degree</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!--Major-->
+                <div class="carousel-item">
+                  <div class="text-box">
+                    <h3>What major are you interested in?</h3>
+                  </div>
+                  <div class="input-form-group">
+                    <div class="input-group input-group-lg search-input">
+                      <input type="text" name="school-major-search-result" class="form-control" aria-label="Search for an area of study" placeholder="Search for an area of study" aria-describedby="inputGroup-sizing-lg">
+                    </div>
+                    <p class="mt-5">Popular subjects:</p>
+                    <div class="input-group input-group-lg flex-wrap mt-1" role="group">
+                      
+                      <div class="input-group-radio w-25">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-major" value="Engineering" id="major-1">
+                          <label for="major-1">Engineering</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-25">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-major" value="Economics" id="major-2">
+                          <label for="major-2">Economics</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-25">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-major" value="Finance" id="major-3">
+                          <label for="major-3">Finance</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-25">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-major" value="Marketing" id="major-4">
+                          <label for="major-4">Marketing</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-25">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-major" value="Computer Science" id="major-5">
+                          <label for="major-5">Computer Science</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-25">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-major" value="Business" id="major-6">
+                          <label for="major-6">Business</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-25">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-major" value="Engineering Advanced" id="major-7">
+                          <label for="major-7">Engineering Advanced</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-25">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-major" value="Engineering" id="major-8">
+                          <label for="major-8">Economics Advanced</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-100 mt-4">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-major" value="undecided" id="major-9">
+                          <label for="major-9">I'm undecided at this time</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!--Citizenship-->
+                <div class="carousel-item">
+                  <div class="text-box">
+                    <h3>What is your citizenship or nationality?</h3>
+                    <p>Please select your country of legal citizenship. If you hold dual citizenship, only select one.</p>
+                  </div>
+                  <div class="input-form-group">
+                    <select class="form-select form-select-lg mb-3" name="nationality" aria-label=".form-select-lg example">
+                      <option selected disabled>Select your citizenship / nationality</option>
+                      <option value="Canadian">Canadian</option>
+                      <option value="American">American</option>
+                      <option value="Mexican">Mexican</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!--GPA-->
+                <!--
+                  <div class="carousel-item">
+                  <div class="text-box">
+                    <h3>What is your estimated grade point average (GPA)?</h3>
+                  </div>
+                   <div class="input-form-group">
+                    <div class="input-group input-group-lg flex-wrap mt-1" role="group">
+                      <div class="input-group-radio w-33">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-gpa" value="A+" id="gpa-1">
+                          <label for="gpa-1">
+                            <span>A+</span>
+                            <span>97-100</span>
+                            <span class="fw-bold">GPA 4.0</span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-33">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-gpa" value="A" id="gpa-2">
+                          <label for="gpa-2">
+                            <span>A</span>
+                            <span>94-96</span>
+                            <span class="fw-bold">GPA 4.0</span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-33">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-gpa" value="A-" id="gpa-3">
+                          <label for="gpa-3">
+                            <span>A-</span>
+                            <span>90-93</span>
+                            <span class="fw-bold">GPA 3.7</span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-33">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-gpa" value=B+ id="gpa-4">
+                          <label for="gpa-4">
+                            <span>B+</span>
+                            <span>87-89</span>
+                            <span class="fw-bold">GPA 3.3</span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-33">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-gpa" value="B" id="gpa-5">
+                          <label for="gpa-5">
+                            <span>B</span>
+                            <span>84-86</span>
+                            <span class="fw-bold">GPA 3.0</span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-33">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-gpa" value="B" id="gpa-6">
+                          <label for="gpa-6">
+                            <span>B-</span>
+                            <span>80-83</span>
+                            <span class="fw-bold">GPA 2.7</span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-33">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-gpa" value="C+" id="gpa-7">
+                          <label for="gpa-7">
+                            <span>C+</span>
+                            <span>77-79</span>
+                            <span class="fw-bold">GPA 2.3</span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-33">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-gpa" value="C" id="gpa-8">
+                          <label for="gpa-8">
+                            <span>C</span>
+                            <span>70-76</span>
+                            <span class="fw-bold">GPA 2.2</span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-33">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-gpa" value="C-" id="gpa-9">
+                          <label for="gpa-9">
+                            <span>C-</span>
+                            <span>65-75</span>
+                            <span class="fw-bold">GPA 2.0</span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-33">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-gpa" value="D+" id="gpa-10">
+                          <label for="gpa-10">
+                            <span>D+</span>
+                            <span>60-64</span>
+                            <span class="fw-bold">GPA 1.8</span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-33">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-gpa" value="D" id="gpa-11">
+                          <label for="gpa-11">
+                            <span>D</span>
+                            <span>54-59</span>
+                            <span class="fw-bold">GPA 1.7</span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-33">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-gpa" value="D-" id="gpa-12">
+                          <label for="gpa-12">
+                            <span>D-</span>
+                            <span>50-53</span>
+                            <span class="fw-bold">GPA 1.5</span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-33">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-gpa" value="F" id="gpa-13">
+                          <label for="gpa-13">
+                            <span>F</span>
+                            <span>0-49</span>
+                            <span class="fw-bold">GPA 0</span>
+                          </label>
+                        </div>
+                      </div>
+                      
+                    </div>
+                   </div>
+                  </div>
+                -->
+
+                <!--English Tests-->
+                <div class="carousel-item">
+                  <div class="text-box">
+                    <h3>Which English tests have you taken or plan on taking?</h3>
+                    <p>English tests evaluate your proficiency in the English language to determine your readiness to pursue studies in the US. The IELTS test and the TOEFL test are the most common tests taken.</p>
+                  </div>
+                  <div class="input-form-group">
+                    <div class="input-group input-group-lg flex-column" role="group">
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-test-type" value="IELTS" id="test-type-1">
+                          <label for="test-type-1">IELTS</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-test-type" value="TOEFL" id="test-type-2">
+                          <label for="test-type-2">Undergraduate - Bachelor's degree</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-test-type" value="Other/ Not take yet" id="test-type-3">
+                          <label for="test-type-3">Other/ Not take yet</label>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+
+                <!--Outcomes-->
+                <div class="carousel-item">
+                  <div class="text-box">
+                    <h3>Which of these outcomes is most important to you?</h3>
+                    <p>Select the top three qualities that hold the greatest importance for you. Select up to 3.</p>
+                  </div>
+                  <div class="input-form-group">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="Getting a job quickly after graduation" id="outcomeCheck-1" name="school-outcome-option">
+                      <label class="form-check-label" for="outcomeCheck-1">
+                        Getting a job quickly after graduation
+                      </label>
+                    </div>
+                     <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="Earning a prestigious degree" id="outcomeCheck-2" name="school-outcome-option">
+                      <label class="form-check-label" for="outcomeCheck-2">
+                        Earning a prestigious degree
+                      </label>
+                    </div>
+                     <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="Gaining real-world experience while studying" id="outcomeCheck-3" name="school-outcome-option">
+                      <label class="form-check-label" for="outcomeCheck-3">
+                        Gaining real-world experience while studying
+                      </label>
+                    </div>
+                     <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="Transferring to a university after starting at a college" id="outcomeCheck-4" name="school-outcome-option">
+                      <label class="form-check-label" for="outcomeCheck-4">
+                        Transferring to a university after starting at a college
+                      </label>
+                    </div>
+                     <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="Qualifying for immigration after graduation" id="outcomeCheck-5" name="school-outcome-option">
+                      <label class="form-check-label" for="outcomeCheck-5">
+                        Qualifying for immigration after graduation
+                      </label>
+                    </div>
+                     <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="Studying something I enjoy in a new country" id="outcomeCheck-6" name="school-outcome-option">
+                      <label class="form-check-label" for="outcomeCheck-6">
+                        Studying something I enjoy in a new country
+                      </label>
+                    </div>
+                  </div>
+                  <div class="btn-container w-100 mt-4">
+                    <button class="btn btn-primary w-100" type="button" data-bs-target="#carouselQuiz" data-bs-slide="next">Continue</button>
+                  </div>
+                </div>
+                <!--Tuition-->
+                <div class="carousel-item">
+                  <div class="text-box">
+                    <h3>What is your expected annual tuition (USD)?</h3>
+                    <p>The ranges below are based on the options offered by universities within Shorelight's portfolio and fall within the average first-year tuition range in the United States. We want to help you find the right fit for your budget.</p>
+                  </div>
+                   <div class="input-form-group">
+                    <div class="input-group input-group-lg flex-wrap mt-1" role="group">
+                      <div class="input-group-radio w-33">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-tuition" value="< 1000" id="tuition-1">
+                          <label for="tuition-1">
+                            Less than $10,000
+                          </label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-33">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-tuition" value="<20000" id="tuition-2">
+                          <label for="tuition-2">
+                            Up to $20,000
+                          </label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-33">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-gpa" value="<30000" id="tuition-3">
+                          <label for="tuition-3">
+                            Up to $30,000
+                          </label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-33">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-gpa" value="<40000" id="tuition-4">
+                          <label for="tuition-4">
+                            Up to $40,000
+                          </label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio w-33">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-gpa" value=">40000" id="tuition-5">
+                          <label for="tuition-5">
+                            $40,000 or higher
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+
+                <!--Work Study-->
+                <div class="carousel-item">
+                  <div class="text-box">
+                    <h3>Do you want to work while you study?</h3>
+                  </div>
+                  <div class="input-form-group">
+                    <div class="input-group input-group-lg flex-column" role="group">
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-work-study" value="Yes" id="work-study-1">
+                          <label for="work-study-1">Yes</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school-work-study" value="No" id="work-study-2">
+                          <label for="work-study-2">No</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!--Stay Study-->
+                <!--
+                  <div class="carousel-item">
+                    <div class="text-box">
+                      <h3>Are you planning to stay in the country after your studies?</h3>
+                    </div>
+                    <div class="input-form-group">
+                      <div class="input-group input-group-lg flex-column" role="group">
+                        <div class="input-group-radio">
+                          <div class="radio-btn radio-btn-primary">
+                            <input type="radio" name="school-stay-in-country" value="Yes" id="stay-1">
+                            <label for="stay-1">Yes, I want to work and live here</label>
+                          </div>
+                        </div>
+                        <div class="input-group-radio">
+                          <div class="radio-btn radio-btn-primary">
+                            <input type="radio" name="school-stay-in-country" value="No" id="stay-2">
+                            <label for="stay-2">No, I plan to return home</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                -->
+                <!--School Results-->
+                <div class="carousel-item results-item">
+                  <div class="lds-loader position-absolute top-50 start-50 translate-middle"><div></div><div></div><div></div></div>
+                  <div class="results-container">
+                    <div class="text-box">
+                      <h3>We've found <span id="search-count">26</span> school matches that are perfect for you!</h3>
+                      <p>Based on the information that you entered, we were able to find you:</p>
+                    </div>
+                    <div class="p-5 border border-white rounded-4 d-flex justify-content-center align-items-center">
+                      <h5 class="text-white"><span id="search-count">26</span> Schools</h5>
+                    </div>
+                    <div class="btn-container w-100 mt-4">
+                      <button class="btn btn-white w-100" data-submit="view-matches" type="button" data-bs-target="#carouselQuiz" data-bs-slide="next">View My Matches</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!--School List Result-->
+                <div class="carousel-item results-list">
+                  <div class="text-box">
+                    <h3>Here are your school matches!</h3>
+                    <p>Your profile exceeds the requirements and you have an excellent chance of admission.</p>
+                  </div>
+                  <div class="school-results-container">
+
+                  </div>
+                  <div class="btn-container w-100 mt-4">
+                      <button class="btn btn-primary w-100" type="button" id="restartQuiz">Take the Quiz Again</button>
+                    </div>
+                </div>
+              </div>
+              
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer h-0 d-none">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Required Scripts -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script src="/ugo_dev/script/quiz.js"></script>
+
+  <!-- The quiz-modal component script will initialize when loaded -->
+</body>
+</html>
+
+<!-- INTEGRATION STEPS:
+  1. Copy the entire content from quiz-modal.html into your HTML file (in the <body>)
+  2. Add jQuery, Bootstrap, and Slick Carousel CDN links to your <head>
+  3. Ensure you have Font Awesome icons (for the buttons)
+  4. Add a trigger button: 
+     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#quizModal">
+       Take the Quiz
+     </button>
+  5. The quiz modal will automatically initialize and work with Slick Slider
+  
+  FEATURES:
+  - 5 sample quiz questions (can be customized)
+  - Slick Slider manages transitions between questions
+  - Progress bar shows quiz progress
+  - Previous/Next navigation buttons
+  - Collects all answers in an object
+  - Submit button on final step
+  - Responsive design
+-->

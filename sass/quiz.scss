@@ -1,0 +1,338 @@
+@use 'variables' as v;
+
+#carouselQuiz {
+    z-index: 100;
+    &.carousel{
+        /* Custom CSS to make the fade transition faster (0.3 seconds) */
+        .carousel-item {
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        /* Ensure other necessary styles for the fade effect are correct */
+        .carousel-fade .carousel-item {
+            opacity: 0;
+            transition-property: opacity;
+        }
+
+        .carousel-fade .carousel-item.active,
+        .carousel-fade .carousel-item-next.carousel-item-left,
+        .carousel-fade .carousel-item-prev.carousel-item-right {
+            opacity: 1;
+        }
+        .carousel-item{
+            .text-box{
+                padding-top:0;
+            }
+            a{
+                &.carousel-link{
+                    font-weight: 400;
+                    font-style: Regular;
+                    font-size: 16px;
+                    line-height: 24px;
+                    letter-spacing: 0%;
+                    color: v.$anchor-link-color;
+                    text-decoration: none;
+                    display: block;
+                    margin-bottom: 30px;
+
+                    &:before{
+                        content: '\f104';
+                        font-family: FontAwesome;
+                        margin-right:5px;
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+    }
+    .modal-dialog {
+		min-width: 840px;
+	}
+	.modal-body {
+		padding: 0 2rem 2rem;
+	}
+    .modal-header{
+        padding: 2rem 2rem 0;
+        border-bottom: 0 !important;
+    }
+    
+    .btn-white{
+        color: v.$primary-color;
+    }
+    .results-item{
+        .results-container{
+            opacity:0;
+            transition: opacity .5;
+        }
+    }
+
+    .input-form-group{
+        padding:0 5px;
+
+        .form-check{
+            width: 100%;
+            border-radius: 10px;
+            border: 1px solid v.$secondary-color;
+            font-weight: normal;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            margin-bottom: 0;
+            padding: 15px 20px;
+            vertical-align: middle;
+            white-space: nowrap;
+
+            &:not(:last-child){
+                margin-bottom: 20px;
+            }
+
+            .form-check-input{
+                margin-left:0;
+                margin-right:20px;
+                width:18px;
+                height: 18px;
+                margin-top:0;
+                border:1px solid #AAAAAA;
+            }
+        }
+
+        .search-input{
+            align-items: center;
+            &:after{
+                font-family: FontAwesome;
+                font-weight: 500;
+                content: '\f002';
+                position: absolute;
+                right: 15px;
+            }
+        }
+        select{
+            font-weight: 400;
+            font-style: Regular;
+            font-size: 16px;
+            line-height: 24px;
+            letter-spacing: 0%;
+
+        }
+
+        input[type=text],input[type=email]{
+                            
+            border-radius: 10px;
+            border-width: 1px;
+            border-color:v.$secondary-color;
+
+        }
+    }
+        .input-group-radio {
+            position: relative;
+            white-space: nowrap;
+            vertical-align: middle;
+            display: table-cell;
+            &.w-25{
+                &:not(:nth-child(4n+1)){
+                    padding: 0 10px;
+                }
+                &:nth-child(4n+4){
+                    padding-right:0;
+                }
+            }
+            &.w-33{
+                &:not(:nth-child(3n+1)){
+                    padding: 0 10px;
+                }
+                &:nth-child(3n+3){
+                    padding-right:0;
+                }
+
+                label{
+                    display: flex;
+                    justify-content: space-between !important;
+                    align-items: center;
+                    padding:0 15px;
+                }
+            }
+            &:not(:last-child){
+                margin-bottom:20px;
+            }
+            .radio-btn {
+                
+            }
+            input[type="radio"]:empty {
+                display: none;
+            }
+            input[type="radio"]:checked {
+                & ~ label {
+                    border-color: rgb(173, 173, 173);
+                    background-image: none;
+                    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.125) inset;
+                    outline: 0 none;
+                }
+            }
+            .radio-btn-default {
+                input[type="radio"]:checked {
+                    & ~ label {
+                        background-color: rgb(230, 230, 230);
+                        color: rgb(51, 51, 51);
+                    }
+                }
+            }
+            .radio-btn-primary {
+                input[type="radio"]:checked {
+                    & ~ label {
+                        color: #fff;
+                        background-color: v.$primary-color;
+                    }
+                }
+            }
+        }
+        
+        .radio-btn {
+            label {
+                width: 100%;
+                border-radius: 3px;
+                border: 1px solid v.$secondary-color;
+                font-weight: normal;
+                cursor: pointer;
+                display: inline-block;
+                line-height: 1.42857;
+                margin-bottom: 0;
+                padding: 6px 12px;
+                text-align: center;
+                vertical-align: middle;
+                white-space: nowrap;
+            }
+            &:hover {
+                label {
+                    background-color: rgb(230, 230, 230);
+                    border-color: rgb(173, 173, 173);
+                    color: rgb(51, 51, 51);
+                }
+            }
+        }
+        .input-group-lg {
+            .radio-btn {
+                label {
+                    font-weight: 400;
+                    font-style: Regular;
+                    font-size: 16px;
+                    line-height: 24px;
+                    letter-spacing: 0%;
+                    text-align: center;
+                    border-radius: 10px;
+                    height:48px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+        }
+        .input-group {
+            
+        }
+
+    
+    .school-results-list{
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;        
+        &.slick-initialized{
+            opacity: 1;
+        }
+        .slick-prev,.slick-next{
+            top:unset;
+            bottom: -70px;
+            width: 50px;
+            height: 50px;
+            z-index: 2;
+
+            &:before{
+                color:v.$primary-color;
+                font-size: 24px;
+                font-weight: 500;
+                font-family: FontAwesome;
+            }
+            
+        }
+        .slick-dots{
+            bottom:-35px;
+            li{
+                button{
+                    width: 30px;
+                    height: 30px;
+                    &:before{
+                        height: 30px;
+                        width: 30px;
+                        font-size: 10px;
+                    }
+                }
+            }
+        }
+        .slick-prev{
+            left:-15px;
+            &:before{
+                content: '\f104';
+            }
+        }
+        .slick-next{
+            right:-15px;
+            &:before{
+                content: '\f105';
+            }
+        }
+    }
+    .school-results-container{
+        >div:not(.slick-slide){
+            display: flex;
+            flex-wrap: nowrap;
+        }
+        .box-card{
+            .result-header{
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 30px;
+            }
+            .school-details{
+                ul{
+                    padding-left: 0;
+                }
+            }
+            .btn-container{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                a{
+                    width: 50%;
+                    font-family: Source Sans Pro;
+                    font-weight: 700;
+                    font-style: Bold;
+                    font-size: 14px;
+                    line-height: 20px;
+                    letter-spacing: 0%;
+                    text-align: center;
+                    min-width: unset;
+
+
+                    &:first-child{
+                        font-size: 10px;
+                        margin-right: 5px;
+                    }
+                    &:last-child{
+                        margin-left: 5px;
+                    }
+
+                }
+            }
+        }
+    }
+}
+.bg-light-blue{
+    .btn-close{
+        filter: brightness(0) invert(1);
+    }
+    a{
+        &.carousel-link{
+            color: #FFF !important;
+        }
+    }
+}
