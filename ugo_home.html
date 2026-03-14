@@ -29,6 +29,7 @@
     <link href="/ugo_dev/stylesheets/testimonials.css" rel="stylesheet" />
     <link href="/ugo_dev/stylesheets/boxes.css" rel="stylesheet" />
     <link href="/ugo_dev/stylesheets/quiz.css" rel="stylesheet" />
+    <link href="/ugo_dev/stylesheets/accordion.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -78,6 +79,8 @@
         }
       }
     </style>
+
+    <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
   </head>
   <body class="ugo-template">
     <!-- Navbar -->
@@ -85,9 +88,10 @@
       class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm border-bottom"
     >
       <div class="container">
-        <a class="navbar-brand text-dark" href="#"
-          ><img src="/ugo_dev/images/logo_ugo.png" alt="Logo"
-        /></a>
+        <a class="navbar-brand text-dark" href="#">
+          <img src="/ugo_dev/images/logo_ugo.png" alt="Logo"/>
+          
+      </a>
         <button
           class="navbar-toggler"
           type="button"
@@ -386,14 +390,14 @@
               That Best Matches Your Goals
             </h1>
             <div class="form-container" id="hero-school-search">
-              <form>
+              <form id="schoolSearchForm">
                 <input
-                  type="hidden"
-                  value=""
-                  name="heroSchoolPrimarySearch"
-                  required
-                />
-                <input type="hidden" value="" name="heroDegreeType" required />
+                      type="hidden"
+                      value=""
+                      name="school_country_search"
+                      required
+                      />
+                <input type="hidden" value="" name="degree_type_search" required />
                 <ul class="btn-list">
                   <li>
                     <a href="#" class="btn btn-white btn-lg" data-value="USA"
@@ -403,7 +407,7 @@
                   <li>
                     <a
                       href="#"
-                      class="btn btn-blue btn-lg"
+                      class="btn btn-white btn-lg"
                       data-value="Australia"
                       >Australia Schools</a
                     >
@@ -416,7 +420,7 @@
                   <li>
                     <a
                       href="#"
-                      class="btn btn-blue btn-lg"
+                      class="btn btn-white btn-lg"
                       data-value="English Courses"
                       >English Courses</a
                     >
@@ -454,15 +458,21 @@
                     </div>
                   </div>
                   <div>
-                    <input
-                      type="text"
-                      name="heroStudyAreaSearchTerm"
-                      class="form-control"
-                      placeholder="Search Area of Study"
-                    />
-                    <button class="btn btn-blue btn-lg" type="submit">
-                      <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
+                    <div class="autocomplete-container auto-area-study w-100">
+                      <div class="d-flex w-100">
+                        <input
+                              type="text"
+                              name="study_area_search"
+                              class="form-control"
+                              placeholder="Search Area of Study"
+                              id="heroStudyAreaSearchTerm"
+                              />
+                        <button class="btn btn-blue btn-lg" type="submit">
+                          <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                      </div>
+                      <div class="suggestions-list w-100"></div>
+                    </div>
                   </div>
                 </div>
               </form>
@@ -482,7 +492,7 @@
     </section>
 
     <!-- Centered single-column box section -->
-    <section class="center-box-section bg-light-grey">
+    <section class="center-box-section bg-light-grey" id="sectionQuiz">
       <div class="container">
        <div class="center-box" id="quizSchoolSearch">
         
@@ -491,32 +501,39 @@
 
                 <!--Start Quiz-->
                 <div class="carousel-item active">
-                  <div class="form-container">
-                    <form class="needs-validation" novalidate>
-                      <div class="text-box">
-                        <h1>Find Your Perfect Schools and Programs</h1>
-                        <p>Answer a few simple questions and we'll provide you with matches for target, reach, and safety schools.</p>
-                        <p>To find your matches, we'll ask you about you and your preferences.</p>
+                  <div class="text-box">
+                    <h1>Find Your Perfect Schools and Programs</h1>
+                    <p>Answer a few quick questions about your study goals, preferred location, and English   
+level.<br>We'll suggest universities and programs that match your profile.  </p>
+                    <p>If you need support, our advisors can help you:</p>
+                    <ul> 
+                      <li>- apply to partner universities and colleges</li>
+                      <li>- improve your English through pathway programs</li>
+                      <li>- prepare for admission and study abroad</li>
+                    </ul>
 
-                        <p>To start finding your perfect schools, enter your information below:</p>
-                        <div class="input-form-group">
-                          <div class="input-group input-group-lg">
-                            <input type="text" class="form-control me-1" name="quiz_first_name" placeholder="First Name" aria-label="First Name" aria-describedby="inputGroup-sizing-lg" required>
-                            <input type="text" class="form-control ms-1" name="quiz_last_name" placeholder="Last Name" aria-label="Last Name" aria-describedby="inputGroup-sizing-lg" required>
-                          </div>
-                          <div class="input-group input-group-lg mt-3">
-                            <input type="email" class="form-control" name="quiz_email" placeholder="Email" aria-label="Email" aria-describedby="inputGroup-sizing-lg" required>
-                          </div>
-                        </div>
-                        
-                      </div>
-                      <div class="btn-container w-100">
-                        <button class="btn btn-primary w-100 next-slide" type="button">Start Quiz</button>
-                      </div>
-                    </form>
+                    <p>Start finding your perfect schools!</p>
+                    
                   </div>
-                </div>
+                  <div class="btn-container w-100">
+                    <button id="btn-start-quiz" class="btn btn-primary w-100 next-slide" type="button">Start Quiz</button>
+                  </div>
+                  <div class="logo-slider-container pt-4">
+                    <div class="university-logos">
+                      
+                      <div><img src="/ugo_dev/images/logos/logo_harvard.png" alt="Harvard"></div>
+                      <div><img src="/ugo_dev/images/logos/logo_freedom_university.png" alt="Freedom"></div>
+                      <div><img src="/ugo_dev/images/logos/logo_iacbe.png" alt="IACBE"></div>
+                      <div><img src="/ugo_dev/images/logos/logo_state_college.png" alt="State College"></div>
+                      <div><img src="/ugo_dev/images/logos/logo_acadia.png" alt="Acadia"></div>
+                      <div><img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" alt="CSU"></div>
+                      <div><img src="/ugo_dev/images/logos/logo_john_hopkins.png" alt="John Hopkins"></div>
 
+                    </div>
+                  </div>
+                 
+                </div>
+                
                 <!--Country-->
                 <div class="carousel-item">
                   <div class="text-box">
@@ -526,20 +543,34 @@
                     <div class="input-group input-group-lg flex-column" role="group">
                       <div class="input-group-radio">
                         <div class="radio-btn radio-btn-primary">
-                          <input type="radio" name="country-option" value="USA" id="country-1">
+                          <input type="radio" name="country_option" value="USA" id="country-1">
                           <label for="country-1">USA</label>
                         </div>
                       </div>
                       <div class="input-group-radio">
                         <div class="radio-btn radio-btn-primary">
-                          <input type="radio" name="country-option" value="Australia" id="country-2">
+                          <input type="radio" name="country_option" value="Australia" id="country-2">
                           <label for="country-2">Australia</label>
                         </div>
                       </div>
                       <div class="input-group-radio">
                         <div class="radio-btn radio-btn-primary">
-                          <input type="radio" name="country-option" value="Canada" id="country-3">
+                          <input type="radio" name="country_option" value="Canada" id="country-3">
                           <label for="country-3">Canada</label>
+                        </div>
+                      </div>
+
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="country_option" value="Malaysia" id="country-4">
+                          <label for="country-4">Malaysia</label>
+                        </div>
+                      </div>
+
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="country_option" value="Europe" id="country-5">
+                          <label for="country-5">Europe</label>
                         </div>
                       </div>
                       
@@ -551,32 +582,37 @@
                 <div class="carousel-item">
                   <div class="text-box">
                     <h3>What type of degree are you pursuing?</h3>
-                    <p>Choose Undergraduate for Bachelor's or English as a Second Language, or choose Graduate for Master's, Professional Development, or PhD.</p>
                   </div>
                   <div class="input-form-group">
                     <div class="input-group input-group-lg flex-column" role="group">
                       <div class="input-group-radio">
                         <div class="radio-btn radio-btn-primary">
-                          <input type="radio" name="school-degree-type" value="Undergraduate - Associate degree" id="degree-type-1">
-                          <label for="degree-type-1">Undergraduate - Associate degree</label>
+                          <input type="radio" name="school_degree_type" value="Certificate" id="degree-type-1">
+                          <label for="degree-type-1">Certificate / Diploma / Advanced Diploma</label>
                         </div>
                       </div>
                       <div class="input-group-radio">
                         <div class="radio-btn radio-btn-primary">
-                          <input type="radio" name="school-degree-type" value="Undergraduate - Bachelor's degree" id="degree-type-2">
-                          <label for="degree-type-2">Undergraduate - Bachelor's degree</label>
+                          <input type="radio" name="school_degree_type" value="Associate" id="degree-type-2">
+                          <label for="degree-type-2">Undergraduate - Associate degree</label>
                         </div>
                       </div>
                       <div class="input-group-radio">
                         <div class="radio-btn radio-btn-primary">
-                          <input type="radio" name="school-degree-type" value="Graduate - Master's degree" id="degree-type-3">
-                          <label for="degree-type-3">Graduate - Master's degree</label>
+                          <input type="radio" name="school_degree_type" value="Bachelor" id="degree-type-3">
+                          <label for="degree-type-3">Undergraduate - Bachelor's degree</label>
                         </div>
                       </div>
                       <div class="input-group-radio">
                         <div class="radio-btn radio-btn-primary">
-                          <input type="radio" name="school-degree-type" value="Graduate - Doctorate degree" id="degree-type-4">
+                          <input type="radio" name="school_degree_type" value="Doctorate" id="degree-type-4">
                           <label for="degree-type-4">Graduate - Doctorate degree</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school_degree_type" value="Master" id="degree-type-5">
+                          <label for="degree-type-5">Graduate - Master's degree</label>
                         </div>
                       </div>
                     </div>
@@ -589,63 +625,71 @@
                     <h3>What major are you interested in?</h3>
                   </div>
                   <div class="input-form-group">
-                    <div class="input-group input-group-lg search-input">
-                      <input type="text" name="school-major-search-result" class="form-control" aria-label="Search for an area of study" placeholder="Search for an area of study" aria-describedby="inputGroup-sizing-lg">
-                    </div>
+                    <form class="needs-validation" novalidate>
+                      <div class="autocomplete-container auto-area-of-study">
+                        <div class="input-group input-group-lg search-input">
+                          <input type="text" id="areaOfStudyQuiz" name="school_major_search_result" class="form-control autocomplete-input" aria-label="Search for an area of study" placeholder="Search for an area of study" aria-describedby="inputGroup-sizing-lg" required>
+                        </div>
+                        <div class="suggestions-list w-100"></div>
+                      </div>
+                       <div class="btn-container w-25 mt-3">
+                        <button class="btn btn-primary w-100 next-slide" type="button">Continue</button>
+                      </div>
+                    </form>
                     <p class="mt-5">Popular subjects:</p>
                     <div class="input-group input-group-lg flex-wrap mt-1" role="group">
                       
                       <div class="input-group-radio w-25">
                         <div class="radio-btn radio-btn-primary">
-                          <input type="radio" name="school-major" value="Engineering" id="major-1">
-                          <label for="major-1">Engineering</label>
+                          <input type="radio" name="school_major" value="Economics" id="major-1">
+                          <label for="major-1">Economics</label>
                         </div>
                       </div>
                       <div class="input-group-radio w-25">
                         <div class="radio-btn radio-btn-primary">
-                          <input type="radio" name="school-major" value="Economics" id="major-2">
-                          <label for="major-2">Economics</label>
+                          <input type="radio" name="school_major" value="Education" id="major-2">
+                          <label for="major-2">Education</label>
                         </div>
                       </div>
                       <div class="input-group-radio w-25">
                         <div class="radio-btn radio-btn-primary">
-                          <input type="radio" name="school-major" value="Finance" id="major-3">
+                          <input type="radio" name="school_major" value="Finance" id="major-3">
                           <label for="major-3">Finance</label>
                         </div>
                       </div>
                       <div class="input-group-radio w-25">
                         <div class="radio-btn radio-btn-primary">
-                          <input type="radio" name="school-major" value="Marketing" id="major-4">
+                          <input type="radio" name="school_major" value="Marketing" id="major-4">
                           <label for="major-4">Marketing</label>
                         </div>
                       </div>
                       <div class="input-group-radio w-25">
                         <div class="radio-btn radio-btn-primary">
-                          <input type="radio" name="school-major" value="Computer Science" id="major-5">
+                          <input type="radio" name="school_major" value="Information Technology / Computer Sciences" id="major-5">
                           <label for="major-5">Computer Science</label>
                         </div>
                       </div>
                       <div class="input-group-radio w-25">
                         <div class="radio-btn radio-btn-primary">
-                          <input type="radio" name="school-major" value="Business" id="major-6">
+                          <input type="radio" name="school_major" value="Business / Management" id="major-6">
                           <label for="major-6">Business</label>
                         </div>
                       </div>
                       <div class="input-group-radio w-25">
                         <div class="radio-btn radio-btn-primary">
-                          <input type="radio" name="school-major" value="Engineering Advanced" id="major-7">
+                          <input type="radio" name="school_major" value="Engineering and Technology" id="major-7">
                           <label for="major-7">Engineering Advanced</label>
                         </div>
                       </div>
                       <div class="input-group-radio w-25">
                         <div class="radio-btn radio-btn-primary">
-                          <input type="radio" name="school-major" value="Engineering" id="major-8">
-                          <label for="major-8">Economics Advanced</label>
+                          <input type="radio" name="school_major" value="Hospitality & Tourism" id="major-8">
+                          <label for="major-8">Hospitality & Tourism</label>
                         </div>
                       </div>
                       <div class="input-group-radio w-100 mt-4">
                         <div class="radio-btn radio-btn-primary">
-                          <input type="radio" name="school-major" value="undecided" id="major-9">
+                          <input type="radio" name="school_major" value="" id="major-9">
                           <label for="major-9">I'm undecided at this time</label>
                         </div>
                       </div>
@@ -656,8 +700,8 @@
                 <!--Citizenship-->
                 <div class="carousel-item">
                   <div class="text-box">
-                    <h3>What is your citizenship or nationality?</h3>
-                    <p>Please select your country of legal citizenship. If you hold dual citizenship, only select one.</p>
+                    <h3>What is your citizenship?</h3>
+                    <p>If you hold more than one legal citizenship, please select only one.</p>
                   </div>
                   <div class="input-form-group">
                     <select class="form-select form-select-lg mb-3" name="nationality" aria-label=".form-select-lg example">
@@ -672,75 +716,113 @@
                 <!--English Tests-->
                 <div class="carousel-item">
                   <div class="text-box">
-                    <h3>Which English tests have you taken or plan on taking?</h3>
-                    <p>English tests evaluate your proficiency in the English language to determine your readiness to pursue studies in the US. The IELTS test and the TOEFL test are the most common tests taken.</p>
+                    <h3>Do you have a recognized English test score?</h3>
+                    <p>Most higher education institutions and programs require a certain level of English   
+proficiency to pursue studies. If you already have a valid test score, enter it below.</p>
                   </div>
                   <div class="input-form-group">
                     <div class="input-group input-group-lg flex-column" role="group">
                       <div class="input-group-radio">
                         <div class="radio-btn radio-btn-primary">
-                          <input type="radio" name="school-test-type" value="IELTS" id="test-type-1">
+                          <input type="radio" name="school_test_type" value="I need English study before beginning my University/College program" id="test-type-5">
+                          <label for="test-type-5">I need English study before beginning my University/College program</label>
+                        </div>
+                      </div>
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school_test_type" value="IELTS" id="test-type-1">
                           <label for="test-type-1">IELTS</label>
                         </div>
                       </div>
                       <div class="input-group-radio">
                         <div class="radio-btn radio-btn-primary">
-                          <input type="radio" name="school-test-type" value="TOEFL" id="test-type-2">
-                          <label for="test-type-2">Undergraduate - Bachelor's degree</label>
+                          <input type="radio" name="school_test_type" value="TOEFL" id="test-type-2">
+                          <label for="test-type-2">TOEFL</label>
                         </div>
                       </div>
                       <div class="input-group-radio">
                         <div class="radio-btn radio-btn-primary">
-                          <input type="radio" name="school-test-type" value="Other/ Not take yet" id="test-type-3">
-                          <label for="test-type-3">Other/ Not take yet</label>
+                          <input type="radio" name="school_test_type" value="Duolingo" id="test-type-3">
+                          <label for="test-type-3">Duolingo</label>
                         </div>
                       </div>
+                      <div class="input-group-radio">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school_test_type" value="Other/ Not take yet" id="test-type-4">
+                          <label for="test-type-4">Other/ Not take yet</label>
+                        </div>
+                      </div>
+                      
                       
                     </div>
                   </div>
                 </div>
 
+                <!--Enter Test Scores-->
+                 <div class="carousel-item d-none test-score-slide">
+                  <div class="text-box">
+                    <h3>What is your <span id="test-type-name">IELTS</span> score?</h3>
+                  </div>
+                  <div class="input-form-group">
+                    <form class="needs-validation" novalidate>
+                      <div class="input-group input-group-lg">
+                        <input type="number" step="0.1" id="testScore" name="school_test_score" class="form-control" aria-label="Enter your test score" placeholder="Enter your test score" aria-describedby="inputGroup-sizing-lg" required>
+                      </div>
+                       <div class="btn-container w-25 mt-3">
+                        <button class="btn btn-primary w-100 next-slide" type="button">Continue</button>
+                      </div>
+                    </form>
+                    <div class="input-group input-group-lg flex-wrap mt-1" role="group">
+                      <div class="input-group-radio w-100 mt-4">
+                        <div class="radio-btn radio-btn-primary">
+                          <input type="radio" name="school_test_type" value="I am taking this test at a later date" id="test-type-4">
+                          <label for="test-type-4">I am taking this test at a later date.</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <!--Outcomes-->
                 <div class="carousel-item">
                   <div class="text-box">
                     <h3>Which of these outcomes is most important to you?</h3>
-                    <p>Select the top three qualities that hold the greatest importance for you. Select up to 3.</p>
+                    <p>Select up to 3.</p>
                   </div>
                   <div class="form-container">
                     <form class="needs-validation checkbox-group" novalidate>
                       <div class="input-form-group" data-check-limit="3">
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="Getting a job quickly after graduation" id="outcomeCheck-1" name="school-outcome-option">
+                          <input class="form-check-input" type="checkbox" value="Getting a job quickly after graduation" id="outcomeCheck-1" name="school_outcome_option">
                           <label class="form-check-label" for="outcomeCheck-1">
                             Getting a job quickly after graduation
                           </label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="Earning a prestigious degree" id="outcomeCheck-2" name="school-outcome-option">
+                          <input class="form-check-input" type="checkbox" value="Earning a prestigious degree" id="outcomeCheck-2" name="school_outcome_option">
                           <label class="form-check-label" for="outcomeCheck-2">
                             Earning a prestigious degree
                           </label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="Gaining real-world experience while studying" id="outcomeCheck-3" name="school-outcome-option">
+                          <input class="form-check-input" type="checkbox" value="Gaining real-world experience while studying" id="outcomeCheck-3" name="school_outcome_option">
                           <label class="form-check-label" for="outcomeCheck-3">
                             Gaining real-world experience while studying
                           </label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="Transferring to a university after starting at a college" id="outcomeCheck-4" name="school-outcome-option">
+                          <input class="form-check-input" type="checkbox" value="Transferring to a university after starting at a college" id="outcomeCheck-4" name="school_outcome_option">
                           <label class="form-check-label" for="outcomeCheck-4">
                             Transferring to a university after starting at a college
                           </label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="Qualifying for immigration after graduation" id="outcomeCheck-5" name="school-outcome-option">
+                          <input class="form-check-input" type="checkbox" value="Qualifying for immigration after graduation" id="outcomeCheck-5" name="school_outcome_option">
                           <label class="form-check-label" for="outcomeCheck-5">
                             Qualifying for immigration after graduation
                           </label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="Studying something I enjoy in a new country" id="outcomeCheck-6" name="school-outcome-option">
+                          <input class="form-check-input" type="checkbox" value="Studying something I enjoy in a new country" id="outcomeCheck-6" name="school_outcome_option">
                           <label class="form-check-label" for="outcomeCheck-6">
                             Studying something I enjoy in a new country
                           </label>
@@ -756,13 +838,13 @@
                 <div class="carousel-item">
                   <div class="text-box">
                     <h3>What is your expected annual tuition (USD)?</h3>
-                    <p>The ranges below are based on the options offered by universities within Shorelight's portfolio and fall within the average first-year tuition range in the United States. We want to help you find the right fit for your budget.</p>
+                    <p>Help us find the right fit for your budget.</p>
                   </div>
                    <div class="input-form-group">
                     <div class="input-group input-group-lg flex-wrap mt-1" role="group">
                       <div class="input-group-radio w-33">
                         <div class="radio-btn radio-btn-primary">
-                          <input type="radio" name="school-tuition" value="< 1000" id="tuition-1">
+                          <input type="radio" name="school_tuition" value="< 10000" id="tuition-1">
                           <label for="tuition-1">
                             Less than $10,000
                           </label>
@@ -770,7 +852,7 @@
                       </div>
                       <div class="input-group-radio w-33">
                         <div class="radio-btn radio-btn-primary">
-                          <input type="radio" name="school-tuition" value="<20000" id="tuition-2">
+                          <input type="radio" name="school_tuition" value="< 20000" id="tuition-2">
                           <label for="tuition-2">
                             Up to $20,000
                           </label>
@@ -778,7 +860,7 @@
                       </div>
                       <div class="input-group-radio w-33">
                         <div class="radio-btn radio-btn-primary">
-                          <input type="radio" name="school-gpa" value="<30000" id="tuition-3">
+                          <input type="radio" name="school_tuition" value="< 30000" id="tuition-3">
                           <label for="tuition-3">
                             Up to $30,000
                           </label>
@@ -786,7 +868,7 @@
                       </div>
                       <div class="input-group-radio w-33">
                         <div class="radio-btn radio-btn-primary">
-                          <input type="radio" name="school-gpa" value="<40000" id="tuition-4">
+                          <input type="radio" name="school_tuition" value="< 40000" id="tuition-4">
                           <label for="tuition-4">
                             Up to $40,000
                           </label>
@@ -794,7 +876,7 @@
                       </div>
                       <div class="input-group-radio w-33">
                         <div class="radio-btn radio-btn-primary">
-                          <input type="radio" name="school-gpa" value=">40000" id="tuition-5">
+                          <input type="radio" name="school_tuition" value="> 40000" id="tuition-5">
                           <label for="tuition-5">
                             $40,000 or higher
                           </label>
@@ -806,7 +888,7 @@
                 </div>
 
                 <!--Work Study-->
-                <div class="carousel-item test" id="carousel-work-study">
+                <!-- <div class="carousel-item" id="carousel-work-study">
                   <div class="text-box">
                     <h3>Do you want to work while you study?</h3>
                   </div>
@@ -826,7 +908,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> -->
 
                 <!--Location Type-->
                 <div class="carousel-item">
@@ -837,25 +919,25 @@
                     <div class="input-group input-group-lg flex-column" role="group">
                       <div class="input-group-radio">
                         <div class="radio-btn radio-btn-primary">
-                          <input type="radio" name="location-type-option" value="Big city" id="location-type-1">
+                          <input type="radio" name="location_type_option" value="Big City" id="location-type-1">
                           <label for="location-type-1">Big city</label>
                         </div>
                       </div>
                       <div class="input-group-radio">
                         <div class="radio-btn radio-btn-primary">
-                          <input type="radio" name="location-type-option" value="Medium size city" id="location-type-2">
+                          <input type="radio" name="location_type_option" value="Midsize City" id="location-type-2">
                           <label for="location-type-2">Medium size city</label>
                         </div>
                       </div>
                       <div class="input-group-radio">
                         <div class="radio-btn radio-btn-primary">
-                          <input type="radio" name="location-type-option" value="Small town" id="location-type-3">
+                          <input type="radio" name="location_type_option" value="Small City" id="location-type-3">
                           <label for="location-type-3">Small town</label>
                         </div>
                       </div>
                       <div class="input-group-radio">
                         <div class="radio-btn radio-btn-primary">
-                          <input type="radio" name="location-type-option" value="No preference" id="location-type-4">
+                          <input type="radio" name="location_type_option" value="0" id="location-type-4">
                           <label for="location-type-4">No preference</label>
                         </div>
                       </div>
@@ -866,18 +948,47 @@
 
                 <!--School Results-->
                 <div class="carousel-item results-item">
-                  <div class="lds-loader position-absolute top-50 start-50 translate-middle"><div></div><div></div><div></div></div>
                   <div class="results-container">
-                    <div class="text-box">
-                      <h3>We've found <span id="search-count">26</span> school matches that are perfect for you!</h3>
-                      <p>Based on the information that you entered, we were able to find you:</p>
-                    </div>
-                    <div class="p-5 border border-white rounded-4 d-flex justify-content-center align-items-center">
-                      <h5 class="text-white"><span id="search-count">26</span> Schools</h5>
-                    </div>
-                    <div class="btn-container w-100 mt-4">
-                      <button class="btn btn-white w-100" data-submit="view-matches" type="button" data-bs-target="#carouselQuiz" data-bs-slide="next">View My Matches</button>
-                    </div>
+                    
+                  </div>
+                </div>
+
+                <!--Student Info-->
+
+                <div class="carousel-item student-info">
+                  <div class="form-container">
+                    <form class="needs-validation" novalidate>
+                      <div class="text-box">
+                        <h1>Share your contact details to reveal your school matches.</h1>
+                        <p>Your phone number and email allow our admissions representatives to contact you to discuss your options.</p>
+                        <p>Your information is secure and will only be used by a representative to provide you with more details.</p>
+                        <div class="input-form-group">
+                          <div class="input-group input-group-lg">
+                            <label for="quiz-first-name">First Name</label>
+                            <input type="text" id="quiz-first-name" class="form-control" name="quiz_first_name" placeholder="Your First Name" aria-label="First Name" aria-describedby="inputGroup-sizing-lg" required>
+                          </div>
+                          <div class="input-group input-group-lg mt-3">
+                            <label for="quiz-last-name">Last Name</label>
+                            <input type="text" id="quiz-last-name" class="form-control" name="quiz_last_name" placeholder="Your Last Name" aria-label="Last Name" aria-describedby="inputGroup-sizing-lg" required>
+                          </div>
+                          <div class="input-group input-group-lg mt-3">
+                            <label for="quiz-phone">Phone Number</label>
+                            <input type="tel" id="quiz-phone" class="form-control" name="quiz_phone" placeholder="Your Phone Number" aria-label="Phone Number" aria-describedby="inputGroup-sizing-lg" required>
+                          </div>
+                          <div class="input-group input-group-lg mt-3">
+                            <label for="quiz-email">Email</label>
+                            <input type="email" id="quiz-email" class="form-control" name="quiz_email" placeholder="Your Email" aria-label="Email" aria-describedby="inputGroup-sizing-lg" required>
+                          </div>
+                          <div class="input-group input-group-lg mt-3">
+                            <div class="checkbox-container study-box-container"><p>ILSC Education Group are committed to protecting and respecting your privacy, and we'll only use your personal information to administer your account and to provide the products and services you requested from us.  From time to time, we would like to contact you about our products and services, as well as other content that may be of interest to you.  If you consent to us contacting you for this purpose, please tick below:</p><div class="checkbox-line"><input type="checkbox" value="Yes" class="form-control" id="studentPrivacyConsent" name="student_privacy_consent" required ><label for="studentPrivacyConsent">I agree to receive other communications from ILSC Education Group.<sup>*</sup></label></div><p>You can unsubscribe from these communications at any time.  For more information on how to unsubscribe, our privacy practices, and how we are committed to protecting and respecting your privacy, please review our <a href="https://www.ilsc.com/privacy-policy" target="_blank">Privacy Policy</a>.</p></div>
+                          </div>
+                        </div>
+                        
+                      </div>
+                      <div class="btn-container w-100">
+                        <button class="btn btn-primary w-100 next-slide" type="button">Continue</button>
+                      </div>
+                    </form>
                   </div>
                 </div>
 
@@ -885,149 +996,32 @@
                 <div class="carousel-item results-list">
                   <div class="header d-flex justify-content-between">
                     <div class="text-box pt-0">
-                      <h3>Here are your school matches!</h3>
-                      <p>Your profile exceeds the requirements and you have an excellent chance of admission.</p>
+                      <h3>Explore your learning options!</h3>
+                      <p>Click the learn more buttons to see detailed program information at each of your match   
+schools.</p>
+                      <p>If you want to apply or need to upgrade your English to meet the language entry   
+requirement, our advisors will be happy to help you create your study plan.</p>
                     </div>
                     <div class="btn-container">
-                      <button class="btn btn-outline" type="button" id="restartQuiz">Take the Quiz Again</button>
+                      <button class="btn btn-outline restart-quiz" type="button" id="restartQuiz">Take the Quiz Again</button>
                     </div>
                   </div>
                   <div class="school-results-container search-results-container position-relative">
-                    <div class="lds-loader position-absolute top-50 start-50 translate-middle"><div></div><div></div><div></div></div>
+                    <div class="section-form">
+                      <div class="filter-details-container">
+                        <span class="me-3"><span class="search-count">36</span> Results</span>
+                        <!--
+                        <button id="filter-action" class="py-2 px-3 border-0 text-start" style="width:216px" data-bs-toggle="modal" data-bs-target="#filterOptionPanel"><span>Filters(<span class="filter-count fw-bold">0</span>)</span></button>
+                        --->
+                      </div>
+                      
+                    </div>
                     <div class="school-results-list">
-                      <!--item-->
-                      <div>
-                        <div class="box-card">
-                          <div class="result-header">
-                            <div class="title">
-                              <h6>Cleveland State University</h6>
-                              <p>Cleveland, Ohio</p>
-                            </div>
-                            <div class="logo-container">
-                              <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
-                            </div>
-                          </div>
-                          <div class="school-details">
-                            <ul>
-                              <li class="tuition fw-bold">Average Tuition $7,524</li>
-                              <li class="ranking">Ranking, Special features, etc.</li>
-                            </ul>
-                            
-                          </div>
-                          
-                          <div class="btn-container">
-                            <a href="#" class="btn btn-primary">Contact an Advisor</a>
-                            <a href="#" class="btn btn-outline">Learn More</a>
-                          </div>
-                        </div>
-                      </div>
-                      <!--item-->
-                      <div>
-                        <div class="box-card">
-                          <div class="result-header">
-                            <div class="title">
-                              <h6>Cleveland State University</h6>
-                              <p>Cleveland, Ohio</p>
-                            </div>
-                            <div class="logo-container">
-                              <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
-                            </div>
-                          </div>
-                          <div class="school-details">
-                            <ul>
-                              <li class="tuition fw-bold">Average Tuition $7,524</li>
-                              <li class="ranking">Ranking, Special features, etc.</li>
-                            </ul>
-                            
-                          </div>
-                          
-                          <div class="btn-container">
-                            <a href="#" class="btn btn-primary">Contact an Advisor</a>
-                            <a href="#" class="btn btn-outline">Learn More</a>
-                          </div>
-                        </div>
-                      </div>
-                      <!--item-->
-                      <div>
-                        <div class="box-card">
-                          <div class="result-header">
-                            <div class="title">
-                              <h6>Cleveland State University</h6>
-                              <p>Cleveland, Ohio</p>
-                            </div>
-                            <div class="logo-container">
-                              <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
-                            </div>
-                          </div>
-                          <div class="school-details">
-                            <ul>
-                              <li class="tuition fw-bold">Average Tuition $7,524</li>
-                              <li class="ranking">Ranking, Special features, etc.</li>
-                            </ul>
-                            
-                          </div>
-                          
-                          <div class="btn-container">
-                            <a href="#" class="btn btn-primary">Contact an Advisor</a>
-                            <a href="#" class="btn btn-outline">Learn More</a>
-                          </div>
-                        </div>
-                      </div>
-                      <!--item-->
-                      <div>
-                        <div class="box-card">
-                          <div class="result-header">
-                            <div class="title">
-                              <h6>Cleveland State University</h6>
-                              <p>Cleveland, Ohio</p>
-                            </div>
-                            <div class="logo-container">
-                              <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
-                            </div>
-                          </div>
-                          <div class="school-details">
-                            <ul>
-                              <li class="tuition fw-bold">Average Tuition $7,524</li>
-                              <li class="ranking">Ranking, Special features, etc.</li>
-                            </ul>
-                            
-                          </div>
-                          
-                          <div class="btn-container">
-                            <a href="#" class="btn btn-primary">Contact an Advisor</a>
-                            <a href="#" class="btn btn-outline">Learn More</a>
-                          </div>
-                        </div>
-                      </div>
-                      <!--item-->
-                      <div>
-                        <div class="box-card">
-                          <div class="result-header">
-                            <div class="title">
-                              <h6>Cleveland State University</h6>
-                              <p>Cleveland, Ohio</p>
-                            </div>
-                            <div class="logo-container">
-                              <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
-                            </div>
-                          </div>
-                          <div class="school-details">
-                            <ul>
-                              <li class="tuition fw-bold">Average Tuition $7,524</li>
-                              <li class="ranking">Ranking, Special features, etc.</li>
-                            </ul>
-                            
-                          </div>
-                          
-                          <div class="btn-container">
-                            <a href="#" class="btn btn-primary">Contact an Advisor</a>
-                            <a href="#" class="btn btn-outline">Learn More</a>
-                          </div>
-                        </div>
-                      </div>
+                      
+                     
                     </div>
                   </div>
-                  <div class="btn-container w-100">
+                  <div class="btn-container d-flex justify-content-center">
                     <button class="btn btn-primary w-100 mt-5" type="button" id="email-quiz-results">Email the result</button>
                   </div>
                 </div>
@@ -1038,8 +1032,137 @@
             </div>
        </div>
       </div>
+        <div class="modal fade simple-accordion" id="filterOptionPanel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="filterOptionPanelLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="px-4 py-4">
+              <div class="modal-header">
+                <h4 class="modal-title">Filters</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="accordion" id="filterSearchOptions">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        School
+                      </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show">
+                      <div class="accordion-body">
+                        <div class="mb-3 autocomplete-container auto-school">
+                          <div class="input-group">
+                            <input type="text" id="schoolNameSearchInputFilterQuiz" class="form-control input-search filter-field autocomplete-input" placeholder="Search for a school" aria-label="School Name" aria-describedby="basic-addon2" name="schoolNameFilter">
+                            <span class="input-group-text" id="basic-addon2"><i class="fa-solid fa-magnifying-glass"></i></span>
+                          </div>
+                          <div class="suggestions-list w-100"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        City
+                      </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse">
+                      <div class="accordion-body">
+                        <div class="mb-3 autocomplete-container auto-city">
+                          <div class="input-group">
+                            <input type="text" id="schoolCitySearchInputFilterQuiz" class="form-control input-search filter-field autocomplete-input" placeholder="Search for a city" aria-label="City Name" aria-describedby="basic-addon2" name="cityFilter">
+                            <span class="input-group-text" id="basic-addon2"><i class="fa-solid fa-magnifying-glass"></i></span>
+                          </div>
+                          <div class="suggestions-list w-100"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Location Type
+                      </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse">
+                      <div class="accordion-body">
+                        <div class="input-check-container">
+                          <div class="input-group mb-3 w-50">
+                            <div class="input-group-text">
+                              <input class="form-check-input mt-0 filter-field" name="filterLocationType" type="checkbox" value="" aria-label="Checkbox for following text input"><label class="ms-2">Large city (>50,000 pop)</label>
+                            </div>
+                            
+                          </div>
+                          <div class="input-group mb-3 w-50">
+                            <div class="input-group-text">
+                              <input class="form-check-input mt-0 filter-field" name="filterLocationType" type="checkbox" value="" aria-label="Checkbox for following text input"><label class="ms-2">Midsize city (5,000 - 50,000 pop)</label>
+                            </div>
+                            
+                          </div>
+                          <div class="input-group mb-3 w-50">
+                            <div class="input-group-text">
+                              <input class="form-check-input mt-0 filter-field" name="filterLocationType" type="checkbox" value="" aria-label="Checkbox for following text input"><label class="ms-2">Small town (<5,000 pop)</label>
+                            </div>
+                            
+                          </div>
+
+                        </div>
+                        
+
+                        
+                      </div>
+                    </div>
+                  </div>
+                  --->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        Tuition
+                      </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse">
+                      <div class="accordion-body">
+                        <div class="double_range_slider_box">
+                          <div class="double_range_slider">
+                            <span class="range_track" id="range_track"></span>
+
+                            <input type="range" class="min input-amount filter-field" min="0" max="50000" value="0" step="500" name="tuitionRangeMinFilter">
+                            <input type="range" class="max input-amount filter-field-2" min="0" max="50000" value="10000" step="500" name="tuitionRangeMaxFilter">
+
+                            <div class="minvalue"></div>
+                            <div class="maxvalue"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-between align-items-center">
+              <a href="#" class="text-decoration-underline fs-6 primary-font-color clear-filter" data-filter="quiz">Clear Filters</a>
+              <button id="filter-submit" type="button" class="btn btn-primary filter-submit" data-filter="quiz" style="width:280px;">Show Results</button>
+            </div>
+          </div>
+        </div>
+      </div>
+       <style>
+        #filterOptionPanelQuiz .modal-dialog {
+          width: 50vw;
+          max-width: none; /* Important for Bootstrap 4/5 to override defaults */
+        }
+        @media (max-width: 768px) {
+          #filterOptionPanelQuiz .modal-dialog {
+            width: 90vw;
+            max-width: none; /* Important for Bootstrap 4/5 to override defaults */
+          }
+        }
+      </style>
     </section>
 
+    
+  
     <!-- Two-row section: top row 2 columns (image left), bottom row photo slider (5-up) -->
     <section class="two-row-section">
       <div class="container">
@@ -1317,7 +1440,7 @@
         object-fit: cover;
       }
     </style>
-    <section class="pt-0">
+    <section class="pt-0 overflow-visible">
       <div class="container promo-inner bg-light-blue">
         <div class="row align-items-center">
           <div class="promo-image col-lg-5 d-none d-lg-block">
@@ -1819,7 +1942,11 @@
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/ugo_dev/script/top_navigation.js"></script>
+    <script src="/ugo_dev/script/helper.js"></script> 
     <script src="/ugo_dev/script/quiz.js"></script>
+    <script src="/ugo_dev/script/range_slider.js"></script>
+    <script src="/ugo_dev/script/form_search.js"></script>
+    <script src="/ugo_dev/script/hero_search.js"></script>
     <script>
       // set current year
       document.getElementById("year").textContent = new Date().getFullYear();
@@ -1843,7 +1970,69 @@
         });
       })();
     </script>
-
+    <script>
+      setupAutocomplete('#heroStudyAreaSearchTerm', 'auto-area-study', [
+        "Agriculture",
+        "Anthropology",
+        "Architecture and Urban Planning",
+        "Aviation",
+        "Biology",
+        "Business / Management",
+        "Chemistry",
+        "Cosmetology / Esthetics",
+        "Creative Industries",
+        "Culinary Arts",
+        "ECE",
+        "Economics",
+        "Education",
+        "Engineering and Technology",
+        "Environmental Science",
+        "Film & Media Studies",
+        "Fine Arts",
+        "Health / Medicine / Pharmaceutical",
+        "Hospitality & Tourism",
+        "Humanities",
+        "Information Technology / Computer Sciences",
+        "Law",
+        "Maritime Studies",
+        "Mathematics",
+        "Natural Sciences",
+        "Performing Arts",
+        "Physics",
+        "Political Science",
+        "Science",
+        "Social Sciences",
+        "Sociology",
+        "Trades / Vocational",
+        "Finance",
+        "Marketing",
+        "Fashion"
+    ]);
+    </script>
+    <script>
+      $(document).ready(function() {
+        $('.university-logos').slick({
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            autoplay: true,
+            autoplaySpeed: 0, // Set to 0 for constant movement
+            speed: 8000,      // Adjust speed for the marquee effect
+            cssEase: 'linear',
+            infinite: true,
+            arrows: false,
+            dots: false,
+            pauseOnHover: false,
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 2
+                    }
+                }
+            ]
+        });
+      });
+    </script>
     <script>
       $(document).ready(function () {
         $(".photo-slider-track").slick({

@@ -12,14 +12,6 @@
 .testimonials .testimonial-item {
   position: relative;
   z-index: 1;
-  background: #fff;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
-  min-height: 180px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 .testimonials .testimonial-item:after {
   font-family: FontAwesome;
@@ -35,6 +27,16 @@
 }
 .testimonials .testimonial-item:nth-child(even):after {
   color: #163D5C;
+}
+.testimonials .testimonial-item {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .testimonials .testimonial-quote {
   font-weight: 400;

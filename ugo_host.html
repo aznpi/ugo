@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Blog List Template</title>
+    <title>Host Institution Template</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -25,11 +25,11 @@
       rel="stylesheet"
     />
     <link href="/ugo_dev/stylesheets/main.css" rel="stylesheet" />
-    <link href="/ugo_dev/stylesheets/blog.css" rel="stylesheet" />
     <link href="/ugo_dev/stylesheets/top_navigation.css" rel="stylesheet" />
     <link href="/ugo_dev/stylesheets/accordion.css" rel="stylesheet" />
     <link href="/ugo_dev/stylesheets/testimonials.css" rel="stylesheet" />
     <link href="/ugo_dev/stylesheets/boxes.css" rel="stylesheet" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -75,7 +75,7 @@
       }
     </style>
   </head>
-  <body class="ugo-template blog-template">
+  <body class="ugo-template">
     <!-- Navbar -->
     <nav
       class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm border-bottom"
@@ -370,461 +370,487 @@
     </nav>
 
     <!-- Hero -->
-    <section class="main-hero hero section-form slim-hero hero-form-bottom float-polygon float-polygon-top-right" style="background-color: #163D5C;">
+    <section class="main-hero hero section-form slim-hero float-polygon float-polygon-top-right" style=" background-image: url('/ugo_dev/images/img_host.png');background-size: cover; background-position: center center;background-repeat: no-repeat;">
       <div class="hero-inner">
         <div class="container h-100">
           <div class="row hero-row">
-           <div class="col-md-12 text-left align-items-center justify-content-start d-flex">
-                <h1 class="mb-0 position-relative" style="top:20px;">
-                  ELS Blog
+           <div class="col-md-12 d-flex justify-content-start align-items-center">
+            <div>
+                <h1 class="mb-0">
+                  Host Institution
                 </h1>
+            </div>
           </div>
         </div>
+
+      </div>
+    </section>
+
+<section class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 d-flex align-items-center justify-content-between">
+        
+        <img src="/ugo_dev/images/logo_els.png" width="86px" height="80px">
+        <div class="text-box ms-5">
+          <p>ELS has Language Centers located on the campuses of Colleges and Universities across the United States. Study English with ELS and you'll enjoy a unique American student experience with the opportunity to meet and connect with local college and university students while you take advantage of shared campus facilities, like student lounges, cafeterias, computer labs, and more!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="pt-0 section-form">
+      <div class="container">
         <div class="row">
-          <div class="col-md-12">
-            <div class="form-container full-form bg-white p-3 rounded-4 shadow position-relative" id="blog-list" style="top:60px">
-              <form>
-                <div class="input-form-group">
-                  <div class="blog-search d-flex align-items-center justify-content-start">
-                    <input
-                      type="text"
-                      name="blogSearchText"
-                      class="form-control"
-                      placeholder="What are you looking for?"
-                    />
-                    <button class="btn btn-blue btn-lg" type="submit">
-                      <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
+          <div class="col-md-12 filter-details-container">
+            <div>
+              <span id="result-number" class="me-3">36 Results</span>
+              <button id="filter-action" class="py-2 px-3 border-0 text-start" style="width:216px"  data-bs-toggle="modal" data-bs-target="#filterOptionPanel"><span>Filters(<span class="filter-count fw-bold">0</span>)</span></button>
+            </div>
+            <div>
+              <span class="me-3">Sort by</span>
+              <div class="dropdown">
+                <button id="sort-drop" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  -----
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Cost: Low to High</a></li>
+                  <li><a class="dropdown-item" href="#">Cost: High to Low</a></li>
+                  <li><a class="dropdown-item" href="#">School Name: A to Z</a></li>
+                  <li><a class="dropdown-item" href="#">School Name: Z to A</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row search-result-container" id="search-result-container">
+          <div class="col-md-3">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+             
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline w-100">Learn More</a>
+                
+              </div>
+            </div>
+          </div>
+           <div class="col-md-3">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+             
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline w-100">Learn More</a>
+                
+              </div>
+            </div>
+          </div>
+           <div class="col-md-3">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+             
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline w-100">Learn More</a>
+                
+              </div>
+            </div>
+          </div>
+           <div class="col-md-3">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+             
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline w-100">Learn More</a>
+                
+              </div>
+            </div>
+          </div>
+          
+           <div class="col-md-3">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+             
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline w-100">Learn More</a>
+                
+              </div>
+            </div>
+          </div>
+           <div class="col-md-3">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+             
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline w-100">Learn More</a>
+                
+              </div>
+            </div>
+          </div>
+           <div class="col-md-3">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+             
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline w-100">Learn More</a>
+                
+              </div>
+            </div>
+          </div>
+           <div class="col-md-3">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+             
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline w-100">Learn More</a>
+                
+              </div>
+            </div>
+          </div>
+           <div class="col-md-3">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+             
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline w-100">Learn More</a>
+                
+              </div>
+            </div>
+          </div>
+           <div class="col-md-3">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+             
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline w-100">Learn More</a>
+                
+              </div>
+            </div>
+          </div>
+           <div class="col-md-3">
+            <div class="box-card">
+              <div class="result-header">
+                <div class="title">
+                  <h5>Cleveland State University</h5>
+                  <p>Cleveland, Ohio</p>
+                </div>
+                <div class="logo-container">
+                  <img src="/ugo_dev/images/logos/logo_cleveland_state_university.png" class="img-fluid">
+                </div>
+              </div>
+              <div class="school-details">
+                <ul>
+                  <li class="tuition fw-bold">Average Tuition $7,524</li>
+                  <li class="ranking">Ranking, Special features, etc.</li>
+                </ul>
+                
+              </div>
+             
+              <div class="btn-container">
+                <a href="#" class="btn btn-outline w-100">Learn More</a>
+                
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+
+      </div>
+</section>
+<div class="modal fade simple-accordion" id="filterOptionPanel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="filterOptionPanelLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="px-4 py-4">
+        <div class="modal-header">
+          <h4 class="modal-title">Filters</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="accordion" id="filterSearchOptions">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  School
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show">
+                <div class="accordion-body">
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control input-search filter-field" placeholder="Search for a school" aria-label="School Name" aria-describedby="basic-addon2">
+                    <span class="input-group-text" id="basic-addon2"><i class="fa-solid fa-magnifying-glass"></i></span>
                   </div>
                 </div>
-              </form>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  City
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control input-search filter-field" placeholder="Search for a city" aria-label="City Name" aria-describedby="basic-addon2">
+                    <span class="input-group-text" id="basic-addon2"><i class="fa-solid fa-magnifying-glass"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  Location Type
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                  <div class="input-check-container">
+                    <div class="input-group mb-3 w-50">
+                      <div class="input-group-text">
+                        <input class="form-check-input mt-0 filter-field" name="filterLocationType" type="checkbox" value="" aria-label="Checkbox for following text input"><label class="ms-2">Large city (>50,000 pop)</label>
+                      </div>
+                      
+                    </div>
+                    <div class="input-group mb-3 w-50">
+                      <div class="input-group-text">
+                        <input class="form-check-input mt-0 filter-field" name="filterLocationType" type="checkbox" value="" aria-label="Checkbox for following text input"><label class="ms-2">Midsize city (5,000 - 50,000 pop)</label>
+                      </div>
+                      
+                    </div>
+                    <div class="input-group mb-3 w-50">
+                      <div class="input-group-text">
+                        <input class="form-check-input mt-0 filter-field" name="filterLocationType" type="checkbox" value="" aria-label="Checkbox for following text input"><label class="ms-2">Small town (<5,000 pop)</label>
+                      </div>
+                      
+                    </div>
+
+                  </div>
+                  
+
+                  
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  Tuition
+                </button>
+              </h2>
+              <div id="collapseFour" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                  <div class="double_range_slider_box">
+                    <div class="double_range_slider">
+                      <span class="range_track" id="range_track"></span>
+
+                      <input type="range" class="min input-amount filter-field" min="0" max="50000" value="0" step="500">
+                      <input type="range" class="max input-amount filter-field-2" min="0" max="50000" value="10000" step="500">
+
+                      <div class="minvalue"></div>
+                      <div class="maxvalue"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-
-    <section class="tag-nav pb-4">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <ul class="tag-nav-list d-flex align-items-center justify-content-between">
-              <li class="tag-all" onClick="window.open('#')">All</li>
-              <li class="tag-english-programs" onClick="window.open('#')">English Programs</li>
-              <li class="tag-student-stories" onClick="window.open('#')">Student Stories</li>
-              <li class="tag-travel-and-study" onClick="window.open('#')">Travel and Study</li>
-              <li class="tag-university-admissions" onClick="window.open('#')">University Admissions</li>
-              <li class="tag-english-learning-tips" onClick="window.open('#')">English Learning Tips</li>
-            </ul>
-          </div>
-        </div>
+      <div class="modal-footer d-flex justify-content-between align-items-center">
+        <a href="#" class="text-decoration-underline fs-6 primary-font-color clear-filter">Clear Filters</a>
+        <button id="filter-submit" type="button" class="btn btn-primary filter-submit" style="width:280px;">Show Results</button>
       </div>
-    </section>
-
-    <style>
-      ul.tag-nav-list li.tag-all:before{
-        background-image: url(/ugo_dev/images/icons/icon_tag_all.png);
+    </div>
+  </div>
+</div>
+<style>
+      #filterOptionPanel .modal-dialog {
+        width: 50vw;
+        max-width: none; /* Important for Bootstrap 4/5 to override defaults */
       }
-      ul.tag-nav-list li.tag-english-programs:before{
-        background-image: url(/ugo_dev/images/icons/icon_tag_english.png);
+      @media (max-width: 768px) {
+         #filterOptionPanel .modal-dialog {
+          width: 90vw;
+          max-width: none; /* Important for Bootstrap 4/5 to override defaults */
+        }
       }
-      ul.tag-nav-list li.tag-student-stories:before{
-        background-image: url(/ugo_dev/images/icons/icon_tag_student_stories.png);
-      }
-      ul.tag-nav-list li.tag-travel-and-study:before{
-        background-image: url(/ugo_dev/images/icons/icon_tag_travel.png);
-      }
-      ul.tag-nav-list li.tag-university-admissions:before{
-        background-image: url(/ugo_dev/images/icons/icon_tag_admissions.png);
-      }
-      ul.tag-nav-list li.tag-english-learning-tips:before{
-        background-image: url(/ugo_dev/images/icons/icon_tag_english_learning_tips.png);
-      }
-
     </style>
-
-    <section class="blog-feature pt-0">
-      <div class="container">
-        <div class="row align-items-center mb-4">
-          <div class="col-md-6 image-left">
-            <div class="image-container">
-              <img src="/ugo_dev/images/img_blog_feature.png" class="img-fluid">
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="description-container">
-              <div class="header d-flex justify-content-between">
-                <div class="tag">English Programs</div>
-                <div class="date">May 18, 2024</div>
-              </div>
-              <div class="text-box">
-                <h1>Stay Up To Date With Your English Skills With These Three Activities</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliquam mollis, leo in scelerisque consequat.</p>
-              </div>
-              <div class="bottom d-flex justify-content-between">
-                <div class="time-duration">6 MIN READ</div>
-                <div class="btn-container">
-                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="blog-list pt-0">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3 box-container">
-            <div class="image-container">
-              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
-            </div>
-            <div class="description-container">
-              <div class="header d-flex justify-content-between">
-                <div class="tag">English Programs</div>
-                <div class="date">May 18, 2024</div>
-              </div>
-              <div class="text-box">
-                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
-              </div>
-              <div class="bottom d-flex justify-content-between">
-                <div class="time-duration">6 MIN READ</div>
-                <div class="btn-container">
-                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 box-container">
-            <div class="image-container">
-              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
-            </div>
-            <div class="description-container">
-              <div class="header d-flex justify-content-between">
-                <div class="tag">English Programs</div>
-                <div class="date">May 18, 2024</div>
-              </div>
-              <div class="text-box">
-                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
-              </div>
-              <div class="bottom d-flex justify-content-between">
-                <div class="time-duration">6 MIN READ</div>
-                <div class="btn-container">
-                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 box-container">
-            <div class="image-container">
-              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
-            </div>
-            <div class="description-container">
-              <div class="header d-flex justify-content-between">
-                <div class="tag">English Programs</div>
-                <div class="date">May 18, 2024</div>
-              </div>
-              <div class="text-box">
-                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
-              </div>
-              <div class="bottom d-flex justify-content-between">
-                <div class="time-duration">6 MIN READ</div>
-                <div class="btn-container">
-                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 box-container">
-            <div class="image-container">
-              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
-            </div>
-            <div class="description-container">
-              <div class="header d-flex justify-content-between">
-                <div class="tag">English Programs</div>
-                <div class="date">May 18, 2024</div>
-              </div>
-              <div class="text-box">
-                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
-              </div>
-              <div class="bottom d-flex justify-content-between">
-                <div class="time-duration">6 MIN READ</div>
-                <div class="btn-container">
-                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 box-container">
-            <div class="image-container">
-              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
-            </div>
-            <div class="description-container">
-              <div class="header d-flex justify-content-between">
-                <div class="tag">English Programs</div>
-                <div class="date">May 18, 2024</div>
-              </div>
-              <div class="text-box">
-                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
-              </div>
-              <div class="bottom d-flex justify-content-between">
-                <div class="time-duration">6 MIN READ</div>
-                <div class="btn-container">
-                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 box-container">
-            <div class="image-container">
-              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
-            </div>
-            <div class="description-container">
-              <div class="header d-flex justify-content-between">
-                <div class="tag">English Programs</div>
-                <div class="date">May 18, 2024</div>
-              </div>
-              <div class="text-box">
-                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
-              </div>
-              <div class="bottom d-flex justify-content-between">
-                <div class="time-duration">6 MIN READ</div>
-                <div class="btn-container">
-                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 box-container">
-            <div class="image-container">
-              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
-            </div>
-            <div class="description-container">
-              <div class="header d-flex justify-content-between">
-                <div class="tag">English Programs</div>
-                <div class="date">May 18, 2024</div>
-              </div>
-              <div class="text-box">
-                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
-              </div>
-              <div class="bottom d-flex justify-content-between">
-                <div class="time-duration">6 MIN READ</div>
-                <div class="btn-container">
-                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 box-container">
-            <div class="image-container">
-              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
-            </div>
-            <div class="description-container">
-              <div class="header d-flex justify-content-between">
-                <div class="tag">English Programs</div>
-                <div class="date">May 18, 2024</div>
-              </div>
-              <div class="text-box">
-                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
-              </div>
-              <div class="bottom d-flex justify-content-between">
-                <div class="time-duration">6 MIN READ</div>
-                <div class="btn-container">
-                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 box-container">
-            <div class="image-container">
-              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
-            </div>
-            <div class="description-container">
-              <div class="header d-flex justify-content-between">
-                <div class="tag">English Programs</div>
-                <div class="date">May 18, 2024</div>
-              </div>
-              <div class="text-box">
-                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
-              </div>
-              <div class="bottom d-flex justify-content-between">
-                <div class="time-duration">6 MIN READ</div>
-                <div class="btn-container">
-                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 box-container">
-            <div class="image-container">
-              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
-            </div>
-            <div class="description-container">
-              <div class="header d-flex justify-content-between">
-                <div class="tag">English Programs</div>
-                <div class="date">May 18, 2024</div>
-              </div>
-              <div class="text-box">
-                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
-              </div>
-              <div class="bottom d-flex justify-content-between">
-                <div class="time-duration">6 MIN READ</div>
-                <div class="btn-container">
-                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 box-container">
-            <div class="image-container">
-              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
-            </div>
-            <div class="description-container">
-              <div class="header d-flex justify-content-between">
-                <div class="tag">English Programs</div>
-                <div class="date">May 18, 2024</div>
-              </div>
-              <div class="text-box">
-                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
-              </div>
-              <div class="bottom d-flex justify-content-between">
-                <div class="time-duration">6 MIN READ</div>
-                <div class="btn-container">
-                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 box-container">
-            <div class="image-container">
-              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
-            </div>
-            <div class="description-container">
-              <div class="header d-flex justify-content-between">
-                <div class="tag">English Programs</div>
-                <div class="date">May 18, 2024</div>
-              </div>
-              <div class="text-box">
-                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
-              </div>
-              <div class="bottom d-flex justify-content-between">
-                <div class="time-duration">6 MIN READ</div>
-                <div class="btn-container">
-                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 box-container item-hide">
-            <div class="image-container">
-              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
-            </div>
-            <div class="description-container">
-              <div class="header d-flex justify-content-between">
-                <div class="tag">English Programs</div>
-                <div class="date">May 18, 2024</div>
-              </div>
-              <div class="text-box">
-                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
-              </div>
-              <div class="bottom d-flex justify-content-between">
-                <div class="time-duration">6 MIN READ</div>
-                <div class="btn-container">
-                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 box-container item-hide">
-            <div class="image-container">
-              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
-            </div>
-            <div class="description-container">
-              <div class="header d-flex justify-content-between">
-                <div class="tag">English Programs</div>
-                <div class="date">May 18, 2024</div>
-              </div>
-              <div class="text-box">
-                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
-              </div>
-              <div class="bottom d-flex justify-content-between">
-                <div class="time-duration">6 MIN READ</div>
-                <div class="btn-container">
-                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 box-container item-hide">
-            <div class="image-container">
-              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
-            </div>
-            <div class="description-container">
-              <div class="header d-flex justify-content-between">
-                <div class="tag">English Programs</div>
-                <div class="date">May 18, 2024</div>
-              </div>
-              <div class="text-box">
-                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
-              </div>
-              <div class="bottom d-flex justify-content-between">
-                <div class="time-duration">6 MIN READ</div>
-                <div class="btn-container">
-                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 box-container item-hide">
-            <div class="image-container">
-              <img src="/ugo_dev/images/img_blog_list.png" class="img-fluid">
-            </div>
-            <div class="description-container">
-              <div class="header d-flex justify-content-between">
-                <div class="tag">English Programs</div>
-                <div class="date">May 18, 2024</div>
-              </div>
-              <div class="text-box">
-                <h3>New Micro-credentials at Greystone College Toronto & Vancouver</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet quam nulla. Aliquam erat volutpat. Aliq</p>
-              </div>
-              <div class="bottom d-flex justify-content-between">
-                <div class="time-duration">6 MIN READ</div>
-                <div class="btn-container">
-                  <a href="#" class="text-decoration-none fw-bold right-arrow">READ MORE</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 d-flex justify-content-center">
-            <div class="btn-container">
-              <button class="btn btn-primary btn-load-more" id="btn-load-more">Show More</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
    
-
+<section class="py-5 bg-light-grey section-form section-contact-form">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-9">
+            <h5 class="mb-4">Looking for quick answers? <a href="#">Visit our FAQ</a></h5>
+            <h3>Ask an Advisor for More Information</h3>
+            <div class="form-container">
+              <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+              <script>
+                hbspt.forms.create({
+                  portalId: "5020112",
+                  formId: "581db5f8-c9df-431c-a197-68c701699eb6",
+                  region: "na1"
+                });
+              </script>
+            </div>
+            
+          </div>
+          <div class="col-md-3 d-none d-md-block">
+            <div class="image-container float-right">
+              <img src="/ugo_dev/images/img_side_triangles.png" alt="Advisor" class="img-fluid" />
+            </div>
+        </div>
+      </div>
+    </section>
     <!-- Footer: 5-column menu -->
     <footer class="border-top">
       <div class="container py-5">
@@ -996,8 +1022,8 @@
     <script src="/ugo_dev/script/top_navigation.js"></script>
     <script src="/ugo_dev/script/form_search.js"></script>
     <script src="/ugo_dev/script/helper.js"></script>
-
     <script src="/ugo_dev/script/ranger_slider.js"></script>
+
 <script>
       // set current year
       document.getElementById("year").textContent = new Date().getFullYear();
@@ -1021,33 +1047,7 @@
         });
       })();
     </script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const loadMoreBtn = document.querySelector(".btn-load-more");
-        const hiddenItems = document.querySelectorAll(
-          ".item-hide"
-        );
-        let isExpanded = false;
-
-        loadMoreBtn.addEventListener("click", function (e) {
-          e.preventDefault();
-          if (!isExpanded) {
-            hiddenItems.forEach((item) => {
-              item.style.display = "block";
-            });
-            loadMoreBtn.textContent = "Show Less";
-            isExpanded = true;
-          } else {
-            hiddenItems.forEach((item) => {
-              item.style.display = "none";
-            });
-            loadMoreBtn.textContent = "Show More";
-            isExpanded = false;
-          }
-        });
-      });
-    </script>
-
+    
     
   </body>
 </html>

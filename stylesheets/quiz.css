@@ -3,10 +3,12 @@
 }
 #carouselQuiz.carousel {
   /* Custom CSS to make the fade transition faster (0.3 seconds) */
-  /* Ensure other necessary styles for the fade effect are correct */
 }
 #carouselQuiz.carousel .carousel-item {
   transition: opacity 0.3s ease-in-out;
+}
+#carouselQuiz.carousel {
+  /* Ensure other necessary styles for the fade effect are correct */
 }
 #carouselQuiz.carousel .carousel-fade .carousel-item {
   opacity: 0;
@@ -53,6 +55,7 @@
 #carouselQuiz .results-item .results-container {
   opacity: 0;
   transition: opacity 0.5;
+  min-height: 350px;
 }
 #carouselQuiz .input-form-group {
   padding: 0 5px;
@@ -99,16 +102,23 @@
   line-height: 24px;
   letter-spacing: 0%;
 }
-#carouselQuiz .input-form-group input[type=text], #carouselQuiz .input-form-group input[type=email] {
+#carouselQuiz .input-form-group input[type=text], #carouselQuiz .input-form-group input[type=email], #carouselQuiz .input-form-group input[type=tel] {
   border-radius: 10px;
   border-width: 1px;
   border-color: #2A2A2A;
+  width: 100%;
 }
 #carouselQuiz .input-group-radio {
   position: relative;
   white-space: nowrap;
   vertical-align: middle;
   display: table-cell;
+  width: 100%;
+}
+@media screen and (max-width: 768px) {
+  #carouselQuiz .input-group-radio {
+    width: 100%;
+  }
 }
 #carouselQuiz .input-group-radio.w-25:not(:nth-child(4n+1)) {
   padding: 0 10px;
@@ -180,12 +190,76 @@
   align-items: center;
   justify-content: center;
 }
+#carouselQuiz .student-info .input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+#carouselQuiz .student-info .input-group label {
+  margin-bottom: 10px;
+}
+#carouselQuiz .student-info .checkbox-line {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+#carouselQuiz .student-info .checkbox-line input[type=checkbox] {
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+  border: 1px solid #2A2A2A;
+  border-radius: 4px;
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+  background-color: white;
+  transition: background 0.2s ease-in-out;
+}
+#carouselQuiz .student-info .checkbox-line input[type=checkbox]::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  background-color: #2A2A2A;
+  /* This creates a simple "inner box" check. 
+  For a real "L" shaped checkmark, see the clip-path below */
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+#carouselQuiz .student-info .checkbox-line input[type=checkbox]:checked {
+  border-color: #2A2A2A;
+}
+#carouselQuiz .student-info .checkbox-line input[type=checkbox]:checked::after {
+  transform: scale(1);
+}
+#carouselQuiz .student-info .checkbox-line input[type=checkbox]:focus {
+  outline: 2px solid #2A2A2A;
+  outline-offset: 2px;
+}
+#carouselQuiz .student-info input[type=text], #carouselQuiz .student-info input[type=email], #carouselQuiz .student-info input[type=tel] {
+  border-radius: 10px;
+  border-width: 1px;
+  border-color: #2A2A2A;
+  width: 60%;
+}
+@media screen and (max-width: 768px) {
+  #carouselQuiz .student-info input[type=text], #carouselQuiz .student-info input[type=email], #carouselQuiz .student-info input[type=tel] {
+    width: 100%;
+  }
+}
 #carouselQuiz .school-results-list {
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
 }
 #carouselQuiz .school-results-list.slick-initialized {
   opacity: 1;
+}
+#carouselQuiz .school-results-list .slick-track {
+  display: flex !important;
+  justify-content: center;
 }
 #carouselQuiz .school-results-list .slick-prev, #carouselQuiz .school-results-list .slick-next {
   top: unset;
@@ -228,10 +302,38 @@
   display: flex;
   flex-wrap: nowrap;
 }
+#carouselQuiz .school-results-container .box-card {
+  margin-bottom: 30px;
+}
 #carouselQuiz .school-results-container .box-card .result-header {
   display: flex;
   justify-content: space-between;
   margin-bottom: 30px;
+  container-type: inline-size;
+}
+#carouselQuiz .school-results-container .box-card .result-header p {
+  line-height: 1.2;
+  /* Optional: use clamp to prevent it from getting too tiny or huge */
+  font-size: clamp(8px, 5.4cqw, 20px);
+}
+#carouselQuiz .school-results-container .box-card .result-header .title {
+  width: 65%;
+}
+#carouselQuiz .school-results-container .box-card .result-header .title h6 {
+  /* Optional: use clamp to prevent it from getting too tiny or huge */
+  font-size: clamp(13px, 8cqw, 20px);
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Number of lines to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#carouselQuiz .school-results-container .box-card .result-header .logo-container {
+  width: 35%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #carouselQuiz .school-results-container .box-card .school-details ul {
   padding-left: 0;
@@ -243,11 +345,11 @@
 }
 #carouselQuiz .school-results-container .box-card .btn-container a {
   width: 50%;
-  font-family: Source Sans Pro;
+  font-family: "Source Sans 3", sans-serif;
   font-weight: 700;
   font-style: Bold;
   font-size: 14px;
-  line-height: 20px;
+  line-height: 1.2;
   letter-spacing: 0%;
   text-align: center;
   min-width: unset;
@@ -258,6 +360,16 @@
 }
 #carouselQuiz .school-results-container .box-card .btn-container a:last-child {
   margin-left: 5px;
+}
+#carouselQuiz .university-logos img {
+  min-width: 100px;
+  max-height: 100px;
+  width: 100px;
+}
+#carouselQuiz .university-logos .slick-track {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
 }
 
 .bg-light-blue .btn-close {

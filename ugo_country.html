@@ -388,19 +388,19 @@
         <div class="row">
           <div class="col-md-12">
             <div class="form-container full-form bg-white p-3 rounded-4 shadow position-relative" id="hero-school-search" style="top:30px">
-              <form>
+              <form id="schoolSearchForm">
                 <input
-                  type="hidden"
-                  value=""
-                  name="heroSchoolPrimarySearch"
-                  required
-                />
-                <input type="hidden" value="" name="heroDegreeType" required />
+                      type="hidden"
+                      value=""
+                      name="school_country_search"
+                      required
+                      />
+                <input type="hidden" value="" name="degree_type_search" required />
                 <ul class="btn-list d-flex justify-content-between flex-wrap">
                   <li>
                     <a href="#" class="btn btn-grey btn-lg" data-value="USA"
                       >USA Schools</a
-                    >
+                      >
                   </li>
                   <li>
                     <a
@@ -408,12 +408,12 @@
                       class="btn btn-grey btn-lg"
                       data-value="Australia"
                       >Australia Schools</a
-                    >
+                      >
                   </li>
                   <li>
                     <a href="#" class="btn btn-grey btn-lg" data-value="Canada"
                       >Canada Schools</a
-                    >
+                      >
                   </li>
                   <li>
                     <a
@@ -421,50 +421,65 @@
                       class="btn btn-grey btn-lg"
                       data-value="English Courses"
                       >English Courses</a
-                    >
+                      >
                   </li>
                 </ul>
                 <div class="input-form-group mt-3">
                   <div>
                     <div class="dropdown">
                       <button
-                        class="btn dropdown-toggle bg-light-grey"
-                        type="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      >
+                              class="btn dropdown-toggle bg-light-grey"
+                              type="button"
+                              data-bs-toggle="dropdown"
+                              aria-expanded="false"
+                              >
                         Degree Type
                       </button>
                       <ul class="dropdown-menu">
-                        <li>
+                        
+                         <li>
                           <a
                             class="dropdown-item"
                             href="#"
-                            data-value="Undergraduate"
-                            >Undergraduate</a
-                          >
+                            data-value="Associate"
+                            >Associate</a
+                            >
                         </li>
                         <li>
                           <a
                             class="dropdown-item"
                             href="#"
-                            data-value="Graduate"
-                            >Graduate</a
-                          >
+                            data-value="Bachelor"
+                            >Bachelor</a
+                            >
+                        </li>
+                        <li>
+                          <a
+                            class="dropdown-item"
+                            href="#"
+                            data-value="Master"
+                            >Master</a
+                            >
                         </li>
                       </ul>
                     </div>
                   </div>
                   <div>
-                    <input
-                      type="text"
-                      name="heroStudyAreaSearchTerm"
-                      class="form-control bg-light-blue"
-                      placeholder="Search Area of Study"
-                    />
-                    <button class="btn btn-blue btn-lg" type="submit">
-                      <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
+                    <div class="autocomplete-container auto-area-study w-100">
+                      <div class="d-flex w-100">
+                        <input
+                              type="text"
+                              name="study_area_search"
+                              class="form-control"
+                              placeholder="Search Area of Study"
+                              id="heroStudyAreaSearchTerm"
+                              />
+                        <button class="btn btn-blue btn-lg" type="submit">
+                          <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                      </div>
+                      <div class="suggestions-list w-100"></div>
+                    </div>
                   </div>
                 </div>
               </form>
@@ -1202,7 +1217,8 @@
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/ugo_dev/script/top_navigation.js"></script>
-    <script src="/ugo_dev/script/form_search.js"></script>
+    <script src="/ugo_dev/script/helper.js"></script>
+    <script src="/ugo_dev/script/hero_search.js"></script>
     <script>
       // set current year
       document.getElementById("year").textContent = new Date().getFullYear();

@@ -63,6 +63,7 @@
         .results-container{
             opacity:0;
             transition: opacity .5;
+            min-height:350px;
         }
     }
 
@@ -116,11 +117,12 @@
 
         }
 
-        input[type=text],input[type=email]{
+        input[type=text],input[type=email],input[type=tel]{
                             
             border-radius: 10px;
             border-width: 1px;
             border-color:v.$secondary-color;
+            width: 100%;
 
         }
     }
@@ -129,6 +131,10 @@
             white-space: nowrap;
             vertical-align: middle;
             display: table-cell;
+            width: 100%;
+            @media screen and (max-width: 768px) {
+                width: 100%;
+            }
             &.w-25{
                 &:not(:nth-child(4n+1)){
                     padding: 0 10px;
@@ -227,16 +233,86 @@
                 }
             }
         }
-        .input-group {
-            
-        }
+        
 
-    
+    .student-info{
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            label{
+                margin-bottom: 10px;
+            }
+        }
+        .checkbox-line {
+            display: flex;
+            align-items: center;
+            cursor: pointer; // Makes the whole line feel interactive
+
+            input[type=checkbox] {
+                appearance: none; // Hides the default browser styling
+                -webkit-appearance: none;
+                
+                width: 25px;
+                height: 25px;
+                margin-right: 10px;
+                border: 1px solid v.$secondary-color;
+                border-radius: 4px; // Optional: adds a slight curve
+                display: grid;
+                place-content: center; // Centers the checkmark
+                cursor: pointer;
+                background-color: white;
+                transition: background 0.2s ease-in-out;
+
+                &::after {
+                    content: "";
+                    width: 12px;
+                    height: 12px;
+                    transform: scale(0); // Hidden by default
+                    transition: 120ms transform ease-in-out;
+                    background-color: v.$secondary-color; // Or any color you prefer
+                    
+                    /* This creates a simple "inner box" check. 
+                    For a real "L" shaped checkmark, see the clip-path below */
+                    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+                }
+
+                &:checked {
+                    border-color: v.$secondary-color;
+                    
+                    &::after {
+                        transform: scale(1); // Reveals the checkmark
+                    }
+                }
+                
+                &:focus {
+                    outline: 2px solid v.$secondary-color; // Good for accessibility
+                    outline-offset: 2px;
+                }
+            }
+        }
+        input[type=text],input[type=email],input[type=tel]{
+                            
+            border-radius: 10px;
+            border-width: 1px;
+            border-color:v.$secondary-color;
+            width: 60%;
+
+            @media screen and (max-width: 768px) {
+                width: 100%;
+            }
+
+        }
+    }
     .school-results-list{
         opacity: 0;
         transition: opacity 0.5s ease-in-out;        
         &.slick-initialized{
             opacity: 1;
+        }
+        .slick-track {
+            display: flex !important;
+            justify-content: center;
         }
         .slick-prev,.slick-next{
             top:unset;
@@ -286,11 +362,43 @@
             flex-wrap: nowrap;
         }
         .box-card{
+            margin-bottom:30px;
             .result-header{
                 display: flex;
                 justify-content: space-between;
                 margin-bottom: 30px;
+                container-type: inline-size;
+
+                p{
+                    line-height: 1.2;
+                    /* Optional: use clamp to prevent it from getting too tiny or huge */
+                    font-size: clamp(8px, 5.4cqw, 20px);
+                }
+
+                .title{
+                    width:65%;
+                    h6{
+                       
+                        /* Optional: use clamp to prevent it from getting too tiny or huge */
+                        font-size: clamp(13px, 8cqw, 20px);
+                        line-height: 1.2;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;           /* Number of lines to show */
+                        -webkit-box-orient: vertical;     
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        
+                    }
+                    
+                }
+                .logo-container{
+                    width: 35%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
             }
+            
             .school-details{
                 ul{
                     padding-left: 0;
@@ -303,11 +411,11 @@
 
                 a{
                     width: 50%;
-                    font-family: Source Sans Pro;
+                    font-family: v.$primary-font;
                     font-weight: 700;
                     font-style: Bold;
                     font-size: 14px;
-                    line-height: 20px;
+                    line-height: 1.2;
                     letter-spacing: 0%;
                     text-align: center;
                     min-width: unset;
@@ -323,6 +431,18 @@
 
                 }
             }
+        }
+    }
+    .university-logos{
+        img{
+            min-width: 100px;
+            max-height: 100px;
+            width:100px;
+        }
+        .slick-track {
+            display: flex !important;
+            justify-content: center;
+            align-items: center;
         }
     }
 }

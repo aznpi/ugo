@@ -4,10 +4,34 @@
     font-family: v.$primary-font;
     color:v.$secondary-color;
 
+    .container-fluid{
+        padding: 0;
+    }
     .primary-font-color{
         color:v.$secondary-color
     }
-
+    input:focus,
+    textarea:focus,
+    select:focus {
+        outline: none;
+    }
+    *:focus {
+        outline: none;
+    }
+    input:not([type="checkbox"]):focus {
+        outline: none; /* Removes the default outline */
+        border: 2px solid #000; /* Adds a custom border as a focus indicator */
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Optional: adds a subtle shadow */
+    }
+    input{
+        &[type="checkbox"]{
+            border-radius: 10px;
+            border-width: 1px;
+            border: 1px solid #DCDCDC;
+            padding: 10px 15px;
+            width: 20px;
+        }
+    }
     h1,h2{
         font-family: v.$title-font;
         font-weight: 500;
@@ -60,6 +84,10 @@
         letter-spacing: 0%;
         vertical-align: middle;
         color: v.$secondary-color;
+
+        &:last-child{
+            margin-bottom:0;
+        }
 
     }
     ul{
@@ -245,7 +273,7 @@
         &:not(.hero):not(.anchor-nav){
             padding: 5rem 0;
             z-index: 1;
-
+            overflow:hidden;
             .btn{
                 min-width: 240px;
             }
@@ -363,7 +391,7 @@
                     position: absolute;
                     width: 529px;
                     height: 481px;
-                    background-image: url('/ugo_dev/images/img_polygon.png');
+                    background-image: url(https://5020112.fs1.hubspotusercontent-na1.net/hubfs/5020112/UGO%20Website/template-resources/images/img_polygon.png);
                     background-repeat: no-repeat;
                     background-position: bottom right;
                     background-size: auto 100%;
@@ -383,8 +411,8 @@
             
         }
         &.slim-hero{
-            height: 245px;
-            padding-bottom: 0;
+            height: 300px;
+            padding-bottom: 0 !important;
             &.hero-form-bottom{
                 padding-bottom:100px;
             }
@@ -413,6 +441,11 @@
             .school-logo-container{
                 width: 120px;
                 height: 120px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #FFF;
+                padding: 0 10px;
             }
         }
         .hero-row {
@@ -475,8 +508,8 @@
                 &.btn-list{
                     a{
                         &.active{
-                            background-color: darken(#000, 10%);
-                            border-color: darken(#000, 10%);
+                            background-color: v.$light-blue-color;
+                            border-color: v.$light-blue-color;
                             color: #FFF;
                         }
                     }
@@ -543,6 +576,7 @@
                             border-radius: 0;
                             outline:0;
                             border:0;
+                            color: v.$grey-color;
                         }
                         button{
                             border-radius: 0 10px 10px 0;
@@ -610,15 +644,17 @@
     }
 
     .section-form{
-        input,textarea,select{
+        input:not([type=checkbox]),textarea,select{
             opacity: 1;
             border-radius: 10px;
             border-width: 1px;
-            border: 1px solid #DCDCDC
+            border: 1px solid #DCDCDC;
+            width:100%;
 
         }
         input,select{
             height: 48px;
+            
         }
         .form-container{
             &.full-form{
@@ -644,10 +680,7 @@
                                 flex: 1 1 auto;
                             }
                             &:first-child{
-                               width: 10% !important;
-                               @media (max-width: 768px){
-                                    width: 100%;
-                               } 
+                               
                             }
                             .btn,input{
                                 &:not(.btn-blue){
@@ -707,14 +740,29 @@
                     >.hs-form-field,>.hs-dependent-field{
                         width: 30%;
                     }
+                    ul{
+                        &.inputs-list{
+                            padding-left:0;
+                            margin: 0;;
+                        }
+                    }
                     .hs-message{
                         width:60%;
                         textarea{
                             height: 150px;
+                            width:100%;
                         }
                     }
                     .legal-consent-container, .hs-recaptcha,.hs-submit{
                         width:100%;
+                    }
+                    .legal-consent-container{
+                        margin-bottom: 0;
+                        .hs-form-booleancheckbox-display{
+                            input{
+                                width:25px;
+                            }
+                        } 
                     }
                     .hs-submit{
                         input{
@@ -756,6 +804,8 @@
                         display: flex;
                         margin-bottom: 10px;
                         width: 100%;
+                        align-items: center;
+                        margin: 0;
                     }
                     .hs-form-required{
                         display: none;
@@ -782,7 +832,7 @@
                 background: v.$light-grey-color;
                 &:after{
                     content: '';
-                    background-image: url(/ugo_dev/images/icons/icon_filter.png);
+                    background-image: url(https://5020112.fs1.hubspotusercontent-na1.net/hubfs/5020112/UGO%20Website/template-resources/images/icons/icon_filter.png);
                     background-size: cover;
                     background-repeat: no-repeat;
                     background-position: center;
@@ -829,6 +879,10 @@
         }
     }
 
+    .school-results-list{
+        width: 100% !important;
+        display: block !important;
+    }
     //Slick Slider Overrides
     .slick-slider-container {
         opacity: 0;
@@ -910,7 +964,16 @@
     .form-check-input.is-valid~.form-check-label, .was-validated .form-check-input:valid~.form-check-label{
         color: v.$secondary-color;
     }
-
-
+    .autocomplete-container {
+        position: relative;
+        width: 100%;
+    }
+    .suggestions-list { position: absolute; width: 100%; border: 1px solid #ccc; background: #fff;top:48px; z-index: 1000; display: none; max-height: 200px; overflow-y: auto; border-radius: 10px;}
+    .suggestion-item { 
+        padding: 10px; cursor: pointer;
+        color:v.$primary-color;
+        font-size:16px;
+     }
+    .suggestion-item:hover, .suggestion-active { background-color: #eee; }
 
 }

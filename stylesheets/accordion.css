@@ -24,7 +24,7 @@
   letter-spacing: 0%;
   color: #2A2A2A;
 }
-.simple-accordion#filterOptionPanel .accordion-header button {
+.simple-accordion#filterOptionPanel .accordion-header button, .simple-accordion#filterOptionPanelQuiz .accordion-header button {
   font-weight: 700;
   font-style: Bold;
   font-size: 20px;
@@ -33,13 +33,13 @@
   color: #2A2A2A;
   border-bottom: 1px solid #DCDCDC !important;
 }
-.simple-accordion#filterOptionPanel .accordion-body {
+.simple-accordion#filterOptionPanel .accordion-body, .simple-accordion#filterOptionPanelQuiz .accordion-body {
   padding: 0;
 }
-.simple-accordion#filterOptionPanel .accordion-item {
+.simple-accordion#filterOptionPanel .accordion-item, .simple-accordion#filterOptionPanelQuiz .accordion-item {
   border: 0;
 }
-.simple-accordion#filterOptionPanel .modal-footer {
+.simple-accordion#filterOptionPanel .modal-footer, .simple-accordion#filterOptionPanelQuiz .modal-footer {
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1019607843);
 }
 .simple-accordion .input-check-container {
@@ -173,7 +173,7 @@
 .search-results-accordion .filter-form .input-form-group > div:first-child .dropdown:first-child button {
   border-radius: 10px 0 0 10px;
 }
-.search-results-accordion .filter-form .input-form-group > div:first-child .dropdown:last-child button {
+.search-results-accordion .filter-form .input-form-group > div:first-child .dropdown:not(:first-child):not(:last-child) button {
   border-radius: 0;
 }
 .search-results-accordion .filter-form .input-form-group > div:first-child .dropdown .dropdown-menu {
@@ -245,6 +245,17 @@
   background-color: transparent;
   border: 1px solid #AAAAAA;
 }
+.search-results-accordion .accordion-item:first-of-type {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.search-results-accordion .accordion-item:last-of-type {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.search-results-accordion .accordion-item:not(:first-of-type) {
+  border-top: 1px solid #aaa;
+}
 .search-results-accordion .accordion-item.item-hide {
   display: none;
 }
@@ -286,7 +297,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   width: 100%;
   padding-left: 0;
 }
@@ -298,6 +309,7 @@
   background-color: #F2F2F2;
   border-radius: 10px;
   width: 278px;
+  margin-bottom: 15px;
 }
 @media screen and (max-width: 768px) {
   .search-results-accordion .accordion-item .accordion-body .result-info li {

@@ -1,11 +1,32 @@
 .ugo-template {
   font-family: "Source Sans 3", sans-serif;
   color: #2A2A2A;
-  /* Site hero: 600px height with image background and two columns */
-  /* Compensate with a negative margin on the parent container */
+}
+.ugo-template .container-fluid {
+  padding: 0;
 }
 .ugo-template .primary-font-color {
   color: #2A2A2A;
+}
+.ugo-template input:focus,
+.ugo-template textarea:focus,
+.ugo-template select:focus {
+  outline: none;
+}
+.ugo-template *:focus {
+  outline: none;
+}
+.ugo-template input:not([type=checkbox]):focus {
+  outline: none; /* Removes the default outline */
+  border: 2px solid #000; /* Adds a custom border as a focus indicator */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Optional: adds a subtle shadow */
+}
+.ugo-template input[type=checkbox] {
+  border-radius: 10px;
+  border-width: 1px;
+  border: 1px solid #DCDCDC;
+  padding: 10px 15px;
+  width: 20px;
 }
 .ugo-template h1, .ugo-template h2 {
   font-family: "Barlow Condensed", sans-serif;
@@ -54,6 +75,9 @@
   letter-spacing: 0%;
   vertical-align: middle;
   color: #2A2A2A;
+}
+.ugo-template p:last-child {
+  margin-bottom: 0;
 }
 .ugo-template ul {
   list-style: none;
@@ -226,6 +250,7 @@
 .ugo-template section:not(.hero):not(.anchor-nav) {
   padding: 5rem 0;
   z-index: 1;
+  overflow: hidden;
 }
 .ugo-template section:not(.hero):not(.anchor-nav) .btn {
   min-width: 240px;
@@ -326,6 +351,9 @@
     width: 70%;
   }
 }
+.ugo-template {
+  /* Site hero: 600px height with image background and two columns */
+}
 .ugo-template .main-hero {
   height: 600px;
   position: relative;
@@ -340,7 +368,7 @@
   position: absolute;
   width: 529px;
   height: 481px;
-  background-image: url("/ugo_dev/images/img_polygon.png");
+  background-image: url(https://5020112.fs1.hubspotusercontent-na1.net/hubfs/5020112/UGO%20Website/template-resources/images/img_polygon.png);
   background-repeat: no-repeat;
   background-position: bottom right;
   background-size: auto 100%;
@@ -352,8 +380,8 @@
   right: -155px;
 }
 .ugo-template .main-hero.slim-hero {
-  height: 245px;
-  padding-bottom: 0;
+  height: 300px;
+  padding-bottom: 0 !important;
 }
 .ugo-template .main-hero.slim-hero.hero-form-bottom {
   padding-bottom: 100px;
@@ -384,6 +412,11 @@
 .ugo-template .main-hero .hero-inner .school-logo-container {
   width: 120px;
   height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFF;
+  padding: 0 10px;
 }
 .ugo-template .main-hero .hero-row {
   height: 100%;
@@ -430,8 +463,8 @@
   color: #fff;
 }
 .ugo-template .hero #hero-school-search ul.btn-list a.active {
-  background-color: black;
-  border-color: black;
+  background-color: #0082C8;
+  border-color: #0082C8;
   color: #FFF;
 }
 .ugo-template .hero #hero-school-search .input-form-group {
@@ -488,6 +521,7 @@
   border-radius: 0;
   outline: 0;
   border: 0;
+  color: #7A7A7A;
 }
 .ugo-template .hero #hero-school-search .input-form-group > div:last-child button {
   border-radius: 0 10px 10px 0;
@@ -537,11 +571,12 @@
 .ugo-template .input-form-group .dropdown-toggle {
   background-color: #fff;
 }
-.ugo-template .section-form input, .ugo-template .section-form textarea, .ugo-template .section-form select {
+.ugo-template .section-form input:not([type=checkbox]), .ugo-template .section-form textarea, .ugo-template .section-form select {
   opacity: 1;
   border-radius: 10px;
   border-width: 1px;
   border: 1px solid #DCDCDC;
+  width: 100%;
 }
 .ugo-template .section-form input, .ugo-template .section-form select {
   height: 48px;
@@ -565,14 +600,6 @@
 .ugo-template .section-form .form-container.full-form.bg-white .input-form-group > div:first-child, .ugo-template .section-form .form-container.full-form.bg-white .input-form-group > div:last-child {
   width: auto;
   flex: 1 1 auto;
-}
-.ugo-template .section-form .form-container.full-form.bg-white .input-form-group > div:first-child {
-  width: 10% !important;
-}
-@media (max-width: 768px) {
-  .ugo-template .section-form .form-container.full-form.bg-white .input-form-group > div:first-child {
-    width: 100%;
-  }
 }
 .ugo-template .section-form .form-container.full-form.bg-white .input-form-group > div .btn:not(.btn-blue), .ugo-template .section-form .form-container.full-form.bg-white .input-form-group > div input:not(.btn-blue) {
   background-color: #F2F2F2;
@@ -624,14 +651,25 @@
 .ugo-template .section-form.section-contact-form .form-container form > .hs-form-field, .ugo-template .section-form.section-contact-form .form-container form > .hs-dependent-field {
   width: 30%;
 }
+.ugo-template .section-form.section-contact-form .form-container form ul.inputs-list {
+  padding-left: 0;
+  margin: 0;
+}
 .ugo-template .section-form.section-contact-form .form-container form .hs-message {
   width: 60%;
 }
 .ugo-template .section-form.section-contact-form .form-container form .hs-message textarea {
   height: 150px;
+  width: 100%;
 }
 .ugo-template .section-form.section-contact-form .form-container form .legal-consent-container, .ugo-template .section-form.section-contact-form .form-container form .hs-recaptcha, .ugo-template .section-form.section-contact-form .form-container form .hs-submit {
   width: 100%;
+}
+.ugo-template .section-form.section-contact-form .form-container form .legal-consent-container {
+  margin-bottom: 0;
+}
+.ugo-template .section-form.section-contact-form .form-container form .legal-consent-container .hs-form-booleancheckbox-display input {
+  width: 25px;
 }
 .ugo-template .section-form.section-contact-form .form-container form .hs-submit input.hs-button {
   width: 240px;
@@ -668,6 +706,8 @@
   display: flex;
   margin-bottom: 10px;
   width: 100%;
+  align-items: center;
+  margin: 0;
 }
 .ugo-template .section-form.section-contact-form .form-container form .hs-form-required {
   display: none;
@@ -691,7 +731,7 @@
 }
 .ugo-template .section-form .filter-details-container #filter-action:after {
   content: "";
-  background-image: url(/ugo_dev/images/icons/icon_filter.png);
+  background-image: url(https://5020112.fs1.hubspotusercontent-na1.net/hubfs/5020112/UGO%20Website/template-resources/images/icons/icon_filter.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -730,6 +770,10 @@
 .ugo-template .section-form .filter-details-container .dropdown .dropdown-menu {
   width: 100%;
 }
+.ugo-template .school-results-list {
+  width: 100% !important;
+  display: block !important;
+}
 .ugo-template .slick-slider-container {
   opacity: 0;
   visibility: hidden;
@@ -742,6 +786,9 @@
 .ugo-template .slick-slide {
   margin: 0 10px; /* Adjust 10px for your desired spacing */
 }
+.ugo-template {
+  /* Compensate with a negative margin on the parent container */
+}
 .ugo-template .slick-list {
   margin: 0 -10px;
 }
@@ -751,12 +798,12 @@
 .ugo-template .modal-header {
   border-color: #7A7A7A;
 }
-.ugo-template .modal-dialog {
-  /* Important for Bootstrap 4/5 to override defaults */
-}
 .ugo-template .modal-dialog.modal-50vw {
   width: 50vw;
   max-width: none;
+}
+.ugo-template .modal-dialog {
+  /* Important for Bootstrap 4/5 to override defaults */
 }
 .ugo-template .lds-loader {
   /* change color here */
@@ -804,4 +851,29 @@
 }
 .ugo-template .form-check-input.is-valid ~ .form-check-label, .ugo-template .was-validated .form-check-input:valid ~ .form-check-label {
   color: #2A2A2A;
+}
+.ugo-template .autocomplete-container {
+  position: relative;
+  width: 100%;
+}
+.ugo-template .suggestions-list {
+  position: absolute;
+  width: 100%;
+  border: 1px solid #ccc;
+  background: #fff;
+  top: 48px;
+  z-index: 1000;
+  display: none;
+  max-height: 200px;
+  overflow-y: auto;
+  border-radius: 10px;
+}
+.ugo-template .suggestion-item {
+  padding: 10px;
+  cursor: pointer;
+  color: #163D5C;
+  font-size: 16px;
+}
+.ugo-template .suggestion-item:hover, .ugo-template .suggestion-active {
+  background-color: #eee;
 }/*# sourceMappingURL=main.css.map */
