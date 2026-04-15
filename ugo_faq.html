@@ -80,31 +80,38 @@
       class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm border-bottom"
     >
       <div class="container">
-        <a class="navbar-brand text-dark" href="#"
-          ><img src="/ugo_dev/images/logo_ugo.png" alt="Logo"
-        /></a>
+        <a class="navbar-brand text-dark" href="#">
+          <img src="/ugo_dev/images/logo_ugo.png" alt="Logo"/>
+          
+      </a>
         <button
-          class="navbar-toggler"
+          class="navbar-toggler collapsed"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#nav"
-          aria-controls="nav"
+          data-bs-target="#navCollapse"
+          aria-controls="navCollapse"
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <div class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </button>
-        <div class="collapse navbar-collapse" id="nav">
+        <div class="collapse navbar-collapse" id="navCollapse">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="main-nav">
+
+            <!--Study Options-->
             <li class="nav-item dropdown">
               <a
-                class="nav-link dropdown"
+                class="nav-link dropdown-toggle"
                 href="#"
                 id="schoolsDropdown"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
-                >Schools</a
+                >Study Options</a
               >
               <div
                 class="dropdown-menu dropdown-menu-end"
@@ -122,7 +129,8 @@
                       </div>
                       <div class="link-title">Schools</div>
                     </div>
-                    <div class="col">
+                    <div class="col flex-column align-items-start justify-content-start">
+                      <h6>Study in USA</h6>
                       <ul class="link-list">
                         <li>
                           <a class="link-item" href="#"
@@ -141,7 +149,28 @@
                         </li>
                       </ul>
                     </div>
-                    <div class="col">
+                    <div class="col flex-column align-items-start justify-content-start">
+                      <h6>Study in Australia</h6>
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#"
+                            >Undergraduate - Associate degree</a
+                          >
+                        </li>
+                        <li>
+                          <a class="link-item" href="#"
+                            >Undergraduate - Bachelor's degree</a
+                          >
+                        </li>
+                        <li>
+                          <a class="link-item" href="#"
+                            >Graduate - Master's degree</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col flex-column align-items-start justify-content-start">
+                      <h6>Study in Canada</h6>
                       <ul class="link-list">
                         <li>
                           <a class="link-item" href="#"
@@ -154,7 +183,16 @@
                         </li>
                       </ul>
                     </div>
-                    <div class="col">
+                    <div class="col flex-column align-items-start justify-content-start">
+                      <h6>Study in Malaysia</h6>
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#"
+                            >Saudi Sponsored Students</a
+                          >
+                        </li>
+                      </ul>
+                      <h6>Study in Europe</h6>
                       <ul class="link-list">
                         <li>
                           <a class="link-item" href="#"
@@ -280,6 +318,8 @@
                 </div>
               </div>
             </li>
+
+            <!--Admissions-->
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -306,7 +346,8 @@
                       </div>
                       <div class="link-title">Admissions</div>
                     </div>
-                    <div class="col">
+                    <div class="col flex-column align-items-start justify-content-start">
+                      <h6>USA</h6>
                       <ul class="link-list">
                         <li>
                           <a class="link-item" href="#">Tuition & Fees</a>
@@ -318,12 +359,28 @@
                         </li>
                       </ul>
                     </div>
-                    <div class="col">
+                    <div class="col flex-column align-items-start justify-content-start">
+                      <h6>Australia</h6>
                       <ul class="link-list">
                         <li><a class="link-item" href="#">How to Apply</a></li>
                       </ul>
                     </div>
-                    <div class="col">
+                    <div class="col flex-column align-items-start justify-content-start">
+                      <h6>Canada</h6>
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#">Terms & Conditions</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col flex-column align-items-start justify-content-start">
+                      <h6>Malaysia</h6>
+                      <ul class="link-list">
+                        <li>
+                          <a class="link-item" href="#">Terms & Conditions</a>
+                        </li>
+                      </ul>
+                      <h6>Europe</h6>
                       <ul class="link-list">
                         <li>
                           <a class="link-item" href="#">Terms & Conditions</a>
@@ -334,9 +391,7 @@
                 </div>
               </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Login</a>
-            </li>
+          
             <li class="nav-item">
               <a class="nav-link" href="#">FAQ</a>
             </li>
@@ -367,6 +422,7 @@
         </div>
       </div>
     </nav>
+    <div class="navbar-backdrop"></div>
 
     <!-- Hero -->
     <section class="main-hero hero section-form slim-hero float-polygon float-polygon-top-right" style="background-color: #163D5C;">
@@ -473,15 +529,15 @@
    
 
     <!-- Footer: 5-column menu -->
-    <footer class="border-top">
+     <footer class="border-top">
       <div class="container py-5">
-        <div class="row">
-          <div class="col-6 col-md-3 mb-3">
-            <div class="image-container">
+        <div class="row footer-row">
+          <div class="col-md-3 mb-3 footer-column">
+            <div class="image-container mb-3">
               <img src="/ugo_dev/images/logo_ugo_footer.png" alt="Logo" />
             </div>
-            <h5>Our Network</h5>
-            <ul class="list-unstyled">
+            <h5 class="footer-heading">Our Network</h5>
+            <ul class="list-unstyled footer-nav">
               <li>
                 <a href="#" class="text-decoration-none"
                   >ELS Language Centers</a
@@ -502,9 +558,9 @@
               </li>
             </ul>
           </div>
-          <div class="col-6 col-md-3 mb-3">
-            <h5>Schools</h5>
-            <ul class="list-unstyled">
+          <div class="col-md-3 mb-3 footer-column">
+            <h5 class="footer-heading">Schools</h5>
+            <ul class="list-unstyled footer-nav">
               <li>
                 <a href="#" class="text-decoration-none"
                   >Undergraduate - Associate degree</a
@@ -538,9 +594,9 @@
               </li>
             </ul>
           </div>
-          <div class="col-6 col-md-2 mb-3">
-            <h5>Countries</h5>
-            <ul class="list-unstyled">
+          <div class="col-md-2 mb-3 footer-column">
+            <h5 class="footer-heading">Countries</h5>
+            <ul class="list-unstyled footer-nav">
               <li>
                 <a href="#" class="text-decoration-none">Australia</a>
               </li>
@@ -552,9 +608,9 @@
               </li>
             </ul>
           </div>
-          <div class="col-6 col-md-2 mb-3">
-            <h5>Services</h5>
-            <ul class="list-unstyled">
+          <div class="col-md-2 mb-3 footer-column">
+            <h5 class="footer-heading">Services</h5>
+            <ul class="list-unstyled footer-nav">
               <li>
                 <a href="#" class="text-decoration-none"
                   >Conditional Admission USA</a
@@ -585,9 +641,9 @@
               </li>
             </ul>
           </div>
-          <div class="col-6 col-md-2 mb-3">
-            <h5>Admissions</h5>
-            <ul class="list-unstyled">
+          <div class="col-md-2 mb-3 footer-column">
+            <h5 class="footer-heading">Admissions</h5>
+            <ul class="list-unstyled footer-nav">
               <li>
                 <a href="#" class="text-decoration-none">Tuition & Fees</a>
               </li>
@@ -621,8 +677,7 @@
             CRICOS Code: 02137M<br />
             Tara International Education Services Ltd trading as Berlitz Dublin
             Language Centre (registered number 548215) and/or ILSC Dublin
-          </div>
-          <div class="col-4 small mt-2">
+
             <ul class="sub-footer-links">
               <li class="d-inline me-3">
                 <a href="#" class="text-decoration-none">Privacy Policy</a>
@@ -631,6 +686,9 @@
                 <a href="#" class="text-decoration-none">Terms of Use</a>
               </li>
             </ul>
+          </div>
+          <div class="col-4 small mt-2">
+            
           </div>
         </div>
       </div>
@@ -641,6 +699,7 @@
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/ugo_dev/script/top_navigation.js"></script>
+    <script src="/ugo_dev/script/footer.js"></script>
     <script src="/ugo_dev/script/form_search.js"></script>
     <script src="/ugo_dev/script/helper.js"></script>
 

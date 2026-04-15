@@ -34,6 +34,10 @@
 .ugo-template.blog-template .blog-post h1 {
   margin-top: 30px;
 }
+.ugo-template.blog-template .blog-post .post-container .post-main-image .image-container {
+  height: 400px;
+  width: 100%;
+}
 .ugo-template.blog-template .blog-post .breadcrumbs {
   font-weight: 400;
   font-style: Regular;
@@ -165,6 +169,9 @@
 .ugo-template.blog-template .blog-post .post-side-menu .form-container input {
   width: 100% !important;
   border-radius: 10px 0 0 10px;
+  height: -webkit-fill-available;
+  height: -moz-available;
+  height: stretch;
 }
 .ugo-template.blog-template .blog-post .post-side-menu .form-container button {
   width: unset;
@@ -177,6 +184,7 @@
 .ugo-template.blog-template .blog-list .image-container {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  height: 200px;
 }
 .ugo-template.blog-template .blog-list .description-container {
   padding: 15px 20px;
@@ -198,6 +206,9 @@
 .ugo-template.blog-template .blog-feature .description-container {
   padding: 0 30px;
 }
+.ugo-template.blog-template .blog-feature .image-container {
+  height: 450px;
+}
 .ugo-template.blog-template .blog-feature .row {
   border: 1px solid #DCDCDC;
   border-radius: 10px;
@@ -210,14 +221,33 @@
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
-.ugo-template.blog-template .main-hero.section-form .form-container.full-form.bg-white .input-form-group > div.blog-search {
+.ugo-template.blog-template .section-form .form-container.full-form.bg-white .input-form-group {
+  margin-top: 0;
+}
+.ugo-template.blog-template .section-form .form-container.full-form.bg-white .input-form-group > div.blog-search {
   width: 100% !important;
 }
-.ugo-template.blog-template .main-hero.section-form .form-container.full-form.bg-white .input-form-group > div.blog-search input[name=blogSearchText] {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+.ugo-template.blog-template .section-form .form-container.full-form.bg-white .input-form-group > div.blog-search input[name=term] {
+  border-radius: 10px 0 0 10px;
 }
-.ugo-template.blog-template .main-hero.section-form .form-container.full-form.bg-white .input-form-group > div.blog-search button {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+.ugo-template.blog-template .section-form .form-container.full-form.bg-white .input-form-group > div.blog-search button {
+  border-radius: 0 10px 10px 0;
+}
+.ugo-template.blog-template ul.tag-nav-list li.tag-all:before {
+  background-image: url(https://5020112.fs1.hubspotusercontent-na1.net/hubfs/5020112/UGO/template-resources/images/icons/icon_tag_all.png);
+}
+.ugo-template.blog-template ul.tag-nav-list li.tag-english-programs:before {
+  background-image: url(https://5020112.fs1.hubspotusercontent-na1.net/hubfs/5020112/UGO/template-resources/images/icons/icon_tag_english.png);
+}
+.ugo-template.blog-template ul.tag-nav-list li.tag-student-stories:before {
+  background-image: url(https://5020112.fs1.hubspotusercontent-na1.net/hubfs/5020112/UGO/template-resources/images/icons/icon_tag_student_stories.png);
+}
+.ugo-template.blog-template ul.tag-nav-list li.tag-travel-and-study:before {
+  background-image: url(https://5020112.fs1.hubspotusercontent-na1.net/hubfs/5020112/UGO/template-resources/images/icons/icon_tag_travel.png);
+}
+.ugo-template.blog-template ul.tag-nav-list li.tag-university-admissions:before {
+  background-image: url(https://5020112.fs1.hubspotusercontent-na1.net/hubfs/5020112/UGO/template-resources/images/icons/icon_tag_admissions.png);
+}
+.ugo-template.blog-template ul.tag-nav-list li.tag-english-learning-tips:before {
+  background-image: url(https://5020112.fs1.hubspotusercontent-na1.net/hubfs/5020112/UGO/template-resources/images/icons/icon_tag_english_learning_tips.png);
 }/*# sourceMappingURL=blog.css.map */

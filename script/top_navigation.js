@@ -54,3 +54,21 @@ $('#main-nav .navbar-nav .dropdown').on('shown.bs.dropdown', function() {
     $('ul.navbar-nav').removeClass('menu-hide');
     $magicLineTarget.addClass('magic-active');
 });
+
+
+const myCollapse = document.getElementById('navCollapse'); // Use your actual ID
+const backdrop = document.querySelector('.navbar-backdrop');
+
+myCollapse.addEventListener('show.bs.collapse', () => {
+    backdrop.classList.add('show');
+});
+
+myCollapse.addEventListener('hide.bs.collapse', () => {
+    backdrop.classList.remove('show');
+});
+
+// Close menu if user clicks the backdrop
+backdrop.addEventListener('click', () => {
+    const bsCollapse = new bootstrap.Collapse(myCollapse);
+    bsCollapse.hide();
+});

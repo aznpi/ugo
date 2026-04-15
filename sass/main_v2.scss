@@ -1,0 +1,313 @@
+@use 'variables' as v;
+
+// --- 1. Responsive Breakpoints & Mixins ---
+$breakpoints: (
+  'xs': 480px,
+  'sm': 768px,
+  'md': 992px,
+  'lg': 1200px,
+  'xl': 1440px
+);
+
+@mixin mq($key) {
+  $size: map-get($breakpoints, $key);
+  @media screen and (max-width: $size) {
+    @content;
+  }
+}
+
+// --- 2. Global Template Styles ---
+.ugo-template {
+    font-family: v.$primary-font;
+    color: v.$secondary-color;
+    overflow-x: hidden; // Prevents accidental horizontal scroll on mobile
+
+    .container-fluid {
+        padding: 0;
+    }
+
+    .container-xl {
+        max-width: 1440px; // Scaled down from 2500px for better readability
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    // --- 3. Fluid Typography ---
+    // Uses clamp(min, preferred, max) to scale smoothly between mobile and desktop
+    h1, h2 {
+        font-family: v.$title-font;
+        font-weight: 500;
+        font-size: clamp(2rem, 5vw, 3rem); // 32px to 48px
+        line-height: 1.2;
+        margin-bottom: clamp(1.5rem, 4vw, 3rem);
+        text-transform: capitalize;
+    }
+
+    h3 {
+        font-family: v.$title-font;
+        font-weight: 500;
+        font-size: clamp(1.5rem, 3vw, 2rem); // 24px to 32px
+        line-height: 1.25;
+        margin-bottom: 1.875rem;
+    }
+
+    h5 {
+        font-weight: 700;
+        font-size: 1.5rem; // 24px
+        line-height: 1.3;
+    }
+
+    h6 {
+        font-weight: 700;
+        font-size: 1.25rem; // 20px
+        line-height: 1.4;
+    }
+
+    p {
+        font-weight: 400;
+        font-size: 1rem; // 16px
+        line-height: 1.6;
+        color: v.$secondary-color;
+        margin-bottom: 1rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    // --- 4. Buttons & Interactive Elements ---
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        padding: 12px 24px;
+        font-family: v.$primary-font;
+        font-weight: 700;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        width: auto;
+
+        @include mq('sm') {
+            width: 100%; // Stack buttons on mobile
+            margin-bottom: 10px;
+        }
+
+        &:hover {
+            font-size: 1.06rem; // Matches your 17px logic
+        }
+
+        &.btn-primary {
+            background-color: v.$primary-color;
+            border: 1px solid v.$primary-color;
+            color: #fff;
+            &:hover { background: darken(v.$primary-color, 10%); }
+        }
+
+        &.btn-white {
+            background: #fff;
+            color: v.$light-blue-color;
+            &:hover { background: darken(#fff, 5%); }
+        }
+
+        &.btn-outline {
+            border: 1px solid v.$primary-color;
+            background: transparent;
+            color: v.$primary-color;
+            &:hover {
+                background: v.$primary-color;
+                color: #fff;
+            }
+        }
+    }
+
+    // --- 5. Forms & Inputs ---
+    input:not([type="checkbox"]), 
+    textarea, 
+    select {
+        width: 100%;
+        border-radius: 10px;
+        border: 1px solid #DCDCDC;
+        padding: 10px 15px;
+        transition: border-color 0.2s, box-shadow 0.2s;
+
+        &:focus {
+            outline: none;
+            border-color: #000;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    .student-info {
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.5rem;
+        }
+
+        input[type=text], input[type=email], input[type=tel] {
+            width: 100%; // Mobile first
+            @media screen and (min-width: 768px) {
+                width: 60%;
+            }
+        }
+    }
+
+    // Custom Checkbox Logic
+    .checkbox-line {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+
+        input[type="checkbox"] {
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border: 1px solid v.$secondary-color;
+            border-radius: 4px;
+            display: grid;
+            place-content: center;
+            background: #fff;
+
+            &::after {
+                content: "";
+                width: 12px;
+                height: 12px;
+                transform: scale(0);
+                transition: 120ms transform ease-in-out;
+                background-color: v.$secondary-color;
+                clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+            }
+
+            &:checked::after {
+                transform: scale(1);
+            }
+        }
+    }
+
+    // --- 6. Hero & Sections ---
+    .main-hero {
+        min-height: 600px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        background-size: cover;
+        background-position: center;
+
+        @include mq('sm') {
+            min-height: 450px;
+            padding: 50px 0;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+            z-index: 1;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+    }
+
+    section:not(.hero) {
+        padding: clamp(3rem, 10vw, 5rem) 0;
+    }
+
+    // --- 7. Images & Layout Helpers ---
+    .image-container {
+        border-radius: 10px;
+        overflow: hidden;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .row-reverse {
+        @media screen and (min-width: 768px) {
+            flex-direction: row-reverse;
+        }
+    }
+
+    // Grid-based image containers for responsiveness
+    .image-left, .image-right {
+        .image-box {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 10px;
+            overflow: hidden;
+
+            @include mq('sm') {
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+    // --- 8. Tables ---
+    .table-container {
+        overflow-x: auto; // Crucial for mobile
+        -webkit-overflow-scrolling: touch;
+
+        table {
+            width: 100%;
+            min-width: 600px; // Prevents table data from squishing too much
+            border-collapse: separate;
+            border: 1px solid #AAAAAA;
+            border-radius: 10px;
+            overflow: hidden;
+
+            td {
+                padding: 12px 15px;
+                border-bottom: 1px solid #AAAAAA;
+            }
+
+            tr:last-child td {
+                border-bottom: none;
+            }
+        }
+    }
+
+    // --- 9. Footer ---
+    footer {
+        background-color: v.$primary-color;
+        color: #fff;
+        padding: 60px 0 20px;
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            
+            @include mq('sm') {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        ul {
+            padding: 0;
+            list-style: none;
+            
+            &.sub-footer-links {
+                display: flex;
+                gap: 20px;
+                @include mq('sm') { justify-content: center; }
+            }
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+            &:hover { text-decoration: underline; }
+        }
+    }
+}

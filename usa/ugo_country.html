@@ -86,38 +86,31 @@
       class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm border-bottom"
     >
       <div class="container">
-        <a class="navbar-brand text-dark" href="#">
-          <img src="/ugo_dev/images/logo_ugo.png" alt="Logo"/>
-          
-      </a>
+        <a class="navbar-brand text-dark" href="#"
+          ><img src="/ugo_dev/images/logo_ugo.png" alt="Logo"
+        /></a>
         <button
-          class="navbar-toggler collapsed"
+          class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#navCollapse"
-          aria-controls="navCollapse"
+          data-bs-target="#nav"
+          aria-controls="nav"
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <div class="hamburger-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
+          <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navCollapse">
+        <div class="collapse navbar-collapse" id="nav">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="main-nav">
-
-            <!--Study Options-->
             <li class="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle"
+                class="nav-link dropdown"
                 href="#"
                 id="schoolsDropdown"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
-                >Study Options</a
+                >Schools</a
               >
               <div
                 class="dropdown-menu dropdown-menu-end"
@@ -135,8 +128,7 @@
                       </div>
                       <div class="link-title">Schools</div>
                     </div>
-                    <div class="col flex-column align-items-start justify-content-start">
-                      <h6>Study in USA</h6>
+                    <div class="col">
                       <ul class="link-list">
                         <li>
                           <a class="link-item" href="#"
@@ -155,28 +147,7 @@
                         </li>
                       </ul>
                     </div>
-                    <div class="col flex-column align-items-start justify-content-start">
-                      <h6>Study in Australia</h6>
-                      <ul class="link-list">
-                        <li>
-                          <a class="link-item" href="#"
-                            >Undergraduate - Associate degree</a
-                          >
-                        </li>
-                        <li>
-                          <a class="link-item" href="#"
-                            >Undergraduate - Bachelor's degree</a
-                          >
-                        </li>
-                        <li>
-                          <a class="link-item" href="#"
-                            >Graduate - Master's degree</a
-                          >
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="col flex-column align-items-start justify-content-start">
-                      <h6>Study in Canada</h6>
+                    <div class="col">
                       <ul class="link-list">
                         <li>
                           <a class="link-item" href="#"
@@ -189,16 +160,7 @@
                         </li>
                       </ul>
                     </div>
-                    <div class="col flex-column align-items-start justify-content-start">
-                      <h6>Study in Malaysia</h6>
-                      <ul class="link-list">
-                        <li>
-                          <a class="link-item" href="#"
-                            >Saudi Sponsored Students</a
-                          >
-                        </li>
-                      </ul>
-                      <h6>Study in Europe</h6>
+                    <div class="col">
                       <ul class="link-list">
                         <li>
                           <a class="link-item" href="#"
@@ -324,8 +286,6 @@
                 </div>
               </div>
             </li>
-
-            <!--Admissions-->
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -352,8 +312,7 @@
                       </div>
                       <div class="link-title">Admissions</div>
                     </div>
-                    <div class="col flex-column align-items-start justify-content-start">
-                      <h6>USA</h6>
+                    <div class="col">
                       <ul class="link-list">
                         <li>
                           <a class="link-item" href="#">Tuition & Fees</a>
@@ -365,28 +324,12 @@
                         </li>
                       </ul>
                     </div>
-                    <div class="col flex-column align-items-start justify-content-start">
-                      <h6>Australia</h6>
+                    <div class="col">
                       <ul class="link-list">
                         <li><a class="link-item" href="#">How to Apply</a></li>
                       </ul>
                     </div>
-                    <div class="col flex-column align-items-start justify-content-start">
-                      <h6>Canada</h6>
-                      <ul class="link-list">
-                        <li>
-                          <a class="link-item" href="#">Terms & Conditions</a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="col flex-column align-items-start justify-content-start">
-                      <h6>Malaysia</h6>
-                      <ul class="link-list">
-                        <li>
-                          <a class="link-item" href="#">Terms & Conditions</a>
-                        </li>
-                      </ul>
-                      <h6>Europe</h6>
+                    <div class="col">
                       <ul class="link-list">
                         <li>
                           <a class="link-item" href="#">Terms & Conditions</a>
@@ -397,7 +340,9 @@
                 </div>
               </div>
             </li>
-          
+            <li class="nav-item">
+              <a class="nav-link" href="#">Login</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="#">FAQ</a>
             </li>
@@ -428,7 +373,6 @@
         </div>
       </div>
     </nav>
-    <div class="navbar-backdrop"></div>
 
     <!-- Hero -->
     <section class="main-hero hero hero-home section-form" style=" background-image: url('/ugo_dev/images/img_golden_gate.jpg');background-size: cover; background-position: top center;">
@@ -1205,7 +1149,7 @@
    
 
     <!-- Footer: 5-column menu -->
-     <footer class="border-top">
+   <footer class="border-top">
       <div class="container py-5">
         <div class="row footer-row">
           <div class="col-md-3 mb-3 footer-column">

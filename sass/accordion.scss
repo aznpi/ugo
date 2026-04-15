@@ -1,5 +1,22 @@
 @use "variables" as v;
 
+// --- 1. Responsive Breakpoints & Mixins ---
+$breakpoints: (
+  'xs': 480px,
+  'sm': 768px,
+  'md': 992px,
+  'lg': 1200px,
+  'xl': 1440px
+);
+
+@mixin mq($key) {
+  $size: map-get($breakpoints, $key);
+  @media screen and (max-width: $size) {
+    @content;
+  }
+}
+
+
 .simple-accordion {
 	.accordion-button {
 		font-weight: 700;
@@ -69,7 +86,8 @@
 			&.input-search{
 				
 				position: relative;
-				border-right:0
+				border-right:0;
+				height: 48px;
 				
 			}
 		}
@@ -145,7 +163,10 @@
 
 		.minvalue {
 			position: absolute;
-			padding: 6px 15px;
+			padding: 6px 0px;
+			text-align: center;
+			min-width: 75px;
+			max-width: 100px;
 			background: v.$light-blue-color;
 			border-radius: 1rem;
 			color: white;
@@ -158,7 +179,10 @@
 		}
 		.maxvalue {
 			position: absolute;
-			padding: 6px 15px;
+			padding: 6px 0px;
+			text-align: center;
+			min-width: 75px;
+			max-width: 100px;
 			background: v.$light-blue-color;
 			border-radius: 1rem;
 			color: white;
@@ -181,6 +205,10 @@
 				align-items: stretch;
 				color: v.$primary-color;
 				text-align: left;
+
+				@include mq('sm') {
+					flex-direction: column;
+				}
 				>div{
 					
 					&:first-child{
@@ -190,8 +218,18 @@
 						width:35%;
 						text-align: left;
 
+						@include mq('sm') {
+							flex-direction: column;
+							width:100%;
+							align-items: stretch;
+						}
+
 						.dropdown{
 							width:50%;
+							@include mq('sm') {
+								margin-bottom: 10px;
+								width:100%;
+							}
 
 							&:first-child{
 								button{
@@ -217,6 +255,11 @@
 								align-items: center;
 								justify-content: space-between;
 								padding-left:30px;
+								height: 60px;
+
+								@include mq('sm') {
+									border-radius: 10px !important;
+								}
 
 								&:focus{
 									box-shadow:none;
@@ -232,6 +275,10 @@
 									border: 0;
 									right: 0;
 								}
+								&:hover{
+									transform: scale(1) !important;
+									font-size:1.375rem !important
+								}
 							}
 						}
 					}
@@ -239,19 +286,31 @@
 						width: 65%;
 						display: flex;
 						align-items: center;
+						@include mq('sm') {
+							width: 100%;
+						}
 
 						input{
 							background-color: v.$light-grey-color;
-							padding:10px 30px;
+							padding:12px 30px;
 							border:1px solid v.$light-grey-color;
-							border-radius:0 0;
+							border-radius:0;
 							text-align: left;
+							height: 60px;
+							@include mq('sm') {
+								border-radius: 10px 0 0 10px !important;
+							}
 						}
 						button{
 							min-width: 48px;
 							width:48px;
 							background-color: v.$light-blue-color;
 							border-radius:0 10px 10px 0;
+							height: 100%;
+							@include mq('sm') {
+								margin-bottom:0;
+								height: 48px;
+							}
 						}
 					}
 				}
@@ -264,12 +323,28 @@
 		line-height: 28px;
 		letter-spacing: 0%;
 		color: v.$primary-color;
+		position: relative;
+		
 		&:not(.collapsed) {
 			background-color: transparent;
 			color: v.$primary-color;
 		}
 		&:focus {
 			box-shadow: none;
+		}
+		&:before{
+			content:'[close]';
+			font-size: 14px;
+			color: v.$primary-color;
+			position:absolute;
+			right:0;
+			top: -20px;
+			cursor: pointer;				
+		}
+		&[aria-expanded="false"]{
+			&:before{
+				content:'[open]';		
+			}
 		}
 	}
 	.accordion-item{
@@ -307,7 +382,8 @@
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
-				padding: 0;
+				padding:10px 0;
+
 				&:after{
 					display: none;
 				}
@@ -379,5 +455,13 @@
 				}
 			}
 		}
+		@include mq('sm'){
+			.btn-container{
+				.btn{
+					max-width:75px;
+				}
+			}
+		}
+
 	}
 }

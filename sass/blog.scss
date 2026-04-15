@@ -63,6 +63,14 @@
             h1{
                 margin-top:30px;
             }
+            .post-container{
+                .post-main-image{
+                    .image-container{
+                        height:400px;
+                        width:100%;
+                    }
+                }
+            }
             .breadcrumbs{
                 font-weight: 400;
                 font-style: Regular;
@@ -215,6 +223,7 @@
                     input{
                         width: 100% !important;
                         border-radius: 10px 0 0 10px;
+                        height: stretch;
                     }
                     button{
                         width: unset;
@@ -233,6 +242,7 @@
             .image-container{
                 border-bottom-left-radius: 0;
                 border-bottom-right-radius: 0;
+                height:200px;
             }
             .description-container{
                 padding:15px 20px;
@@ -258,6 +268,9 @@
             .description-container{
                 padding:0 30px;
             }
+            .image-container{
+                height: 450px;
+            }
             .row{
                 border: 1px solid #DCDCDC;
                 border-radius: 10px;
@@ -277,26 +290,24 @@
             }
         }
         
-        .main-hero{
-            &.section-form{
-                .form-container{
-                    &.full-form{
-                        &.bg-white{
-                            .input-form-group{
-                                >div{
-                                    &.blog-search{
-                                        width:100% !important;
+        
+        .section-form{
+            .form-container{
+                &.full-form{
+                    &.bg-white{
+                        .input-form-group{
+                            margin-top:0;
+                            >div{
+                                &.blog-search{
+                                    width:100% !important;
 
-                                        input{
-                                            &[name=blogSearchText]{
-                                                border-top-right-radius: 0;
-                                                border-bottom-right-radius: 0;
-                                            }
+                                    input{
+                                        &[name=term]{
+                                            border-radius: 10px 0 0 10px;
                                         }
-                                        button{
-                                            border-top-left-radius: 0;
-                                            border-bottom-left-radius: 0;
-                                        }
+                                    }
+                                    button{
+                                        border-radius: 0 10px 10px 0;
                                     }
                                 }
                             }
@@ -305,6 +316,42 @@
                 }
             }
         }
+        
+
+
+        ul.tag-nav-list {
+            li.tag-all {
+                &:before {
+                    background-image: url(https://5020112.fs1.hubspotusercontent-na1.net/hubfs/5020112/UGO/template-resources/images/icons/icon_tag_all.png);
+                }
+            }
+            li.tag-english-programs {
+                &:before {
+                    background-image: url(https://5020112.fs1.hubspotusercontent-na1.net/hubfs/5020112/UGO/template-resources/images/icons/icon_tag_english.png);
+                }
+            }
+            li.tag-student-stories {
+                &:before {
+                    background-image: url(https://5020112.fs1.hubspotusercontent-na1.net/hubfs/5020112/UGO/template-resources/images/icons/icon_tag_student_stories.png);
+                }
+            }
+            li.tag-travel-and-study {
+                &:before {
+                    background-image: url(https://5020112.fs1.hubspotusercontent-na1.net/hubfs/5020112/UGO/template-resources/images/icons/icon_tag_travel.png);
+                }
+            }
+            li.tag-university-admissions {
+                &:before {
+                    background-image: url(https://5020112.fs1.hubspotusercontent-na1.net/hubfs/5020112/UGO/template-resources/images/icons/icon_tag_admissions.png);
+                }
+            }
+            li.tag-english-learning-tips {
+                &:before {
+                    background-image: url(https://5020112.fs1.hubspotusercontent-na1.net/hubfs/5020112/UGO/template-resources/images/icons/icon_tag_english_learning_tips.png);
+                }
+            }
+        }
+
 
     }
 }

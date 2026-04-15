@@ -1,6 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const heroName = urlParams.get('quiz_first_name');
+    const queryFilters = [{
+        study_area_search: urlParams.get('school_major'),
+        degree_type_search: urlParams.get('school_degree_type'),
+    }];
+    const queryString = new URLSearchParams(queryFilters[0]).toString() || ""; // Fallback to empty string if filters is empty or undefined
     
     if (heroName) {
         document.getElementById('hero-name').textContent = `, ${heroName}`;
@@ -17,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'school_test_type': 'Entrance Exam',
         'school_outcome_option': 'Top Priorities',
         'school_tuition': 'Tuition Budget Range',
-        'location_type_option': 'Preferred Setting'
+        'location_type_option': 'City Size'
     };
 
     const excludedKeys = ['quiz_first_name', 'school_ids'];
@@ -37,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (key === 'school_tuition') {
             const numericValue = displayValue.replace(/[^0-9]/g, '');
             if (numericValue) {
-                const formattedPrice = usdFormatter.format(numericValue);
+                const formattedPrice = formatCurrencyAmount(numericValue, 'USD',false);
                 // Keep prefix symbols like < or > if they exist
                 const prefixMatch = displayValue.match(/^[<>=]*/);
                 const prefix = prefixMatch ? prefixMatch[0] : '';
@@ -60,4 +65,16 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     container.innerHTML = htmlMarkup || '<p>No specific filters applied.</p>';
+
+    $(document).on('click','.school-card-item a.school-link',(e)=>{
+        e.preventDefault();
+        
+        const target = $(e.currentTarget).attr('data-target');
+        
+        if(queryString !== ""){         
+            window.location.href = `${target}?${queryString}`;
+        }else{
+            window.location.href = `${target}`;
+        }
+    })
 });

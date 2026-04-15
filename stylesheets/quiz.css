@@ -19,6 +19,12 @@
 #carouselQuiz.carousel .carousel-fade .carousel-item-prev.carousel-item-right {
   opacity: 1;
 }
+#carouselQuiz.carousel .carousel-item.active .slick-slider.slick-initialized {
+  opacity: 1;
+}
+#carouselQuiz.carousel .carousel-item .slick-slider {
+  opacity: 0;
+}
 #carouselQuiz.carousel .carousel-item .text-box {
   padding-top: 0;
 }
@@ -32,12 +38,18 @@
   text-decoration: none;
   display: block;
   margin-bottom: 30px;
+  padding: 0 5px;
 }
 #carouselQuiz.carousel .carousel-item a.carousel-link:before {
   content: "\f104";
   font-family: FontAwesome;
   margin-right: 5px;
   font-weight: 500;
+  display: inline-block; /* Essential for transform to work */
+  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+#carouselQuiz.carousel .carousel-item a.carousel-link.prev-slide:hover:before {
+  transform: translateX(-3px);
 }
 #carouselQuiz .modal-dialog {
   min-width: 840px;
@@ -54,11 +66,28 @@
 }
 #carouselQuiz .results-item .results-container {
   opacity: 0;
-  transition: opacity 0.5;
+  transition: opacity 0.5s ease-in-out;
   min-height: 350px;
 }
 #carouselQuiz .input-form-group {
-  padding: 0 5px;
+  padding: 0 10px;
+}
+@media screen and (max-width: 768px) {
+  #carouselQuiz .input-form-group .input-group.d-flex {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 768px) {
+  #carouselQuiz .input-form-group .input-group.d-flex .input-group-radio {
+    width: 100% !important;
+  }
+}
+#carouselQuiz .input-form-group input#testScore {
+  width: auto;
+  flex: none;
+  field-sizing: content;
+  min-width: 40%;
+  max-width: 100%;
 }
 #carouselQuiz .input-form-group .form-check {
   width: 100%;
@@ -74,16 +103,30 @@
   vertical-align: middle;
   white-space: nowrap;
 }
+@media screen and (max-width: 768px) {
+  #carouselQuiz .input-form-group .form-check {
+    white-space: normal;
+  }
+}
 #carouselQuiz .input-form-group .form-check:not(:last-child) {
   margin-bottom: 20px;
 }
 #carouselQuiz .input-form-group .form-check .form-check-input {
   margin-left: 0;
   margin-right: 20px;
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
   margin-top: 0;
   border: 1px solid #AAAAAA;
+  padding: 0;
+  border-radius: 5px;
+  transition: background-size 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+  background-size: 0% 0%; /* Hidden by default */
+}
+#carouselQuiz .input-form-group .form-check .form-check-input:checked {
+  background-color: #163D5C;
+  border-color: #163D5C;
+  background-size: 100% 100%; /* Scales up when checked */
 }
 #carouselQuiz .input-form-group .search-input {
   align-items: center;
@@ -114,20 +157,21 @@
   vertical-align: middle;
   display: table-cell;
   width: 100%;
+  padding: 0 5px;
 }
 @media screen and (max-width: 768px) {
   #carouselQuiz .input-group-radio {
-    width: 100%;
+    width: 100% !important;
+    padding: 0 !important;
   }
-}
-#carouselQuiz .input-group-radio.w-25:not(:nth-child(4n+1)) {
-  padding: 0 10px;
-}
-#carouselQuiz .input-group-radio.w-25:nth-child(4n+4) {
-  padding-right: 0;
 }
 #carouselQuiz .input-group-radio.w-33:not(:nth-child(3n+1)) {
   padding: 0 10px;
+}
+@media screen and (max-width: 768px) {
+  #carouselQuiz .input-group-radio.w-33:not(:nth-child(3n+1)) {
+    padding: 0;
+  }
 }
 #carouselQuiz .input-group-radio.w-33:nth-child(3n+3) {
   padding-right: 0;
@@ -137,6 +181,12 @@
   justify-content: space-between !important;
   align-items: center;
   padding: 0 15px;
+}
+@media screen and (max-width: 768px) {
+  #carouselQuiz .input-group-radio.w-33 label {
+    justify-content: center !important;
+    padding: 0;
+  }
 }
 #carouselQuiz .input-group-radio:not(:last-child) {
   margin-bottom: 20px;
@@ -171,11 +221,20 @@
   text-align: center;
   vertical-align: middle;
   white-space: nowrap;
+  background-color: transparent;
+  transition: background-color 0.5s ease, transform 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 #carouselQuiz .radio-btn:hover label {
   background-color: rgb(230, 230, 230);
   border-color: rgb(173, 173, 173);
   color: rgb(51, 51, 51);
+  transform: scale(1.011);
+}
+#carouselQuiz .radio-btn:active label {
+  transform: scale(0.98) translateY(1px);
+  transition: transform 0.05s ease;
+  background-color: #163D5C;
+  color: #FFF;
 }
 #carouselQuiz .input-group-lg .radio-btn label {
   font-weight: 400;
@@ -190,64 +249,12 @@
   align-items: center;
   justify-content: center;
 }
-#carouselQuiz .student-info .input-group {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-#carouselQuiz .student-info .input-group label {
-  margin-bottom: 10px;
-}
-#carouselQuiz .student-info .checkbox-line {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-#carouselQuiz .student-info .checkbox-line input[type=checkbox] {
-  -moz-appearance: none;
-       appearance: none;
-  -webkit-appearance: none;
-  width: 25px;
-  height: 25px;
-  margin-right: 10px;
-  border: 1px solid #2A2A2A;
-  border-radius: 4px;
-  display: grid;
-  place-content: center;
-  cursor: pointer;
-  background-color: white;
-  transition: background 0.2s ease-in-out;
-}
-#carouselQuiz .student-info .checkbox-line input[type=checkbox]::after {
-  content: "";
-  width: 12px;
-  height: 12px;
-  transform: scale(0);
-  transition: 120ms transform ease-in-out;
-  background-color: #2A2A2A;
-  /* This creates a simple "inner box" check. 
-  For a real "L" shaped checkmark, see the clip-path below */
-  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-}
-#carouselQuiz .student-info .checkbox-line input[type=checkbox]:checked {
-  border-color: #2A2A2A;
-}
-#carouselQuiz .student-info .checkbox-line input[type=checkbox]:checked::after {
-  transform: scale(1);
-}
-#carouselQuiz .student-info .checkbox-line input[type=checkbox]:focus {
-  outline: 2px solid #2A2A2A;
-  outline-offset: 2px;
-}
-#carouselQuiz .student-info input[type=text], #carouselQuiz .student-info input[type=email], #carouselQuiz .student-info input[type=tel] {
-  border-radius: 10px;
-  border-width: 1px;
-  border-color: #2A2A2A;
-  width: 60%;
-}
 @media screen and (max-width: 768px) {
-  #carouselQuiz .student-info input[type=text], #carouselQuiz .student-info input[type=email], #carouselQuiz .student-info input[type=tel] {
-    width: 100%;
+  #carouselQuiz .input-group-lg .radio-btn label {
+    white-space: normal;
+    height: -moz-fit-content;
+    height: fit-content;
+    min-height: 48px;
   }
 }
 #carouselQuiz .school-results-list {
@@ -323,17 +330,13 @@
   /* Optional: use clamp to prevent it from getting too tiny or huge */
   font-size: clamp(13px, 8cqw, 20px);
   line-height: 1.2;
-  display: -webkit-box;
-  -webkit-line-clamp: 2; /* Number of lines to show */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 #carouselQuiz .school-results-container .box-card .result-header .logo-container {
   width: 35%;
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 150px;
 }
 #carouselQuiz .school-results-container .box-card .school-details ul {
   padding-left: 0;
@@ -370,6 +373,41 @@
   display: flex !important;
   justify-content: center;
   align-items: center;
+}
+@keyframes celebrate {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(2) rotate(-5deg);
+    background-color: #ffffff; /* Festive Yellow */
+    box-shadow: 0 0 15px rgba(224, 255, 51, 0.928);
+  }
+  40% {
+    transform: scale(1.5) rotate(5deg);
+  }
+  60% {
+    transform: scale(1.7) rotate(-3deg);
+  }
+  80% {
+    transform: scale(1.3) rotate(3deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+    background-color: transparent; /* Or your default highlight color */
+  }
+}
+#carouselQuiz .search-count.highlight {
+  display: inline-block; /* Required for transforms to work */
+  border-radius: 4px;
+  font-weight: bold;
+  /* Trigger the animation */
+  animation: celebrate 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+@media screen and (max-width: 768px) {
+  #carouselQuiz .results-list .header {
+    flex-direction: column;
+  }
 }
 
 .bg-light-blue .btn-close {

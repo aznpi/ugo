@@ -1,17 +1,16 @@
-let masterMaxTuition = null;
+let masterMaxTuition = null,
+    masterCityList = [],
+    masterSchoolNames = [],
+    isInitialized = false;
 
-const   portalId = 5020112,
-        schoolTableId = 169609632,
-        programTableId = 170387831,
-        admissionRequirementTableId = 177485357,
-        areaOfStudyTableId = 178019487,
-        dbName = 'UgoStoreDB',
+const   dbName = 'UgoStoreDB',
         filterModalId = 'filterOptionPanel',
+        schoolSearchDir = "school-search",
         //update to live url when ready
-        // resultsPage = "/search-results",
-        // quizResultsPage = "/quiz-results";
-        resultsPage = "/ugo_dev/ugo_search_results.html",
-        quizResultsPage = "/ugo_dev/ugo_quiz_results.html";
+        // resultsPage = "/"+schoolSearchDir+"/search-results",
+        // quizResultsPage = "/"+schoolSearchDir+"/quiz-results";
+        resultsPage = "/ugo_dev/"+schoolSearchDir+"/ugo_search_results.html",
+        quizResultsPage = "/ugo_dev/"+schoolSearchDir+"/ugo_quiz_results.html";
 ;
 
 // 1. Declare the variable in the global scope (outside any functions)
@@ -21,24 +20,75 @@ const initDatabase = () => {
     // 2. Assign the Dexie instance to that global variable
     db = new Dexie(dbName);
             
-    db.version(1).stores({
-        schools: 'hs_id, name, last_updated, city, state_province, country, overview_description, *tags, average_tuition_fees, starting_tuition',
+    db.version(3).stores({
+        schools: 'hs_id, name, last_updated, city, state_province,*country_name, *region,overview_description, *tags, average_tuition_fees, starting_tuition',
         programs: 'hs_id, last_updated, name, overview, *school_available, *area_of_study, *degree_type',
         admissionRequirements: 'hs_id, last_updated, *school_name, ielts, toeflpb, duolingo, els_level',
-        areaOfStudy: 'hs_id, last_updated, name'
+        areaOfStudy: 'hs_id, last_updated, name',
+        degreeTypes: 'hs_id, last_updated, name, *countries, *regions'
     });
 
     return db.open();
 };
 
 // Initialize it immediately
-    initDatabase().catch(err => {
-    console.error("Failed to open db: " + err);
-    });
+    const initializeApp = async () => {
+    // 1. Exit early if already initialized
+        if (isInitialized) return;
+
+        try {
+            await initDatabase();
+            await initDataSync();
+            
+            // 2. Set the flag to true
+            isInitialized = true;
+            console.log("App initialization complete.");
+        } catch (error) {
+            console.error("Initialization failed:", error);
+        }
+    };
+
+    initializeApp();
     
     const tableQueryArray = [
         {
             tableId: schoolTableId,
+            storeName: 'schools',
+            lastSyncedKey: 'last_sync_schools',
+            filters: {
+                // Example filter: only fetch schools in the US
+                // country: 'United States'
+            }
+        },
+         {
+            tableId: schoolTableEUId,
+            storeName: 'schools',
+            lastSyncedKey: 'last_sync_schools',
+            filters: {
+                // Example filter: only fetch schools in the US
+                // country: 'United States'
+            }
+        },
+         {
+            tableId: schoolTableCAId,
+            storeName: 'schools',
+            lastSyncedKey: 'last_sync_schools',
+            filters: {
+                // Example filter: only fetch schools in the US
+                // country: 'United States'
+            }
+        },
+         {
+            tableId: schoolTableAUId,
+            storeName: 'schools',
+            lastSyncedKey: 'last_sync_schools',
+            filters: {
+                // Example filter: only fetch schools in the US
+                // country: 'United States'
+            }
+        },
+         {
+            tableId: schoolTableMAId,
             storeName: 'schools',
             lastSyncedKey: 'last_sync_schools',
             filters: {
@@ -56,7 +106,25 @@ const initDatabase = () => {
             }
         },
         {
+            tableId: programTableEUId,
+            storeName: 'programs',
+            lastSyncedKey: 'last_sync_programs',
+            filters: {
+                // Example filter: only fetch programs with "Computer Science" in the name
+                // name__contains: 'Computer Science'
+            }
+        },
+        {
             tableId: admissionRequirementTableId,
+            storeName: 'admissionRequirements',
+            lastSyncedKey: 'last_sync_admissionRequirements',
+            filters: {
+                // Example filter: only fetch admission requirements with "English" in the name
+                // name__contains: 'English'
+            }
+        },
+        {
+            tableId: admissionRequirementTableEUId,
             storeName: 'admissionRequirements',
             lastSyncedKey: 'last_sync_admissionRequirements',
             filters: {
@@ -70,6 +138,15 @@ const initDatabase = () => {
             lastSyncedKey: 'last_sync_areaOfStudy',
             filters: {
                 // Example filter: only fetch area of studies with "Biology" in the name
+                // name__contains: 'Biology'
+            }
+        },
+        {
+            tableId: degreeTypesTableId,
+            storeName: 'degreeTypes',
+            lastSyncedKey: 'last_sync_degreeTypes',
+            filters: {
+                // Example filter: only fetch degree types with "Biology" in the name
                 // name__contains: 'Biology'
             }
         }
@@ -101,19 +178,29 @@ const initDatabase = () => {
             const response = await fetch(query);
             const data = await response.json();
 
-            // 1. Extract the "results" array from the response
             const results = data.results || [];
-            // 2. Map HubDB "results" array to flat objects for Dexie
             if (results.length > 0) {
-                // 2. Map and Flatten any array properties automatically
-                const recordsToStore = results.map(row => {
+                const recordsToStore = [];
+                const idsToDelete = [];
+
+                results.forEach(row => {
                     const rawValues = row.values;
+                    
+                    // 1. CHECK FOR DISABLED STATUS
+                    // Change 'enable' to the internal name of your HubDB column
+                    // We also check HubSpot's native 'isDeleted' flag if available
+                    const isInactive = rawValues.enable === 0 || row.isDeleted === true;
+
+                    if (isInactive) {
+                        idsToDelete.push(row.id);
+                        return; // Skip mapping and move to the next row
+                    }
+
+                    // 2. Map and Flatten values for active rows
                     const processedValues = {};
-                    // Iterate through every key in the HubDB row
                     for (const key in rawValues) {
-                         const value = rawValues[key];
-                         if (Array.isArray(value)) {
-                            // If the value is an array, flatten it (extract 'name', 'label', or the value itself)
+                        const value = rawValues[key];
+                        if (Array.isArray(value)) {
                             processedValues[key] = value.map(item => {
                                 if (typeof item === 'object' && item !== null) {
                                     return item.name || item.label || item.id || JSON.stringify(item);
@@ -121,110 +208,40 @@ const initDatabase = () => {
                                 return item;
                             });
                         } else {
-                            // Otherwise, just copy the value
                             processedValues[key] = value;
                         }
                     }
 
-                    return {
+                    recordsToStore.push({
                         hs_id: row.id,
-                        last_updated: Math.floor(new Date(row.updatedAt).getTime() / 1000), // Map timestamp for your index
+                        last_updated: Math.floor(new Date(row.updatedAt).getTime() / 1000),
                         ...processedValues,
-                            
-                        };
+                    });
                 });
 
-                // Write batch to Dexie
-                await db[storeName].bulkPut(recordsToStore);
+                // 3. EXECUTE DEXIE OPERATIONS
+                // Delete disabled rows first
+                if (idsToDelete.length > 0) {
+                    await db[storeName].bulkDelete(idsToDelete);
+                    console.log(`🗑️ Removed ${idsToDelete.length} inactive items from ${storeName}`);
+                }
 
-                const latestTimestamp = Math.max(...recordsToStore.map(r => r.last_updated));
-                localStorage.setItem(lastSyncedKey, latestTimestamp);
+                // Update/Insert active rows
+                if (recordsToStore.length > 0) {
+                    await db[storeName].bulkPut(recordsToStore);
+                    
+                    // Update the sync timestamp based on the latest record processed
+                    const latestTimestamp = Math.max(...recordsToStore.map(r => r.last_updated));
+                    localStorage.setItem(lastSyncedKey, latestTimestamp);
+                    console.log(`✅ Synced ${recordsToStore.length} items to ${storeName}`);
+                }
 
-                // HubSpot's next link preserves your filters automatically
+                // Handle pagination
                 nextUrl = data.paging?.next?.link || null;
-                
             }
-            /*
-            const batch = data.results.map(row => ({
-                hs_id: row.id,
-                last_updated: Math.floor(new Date(row.updatedAt).getTime() / 1000),
-                ...row.values
-            }));
-            */
-            
-            
         } catch (error) {
             console.error("Filtered sync failed:", error);
         }
-    }
-    
-    const serializeContainer = (containerSelector, disablePersonalFields = true) => {
-        const container = document.querySelector(containerSelector);
-        if (!container) return {};
-
-        const obj = {};
-        
-        // Define fields to exclude for privacy
-        const privateFields = [
-            'quiz_last_name', 
-            'quiz_email', 
-            'quiz_phone', 
-            'student_privacy_consent'
-        ];
-
-        // 1. Get standard inputs
-        const inputs = container.querySelectorAll('input, select, textarea');
-        
-        // 2. Get Bootstrap dropdowns
-        const bootstrapDropdowns = container.querySelectorAll('.dropdown[data-name]');
-
-        // Handle Standard Inputs
-        inputs.forEach(field => {
-            // Privacy Check: Skip if the field name is in the private list
-            if (disablePersonalFields && privateFields.includes(field.name)) {
-                return;
-            }
-
-            if (!field.name || field.disabled || ['file', 'reset', 'submit', 'button'].includes(field.type)) {
-                return;
-            }
-
-            if (field.type === 'checkbox') {
-                if (field.checked) {
-                    if (obj[field.name]) {
-                        Array.isArray(obj[field.name]) ? obj[field.name].push(field.value) : obj[field.name] = [obj[field.name], field.value];
-                    } else {
-                        obj[field.name] = [field.value];
-                    }
-                } else if (!obj[field.name]) {
-                    obj[field.name] = [];
-                }
-            } else if (field.type === 'radio') {
-                if (field.checked) obj[field.name] = field.value;
-            } else {
-                obj[field.name] = field.value;
-            }
-        });
-
-        // Handle Bootstrap Dropdowns
-        bootstrapDropdowns.forEach(dropdown => {
-            const key = dropdown.getAttribute('data-name');
-            
-            // Privacy Check for Dropdowns
-            if (disablePersonalFields && privateFields.includes(key)) {
-                return;
-            }
-
-            const toggleBtn = dropdown.querySelector('.dropdown-toggle');
-            const value = toggleBtn.getAttribute('data-value') || toggleBtn.textContent.trim();
-            const defaultValue = toggleBtn.getAttribute('data-default');
-            
-            if (value && value !== defaultValue) {
-                obj[key] = value;
-            }
-        });
-
-        return obj;
     };
 
     const getValueFromStorage = (dataName,storageName) => {
@@ -279,6 +296,7 @@ const initDatabase = () => {
             return [];
         }
     }
+
 
     const filterSchoolSearchResults = (filterParamArray, resultsStorageName, dataFilter, clearFilters = false) => {
         
@@ -359,33 +377,41 @@ const initDatabase = () => {
         }
     }
 
-    const queryIndexedDBAndDisplay = async (input) => {
-        // RESET the persistence variable when a new primary search starts
+   const queryIndexedDBAndDisplay = async (input) => {
+        // 1. RESET persistence variables for a fresh search
         masterMaxTuition = null;
-        
+        masterCityList = [];
+        masterSchoolNames = [];
+
         const resultsName = 'last_school_results';
         const resultsContainer = document.getElementById('search-result-container');
         const resultsContainerEl = $('#search-result-container');
 
-        // 1. Extract and normalize the data
+        // 2. Extract and normalize the data from the input
+        // Handles both the quiz result format and the direct search form format
         const schoolIds = input.school_ids ? Array.from(input.school_ids) : [];
         const filters = input.school_filter && input.school_filter.length > 0 ? input.school_filter[0] : input;
 
         if (!resultsContainer) return;
 
+        // Show visual loading state
         showLoadingState(true, resultsContainerEl);
 
-        // Remove old Load More buttons
+        // Remove old "Load More" UI elements
         const existingBtn = document.getElementById('load-more-container');
         if (existingBtn) existingBtn.remove();
 
-        // Use a small delay for UI transition smoothness
+        // Small delay to allow the loading spinner to render smoothly
         setTimeout(async () => {
             try {
-                // 2. Program-based filtering (Major/Degree)
-                let programCollection = (filters.study_area_search && filters.study_area_search !== "") 
-                    ? db.programs.where('area_of_study').equals(filters.study_area_search) 
-                    : db.programs.toCollection();
+                // --- STEP A: Program-based filtering (Major & Degree) ---
+                // We find programs first to get a list of schools that offer them
+                let programCollection;
+                if (filters.study_area_search && filters.study_area_search !== "") {
+                    programCollection = db.programs.where('area_of_study').equals(filters.study_area_search);
+                } else {
+                    programCollection = db.programs.toCollection();
+                }
 
                 const matchingPrograms = await programCollection
                     .filter(p => {
@@ -395,41 +421,93 @@ const initDatabase = () => {
                     })
                     .toArray();
 
+                // Extract unique school names from the matching programs
                 const uniqueNamesFromPrograms = [...new Set(matchingPrograms.flatMap(p => p.school_available || []))];
 
-                // 3. Construct the School Query
+                // --- STEP B: Construct the School Query ---
                 let schoolQuery;
                 if (schoolIds.length > 0) {
                     schoolQuery = db.schools.where('hs_id').anyOf(schoolIds);
                 } else if (uniqueNamesFromPrograms.length > 0) {
                     schoolQuery = db.schools.where('name').anyOf(uniqueNamesFromPrograms);
                 } else {
+                    // If no specific program was searched, we look at all schools
                     schoolQuery = db.schools.toCollection();
                 }
 
-                // 4. Final refinement
+                // --- STEP C: Final Refinement (Country & Tags) ---
                 const matchedSchools = await schoolQuery
                     .filter(item => {
-                        const matchesCountry = !filters.school_country_search || item.country === filters.school_country_search;
+                        // 1. Country Filter
+                        const matchesCountry = !filters.school_country_search || (
+                            filters.school_country_search === 'Europe' 
+                                ? (item.region && item.region.includes('Europe')) 
+                                : (item.country_name && item.country_name.includes(filters.school_country_search))
+                        );
+                        
+                        // 2. School Tags Filter (Handles comma-delimited strings)
+                        let matchesTags = true;
+                        if (filters.tags_search && filters.tags_search.trim() !== "") {
+                            // Split "tag1, tag2" into ["tag1", "tag2"]
+                            const requestedTags = filters.tags_search.split(',').map(t => t.trim().toLowerCase());
+                            const schoolTags = Array.isArray(item.tags) ? item.tags.map(t => t.toLowerCase()) : [];
+                            
+                            // Check if school has EVERY tag requested
+                            matchesTags = requestedTags.every(tag => schoolTags.includes(tag));
+                        }
+
+
+                        // 3. Program Linkage (Ensures school actually has the selected study area)
                         const matchesProgramLink = uniqueNamesFromPrograms.length > 0 
                             ? uniqueNamesFromPrograms.includes(item.name) 
                             : true;
 
-                        return matchesCountry && matchesProgramLink;
+                        return matchesCountry && matchesTags && matchesProgramLink;
                     })
                     .toArray();
 
-                // Store in localStorage for persistence
-                localStorage.setItem(resultsName, JSON.stringify(matchedSchools));
+                // --- STEP D: Persistence & Rendering ---
+                // 1. Determine if we need to group results
+                // Logic: If country is selected AND it is not USA, we group by parent_school_name
+                const selectedCountry = filters.school_country_search;
+                const shouldGroup = selectedCountry && selectedCountry !== "USA";
 
-                // 5. CALL THE RENDER FUNCTION
-                renderSchoolResults(matchedSchools);
+                let finalDisplayData;
+
+                if (shouldGroup) {
+                    // Group by parent_school_name
+                    const grouped = matchedSchools.reduce((acc, school) => {
+                        const key = school.parent_school_name || 'no-parent';
+                        if (!acc[key]) {
+                            acc[key] = { ...school, is_group: true, matching_variants: [] };
+                        }
+                        acc[key].matching_variants.push(school);
+                        return acc;
+                    }, {});
+
+                    finalDisplayData = Object.values(grouped);
+                } else {
+                    finalDisplayData = matchedSchools;
+                }
+
+                // Store the processed results (grouped or flat) in localStorage
+                localStorage.setItem(resultsName, JSON.stringify(finalDisplayData));
+
+                // Hide loading and render
+                showLoadingState(false, resultsContainerEl);
+                
+                // Note: Ensure renderSchoolResults is updated to handle items with 'matching_variants'
+                renderSchoolResults(finalDisplayData);
 
             } catch (error) {
                 console.error("Query Error:", error);
-                resultsContainer.innerHTML = '<div class="alert alert-danger">An error occurred while fetching results.</div>';
+                showLoadingState(false, resultsContainerEl);
+                resultsContainer.innerHTML = `
+                    <div class="alert alert-danger">
+                        An error occurred while fetching results. Please try refreshing.
+                    </div>`;
             }
-        }, 500); // Reduced timeout from 2000 to 500 for better UX
+        }, 500); 
     };
 
     const renderSchoolResults = (schools) => {
@@ -450,34 +528,94 @@ const initDatabase = () => {
         
         // Generate HTML
         schools.forEach((school, index) => {
+            // 1. Determine if we should clean the name (only for grouped results)
+            const displayName = school.is_group 
+                ? school.parent_school_name || school.name
+                : school.name;
+
+            // 2. NEW: Collect IDs for Comparison
+            // If it's a group, join all variant IDs; otherwise, use the single hs_id
+            const allIds = school.is_group && school.matching_variants
+                ? school.matching_variants.map(v => v.hs_id).join(',')
+                : school.hs_id;
+                
             const hideClass = index >= itemsPerPage ? 'd-none' : '';
             const logoHtml = school.logo?.url 
-                ? `<img src="${school.logo.url}" alt="${school.name} logo" class="img-fluid">` 
+                ? `<img src="${school.logo.url}" alt="${displayName} logo" class="img-fluid">` 
+                : '';
+            const currency = school.currency.name || 'USD';
+            
+            // Handle Country Directory Pathing
+            const countryDir = school.country_name ? school.country_name.includes("USA") ? "/usa" : school.country_name.includes("Canada") ? "/canada" : school.country_name.includes("Australia") ? "/australia" : school.country_name.includes("Malaysia") ? "/malaysia" : "/europe" : "";
+
+            // --- NEW: Handle Campus Location List ---
+            let locationHtml = '';
+            if (school.is_group && school.matching_variants) {
+                // 1. Group cities by their country_name
+            const countryGroups = school.matching_variants.reduce((acc, v) => {
+                const country = v.country_name || 'Other';
+                const city = v.city;
+                
+                if (!acc[country]) acc[country] = new Set();
+                if (city) acc[country].add(city);
+                
+                return acc;
+            }, {});
+
+            // 2. Format the groups into "Country: City, City"
+            const formattedGroups = Object.keys(countryGroups).map(country => {
+                const cities = Array.from(countryGroups[country]);
+                return `<strong>${country}:</strong> ${cities.join(', ')}`;
+            });
+
+            locationHtml = `
+                <div class="campus-group-container">
+                    <p class="campus-list mb-0 fw-bold">Locations:</p>
+                    <p class="campus-list mb-0 ps-3">${formattedGroups.join('<br>')}</p>
+                </div>`;
+            } else {
+                // Default single location display
+                const locationParts = [school.city, school.state_province, school.country_name].filter(Boolean);
+                locationHtml = `<p>${locationParts.join(', ')}</p>`;
+            }
+
+            const rankingString = school.rankings 
+                ? `<li class="badge text-wrap bg-light-grey align-items-center me-1 my-1 py-2 w-100">
+                    <i class="fa-solid fa-trophy me-2"></i>${school.rankings.split(';')[0]}
+                </li>`
+                : '';
+
+            const scholarshipString = school.scholarship_details
+                ? `<li class="badge text-wrap bg-light-grey align-items-center me-1 my-1 py-2 w-100">
+                    <i class="fa-solid fa-dollar-sign me-2"></i>Scholarships Available
+                </li>`
                 : '';
 
             const schoolCard = `
                 <div class="col-md-3 mb-4 school-card-item ${hideClass}">
                     <div class="box-card">
                         <div class="result-header">
-                            <div class="title"><h5>${school.name}</h5></div>
+                            <div class="title"><h5>${displayName}</h5></div>
                             <div class="logo-container">${logoHtml}</div>
                         </div>
                         <div class="location">
-                            <p>${[school.city, school.state_province, school.country].filter(Boolean).join(', ')}</p>
+                            ${locationHtml}
                         </div>
                         <div class="school-details">
                             <ul>
-                                <li class="tuition fw-bold">Average Tuition: ${school.average_tuition_fees ? usdFormatter.format(school.average_tuition_fees) : 'Contact for fees'}</li>
+                                <li class="tuition fw-bold">Average Tuition: ${school.average_tuition_fees ? formatCurrencyAmount(school.average_tuition_fees, currency) : 'Contact for fees'}</li>
                             </ul>
+                            ${rankingString ? `<ul class="list-unstyled mb-0 text-center">${rankingString}</ul>` : ''}
+                            ${scholarshipString ? `<ul class="list-unstyled mb-0 text-center">${scholarshipString}</ul>` : ''}
                         </div>
                         <div class="description">
                             <p>${school.overview_description || 'No description available.'}</p>
                         </div>
                         <div class="btn-container">
-                            <a href="#" data-target="${school.page_link ? '/school' + school.page_link : '/'}" class="btn btn-outline school-link">Learn More</a>
+                            <a href="#" data-target="${school.page_link ? '/school'+ countryDir + school.page_link : '/'}" class="btn btn-outline school-link">Learn More</a>
                             <div class="btn-group" role="group">
-                                <input type="checkbox" id="compare-${school.hs_id}" name="school_compare" value="${school.hs_id}" 
-                                    class="compare-check" data-id="${school.hs_id}" data-name="${school.name}" 
+                                <input type="checkbox" id="compare-${school.hs_id}" name="school_compare" value="${allIds}" 
+                                    class="compare-check" data-id="${allIds}" data-name="${school.name}" 
                                     data-logo="${school.logo?.url || ''}" autocomplete="off">
                                 <label for="compare-${school.hs_id}">Compare</label>
                             </div>
@@ -488,11 +626,12 @@ const initDatabase = () => {
             resultsContainer.insertAdjacentHTML('beforeend', schoolCard);
         });
 
+        // Cleanup and UI behaviors
         updateFilterOptions(schools);
+        renderFilterTags('.tag-filter-container');
 
-        // Handle equalization and pagination
         setTimeout(() => {
-            resizeSectionBoxes(['.box-card .result-header','.box-card .description'], $(resultsContainer));
+            resizeSectionBoxes(['.box-card .result-header','.box-card .location','.box-card .description','.box-card .school-details'], $(resultsContainer));
         }, 50);
 
         handleLoadMore(schools.length, itemsPerPage, resultsContainer);
@@ -558,64 +697,80 @@ const initDatabase = () => {
 
     const getSerializedCriteria = () => {
         const mainForm = document.getElementById('schoolSearchForm');
-        const filterModal = document.getElementById('filterOptionPanel');
-        const mainData = new FormData(mainForm);
+        const filterModal = document.getElementById(filterModalId);
         const criteria = {};
+        const urlParams = new URLSearchParams(window.location.search);
 
-        // 1. Always Merge Main Form (Country, Degree, Area of Study)
-        for (let [key, value] of mainData.entries()) {
-            criteria[key] = value;
+        // 1. Primary Data Source: Form or URL Fallback
+        if (mainForm) {
+            const mainData = new FormData(mainForm);
+            for (let [key, value] of mainData.entries()) {
+                criteria[key] = value;
+            }
+        } else {
+            criteria.school_country_search = urlParams.get('school_country_search') || '';
+            criteria.degree_type_search = urlParams.get('degree_type_search') || '';
+            criteria.study_area_search = urlParams.get('study_area_search') || '';
         }
+
+        // --- NEW: Handle schoolIds specifically ---
+        // Extract school_ids from URL if they exist (e.g., ?school_ids=123,456 or multiple school_ids params)
+        const rawIds = urlParams.get('school_ids');
+        if (rawIds) {
+            // Handle comma-separated strings or single values, converting to an array of numbers/strings
+            criteria.schoolIds = rawIds.split(',').map(id => id.trim());
+        } else {
+            criteria.schoolIds = [];
+        }
+
+        // 2. Add Sort Filter (Global)
+        const sortInput = document.querySelector('input[name="sortFilter"]');
+        criteria.sortFilter = sortInput ? sortInput.value : '';
 
         /**
          * Helper to check if a specific accordion section is open
-         * @param {string} selector - The ID of the collapse element (e.g., '#collapseOne')
          */
         const isSectionOpen = (selector) => {
+            if (!filterModal) return false;
             const el = filterModal.querySelector(selector);
             return el && el.classList.contains('show');
         };
 
-        // 2. Conditional Serialization based on Accordion State
+        // 3. Conditional Serialization (Modal Accordions)
+        if (filterModal) {
+            if (isSectionOpen('#collapseOne')) {
+                criteria.schoolName = filterModal.querySelector('#collapseOne .input-search')?.value.toLowerCase().trim() || '';
+            }
 
-        // School Name (Accordion #collapseOne)
-        if (isSectionOpen('#collapseOne')) {
-            criteria.schoolName = filterModal.querySelector('#collapseOne .input-search')?.value.toLowerCase().trim() || '';
-        }
+            if (isSectionOpen('#collapseTwo')) {
+                criteria.city = filterModal.querySelector('#collapseTwo .input-search')?.value.toLowerCase().trim() || '';
+            }
+            
+            if (isSectionOpen('#collapseThree')) {
+                criteria.locationTypes = Array.from(filterModal.querySelectorAll('input[name="filterLocationType"]:checked')).map(input => input.value);
+            } else {
+                criteria.locationTypes = []; 
+            }
 
-        // City Name (Accordion #collapseTwo)
-        if (isSectionOpen('#collapseTwo')) {
-            criteria.city = filterModal.querySelector('#collapseTwo .input-search')?.value.toLowerCase().trim() || '';
-        }
-
-        // Location Type Checkboxes (Accordion #collapseThree)
-        if (isSectionOpen('#collapseThree')) {
-            const modalData = new FormData(filterModal);
-            criteria.locationTypes = modalData.getAll('filterLocationType');
-        } else {
-            criteria.locationTypes = []; // Empty if section closed
-        }
-
-        // Tuition Range Sliders (Accordion #collapseFour)
-        if (isSectionOpen('#collapseFour')) {
-            criteria.tuitionRangeMinFilter = parseInt(filterModal.querySelector('.min')?.value) || 0;
-            criteria.tuitionRangeMaxFilter = parseInt(filterModal.querySelector('.max')?.value) || 50000;
-        } else {
-            // Optional: Set to widest possible range if filter is inactive
-            criteria.tuitionRangeMinFilter = 0;
-            criteria.tuitionRangeMaxFilter = 1000000; 
+            if (isSectionOpen('#collapseFour')) {
+                criteria.tuitionRangeMinFilter = parseInt(filterModal.querySelector('.min')?.value) || 0;
+                criteria.tuitionRangeMaxFilter = parseInt(filterModal.querySelector('.max')?.value) || 50000;
+            } else {
+                criteria.tuitionRangeMinFilter = 0;
+                criteria.tuitionRangeMaxFilter = 1000000; 
+            }
         }
 
         return criteria;
     };
-
-    const executeSerializedSearch = async () => {
+    const executeSerializedSearch = async (clearFilter = false) => {
         const criteria = getSerializedCriteria();
-        console.log("Serialized Search Criteria:", criteria);
+        const resultsContainerEl = $('#search-result-container');
+        showLoadingState(true, resultsContainerEl);
+
 
         try {
             // --- STEP 1: Query Programs Store ---
-            // Find programs that match the Area of Study and Degree Type
             let programQuery = db.programs;
             
             if (criteria.study_area_search && criteria.study_area_search !== "") {
@@ -632,61 +787,79 @@ const initDatabase = () => {
                 })
                 .toArray();
 
-            // Extract unique school names from the filtered programs
             const validSchoolNames = [...new Set(matchingPrograms.flatMap(p => p.school_available || []))];
 
             // --- STEP 2: Query Schools Store ---
             let schoolQuery;
-            
-            // If we have program results, limit the school search to those specific school names
-            if (validSchoolNames.length > 0) {
-                schoolQuery = db.schools.where('name').anyOf(validSchoolNames);
-            } else if (!criteria.study_area_search && !criteria.degree_type_search) {
-                // If no program filters are active, allow all schools
-                schoolQuery = db.schools.toCollection();
+            if (criteria.schoolIds && criteria.schoolIds.length > 0) {
+                // If specific IDs exist, prioritize them (convert to numbers if hs_id is an integer)
+                schoolQuery = db.schools.where('hs_id').anyOf(criteria.schoolIds);
             } else {
-                // Program filters were active but found nothing
-                renderSchoolResults([]);
-                return;
+                if (validSchoolNames.length > 0) {
+                    schoolQuery = db.schools.where('name').anyOf(validSchoolNames);
+                } else if (!criteria.study_area_search && !criteria.degree_type_search) {
+                    schoolQuery = db.schools.toCollection();
+                } else {
+                    setTimeout(() => renderSchoolResults([]), 1000);
+                    return;
+                }
             }
 
-            const matchedSchools = await schoolQuery
+            let matchedSchools = await schoolQuery
                 .filter(school => {
-                    // 1. Primary Filter: Country
-                    const matchCountry = !criteria.school_country_search || 
-                                    school.country === criteria.school_country_search;
-
-                    // 2. Modal Filter: School Name (Text Search)
-                    const matchName = !criteria.filterSchoolSearchTerm || 
-                        school.name.toLowerCase().includes(criteria.filterSchoolSearchTerm.toLowerCase());
+                    const matchCountry = !criteria.school_country_search || school.country_name.includes(criteria.school_country_search);
+                    // --- CONDITIONAL MODAL FILTERS ---
+                    // If clearFilter is true, we force these matches to 'true'
+                    const matchName = clearFilter || !criteria.schoolName || 
+                        school.name.toLowerCase().includes(criteria.schoolName.toLowerCase());
                     
-                    // 3. Modal Filter: City
-                    const matchCity = !criteria.filterCitySearchTerm || 
-                        school.city?.toLowerCase().includes(criteria.filterCitySearchTerm.toLowerCase());
+                    const matchCity = clearFilter || !criteria.city || 
+                        school.city?.toLowerCase().includes(criteria.city.toLowerCase());
 
-                    // 4. Modal Filter: Location Type (Checkboxes)
-                    const matchLocation = !criteria.locationTypes || criteria.locationTypes.length === 0 || 
-                        criteria.locationTypes.includes(school.location_type);
+                    const activeLocationTags = Object.values(criteria.locationTypes || {})
+                        .filter(value => typeof value === 'string' && value.trim() !== "");
 
-                    // 5. Modal Filter: Tuition Range
+                    const matchLocation = clearFilter || activeLocationTags.length === 0 || 
+                        activeLocationTags.some(tag => school.tags && tag.includes(school.tags));
+
                     const tuition = parseFloat(school.average_tuition_fees) || 0;
-                    // Note: Ensure your serialized keys match exactly what is in the object
                     const minT = parseFloat(criteria.tuitionRangeMinFilter) || 0;
                     const maxT = parseFloat(criteria.tuitionRangeMaxFilter) || 1000000;
-                    const matchTuition = tuition >= minT && tuition <= maxT;
+                    const matchTuition = clearFilter || (tuition >= minT && tuition <= maxT);
 
                     return matchCountry && matchName && matchCity && matchLocation && matchTuition;
                 })
                 .toArray();
 
+            // --- NEW STEP: Apply Sorting Logic ---
+            if (criteria.sortFilter) {
+                matchedSchools.sort((a, b) => {
+                    const tuitionA = parseFloat(a.average_tuition_fees) || 0;
+                    const tuitionB = parseFloat(b.average_tuition_fees) || 0;
+                    const nameA = a.name.toLowerCase();
+                    const nameB = b.name.toLowerCase();
+
+                    switch (criteria.sortFilter) {
+                        case 'low-to-high':
+                            return tuitionA - tuitionB;
+                        case 'high-to-low':
+                            return tuitionB - tuitionA;
+                        case 'school-name-a-to-z':
+                            return nameA.localeCompare(nameB);
+                        case 'school-name-z-to-a':
+                            return nameB.localeCompare(nameA);
+                        default:
+                            return 0;
+                    }
+                });
+            }
+
             // --- STEP 3: Render & Cleanup ---
-            renderSchoolResults(matchedSchools);
+            setTimeout(() => renderSchoolResults(matchedSchools), 1000);
             
-            // Update the visual filter counter
             if (typeof countFilter === 'function') countFilter();
 
-            // Close modal
-            const modalEl = document.getElementById('filterOptionPanel');
+            const modalEl = document.getElementById(filterModalId);
             const modal = bootstrap.Modal.getInstance(modalEl);
             if (modal) modal.hide();
 
@@ -698,7 +871,30 @@ const initDatabase = () => {
     const updateFilterOptions = (currentSchools) => {
         if (!currentSchools || currentSchools.length === 0) return;
 
-        // ... (Autocomplete logic stays the same) ...
+        // 1. Extract Unique, Sorted Values
+        const uniqueSchoolNames = [...new Set(currentSchools.map(s => s.name))].sort();
+        const uniqueCities = [...new Set(currentSchools.map(s => s.city).filter(Boolean))].sort();
+
+        if(masterCityList.length === 0){
+            masterCityList = uniqueCities;
+        }
+
+        if(masterSchoolNames.length === 0){
+            masterSchoolNames = uniqueSchoolNames;
+        }
+
+        // 2. Target the specific inputs in your accordion sections
+        const schoolInput = document.querySelector('#collapseOne .input-search');
+        const cityInput = document.querySelector('#collapseTwo .input-search');
+
+        // 3. Initialize your existing setupAutocomplete function
+        if (schoolInput && typeof setupAutocomplete === 'function') {
+            setupAutocomplete('#filterSchoolSearchTerm','filter-school-name', masterSchoolNames);
+        }
+
+        if (cityInput && typeof setupAutocomplete === 'function') {
+            setupAutocomplete('#filterCitySearchTerm','filter-city-name', masterCityList);
+        }
 
         // 2. Calculate Tuition Range
         const tuitionValues = currentSchools
@@ -738,7 +934,7 @@ const initDatabase = () => {
         }
 
          // 5. Update Checkboxes
-        updateLocationCheckboxes(currentSchools);
+        //updateLocationCheckboxes(currentSchools);
     };
 
     /**
@@ -764,9 +960,8 @@ const initDatabase = () => {
     };
 
     const updateLocationCheckboxes = (currentSchools) => {
-        const availableTypes = new Set(currentSchools.map(s => s.location_type));
+        const availableTypes = new Set(currentSchools.map(s => s.tags).flat());
         const checkboxContainers = document.querySelectorAll('#collapseThree .input-group');
-
         checkboxContainers.forEach(container => {
             const checkbox = container.querySelector('input');
             if (checkbox) {
@@ -780,9 +975,109 @@ const initDatabase = () => {
         });
     };
 
+    const renderFilterTags = (containerSelector) => {
+        const criteria = getSerializedCriteria();
+        const tagContainer = document.querySelector(containerSelector);
+        if (!tagContainer) return;
+
+        tagContainer.innerHTML = ''; // Clear existing tags
+
+        // Helper to create the HTML for a tag
+        const createTag = (label, key, value = null, isPrimary = false) => {
+            const tag = document.createElement('span');
+            tag.className = `badge ${isPrimary ? 'bg-primary' : 'bg-light-grey'} me-2 mb-2 p-2 d-inline-flex align-items-center`;
+            tag.innerHTML = `
+                ${label}
+                <i class="ms-2 cursor-pointer bi bi-x-lg" 
+                onclick="removeFilterTag('${key}', ${value ? `'${value}'` : 'null'})">
+                &times;
+                </i>
+            `;
+            return tag;
+        };
+
+        if (criteria.school_country_search) {
+            tagContainer.appendChild(createTag(`Country: ${criteria.school_country_search}`, 'school_country_search', null, true));
+        }
+        if (criteria.degree_type_search) {
+            tagContainer.appendChild(createTag(`Degree: ${criteria.degree_type_search}`, 'degree_type_search', null, true));
+        }
+        
+        if (criteria.study_area_search) {
+            tagContainer.appendChild(createTag(`Study Area: ${criteria.study_area_search}`, 'study_area_search', null, true));
+        }
+        if (criteria.sortFilter) {
+            const sortLabel = criteria.sortFilter
+                .replace(/-/g, ' ')
+                .replace(/\b\w/g, char => char.toUpperCase());
+            tagContainer.appendChild(createTag(`Sort: ${sortLabel}`, 'sortFilter',null,false));
+        }
+
+        // 1. School Name Tag
+        if (criteria.schoolName) {
+            tagContainer.appendChild(createTag(`School: ${criteria.schoolName}`, 'schoolName', null, false));
+        }
+
+        // 2. City Tag
+        if (criteria.city) {
+            tagContainer.appendChild(createTag(`City: ${criteria.city}`, 'city', null, false));
+        }
+
+        // 3. Location Type Tags (Multiple)
+        if (criteria.locationTypes && criteria.locationTypes.length > 0) {
+            criteria.locationTypes.forEach(type => {
+                tagContainer.appendChild(createTag(`City Size: ${type}`, 'filterLocationType', type, false));
+            });
+        }
+
+        // 4. Tuition Tag (Only if modified from defaults)
+        if (criteria.tuitionRangeMinFilter > 0 || criteria.tuitionRangeMaxFilter < 1000000) {
+            const label = `Tuition: $${criteria.tuitionRangeMinFilter} - $${criteria.tuitionRangeMaxFilter}`;
+            tagContainer.appendChild(createTag(label, 'tuitionRange'));
+        }
+    };
+
+   const removeFilterTag = (key, value) => {
+        const filterModal = document.getElementById(filterModalId);
+        
+        if (key === 'school_country_search') {
+            $('input[name="school_country_search"]','.hero').val('');
+            $('.dropdown-country-toggle','.hero').text('Study Country');
+        } 
+        else if (key === 'degree_type_search') {
+            $('input[name="degree_type_search"]','.hero').val('');
+            $('.dropdown-degree-toggle','.hero').text('Degree Type');
+        } 
+        else if (key === 'study_area_search') {
+            $('input[name="study_area_search"]','.hero').val('');            
+        } 
+        else if (key === 'schoolName') {
+            filterModal.querySelector('#filterSchoolSearchTerm').value = '';
+        }
+        else if (key === 'sortFilter') {
+            $('input[name="sortFilter"]','#sort-dropdown-filter').val('');
+            $('.dropdown-toggle','#sort-dropdown-filter').text('-----');
+        }  
+        else if (key === 'city') {
+            filterModal.querySelector('#filterCitySearchTerm').value = '';
+        } 
+        else if (key === 'filterLocationType') {
+            const checkbox = filterModal.querySelector(`input[name="filterLocationType"][value="${value}"]`);
+            if (checkbox) checkbox.checked = false;
+        } 
+        else if (key === 'tuitionRange') {
+            // Reset the tuition slider to master bounds (assuming initializeRangeSlider is available)
+            // You can also just reset the input values directly
+            $('#collapseFour','#'+filterModalId).removeClass('show').parent().find('.accordion-button').attr('aria-expanded', 'false').addClass('collapsed');
+        }
+
+        // Re-run the search with the updated (cleared) values
+        executeSerializedSearch();
+    };
+
      // --- POPULATE FORM ONLY IF URL PARAMS EXIST ---
     const urlParams = new URLSearchParams(window.location.search);
-    
+
     // 1. Get the school_ids from the URL (assuming a format like ?school_ids=123,456)
     const rawSchoolIds = urlParams.get('school_ids');
     let schoolIdSet = new Set();
@@ -794,57 +1089,66 @@ const initDatabase = () => {
     // 2. Check for other search parameters
     const hasParams = urlParams.has('school_country_search') || 
                   urlParams.has('degree_type_search') || 
-                  urlParams.has('study_area_search') || 
+                  urlParams.has('study_area_search') ||
+                  urlParams.has('tags_search') || 
                   schoolIdSet.size > 0;
 
     if (hasParams) {
         const initialLocation = urlParams.get('school_country_search') || "";
         const initialDegree = urlParams.get('degree_type_search') || "";
         const initialStudy = urlParams.get('study_area_search') || "";
+        const initialTags = urlParams.get('tags_search') || "";
 
         if(window.location.pathname.includes(resultsPage)){
             const searchForm = document.getElementById('schoolSearchForm');
-            const countryButtons = searchForm.querySelectorAll('.btn-list .btn');
+
             const locationHidden = searchForm.querySelector('input[name="school_country_search"]');
             const degreeHidden = searchForm.querySelector('input[name="degree_type_search"]');
             const studyAreaInput = searchForm.querySelector('input[name="study_area_search"]');
-            const degreeBtn = searchForm.querySelector('.dropdown-toggle');
+            const countryBtn = searchForm.querySelector('.dropdown-country-toggle');
+            const degreeBtn = searchForm.querySelector('.dropdown-degree-toggle');
 
             // Update UI elements for Location
             if (initialLocation) {
                 locationHidden.value = initialLocation;
-                countryButtons.forEach(btn => {
-                    if (btn.getAttribute('data-value') === initialLocation) {
-                        btn.classList.replace('btn-grey', 'btn-blue');
-                    }
-                });
+                countryBtn.innerHTML = `<span>${initialLocation}</span>`;
+                updateDegreeDropdown(initialLocation, false);
             }
 
             // Update UI elements for Degree
             if (initialDegree) {
                 degreeHidden.value = initialDegree;
-                degreeBtn.textContent = initialDegree;
+                degreeBtn.innerHTML = `<span>${initialDegree}</span>`;
+               
             }
 
             // Update UI elements for Study Area
             if (initialStudy) {
                 studyAreaInput.value = initialStudy;
+                
+                setTimeout(async () => {
+                    setupAutocomplete('#heroStudyAreaSearchTerm', 'auto-area-study', await getUniqueAreasOfStudy(initialLocation, initialDegree));
+                }, 60);
             }
 
         }
         
 
         // 3. Auto-trigger search using the specific structure required by your function
-        if (window.location.pathname.includes(resultsPage) || window.location.pathname.includes(quizResultsPage)) {
+        if (window.location.pathname.includes(schoolSearchDir)) {
+            
             queryIndexedDBAndDisplay({
                 school_ids: schoolIdSet, // Passing the Set of IDs
                 school_filter: [{
                     school_country_search: initialLocation,
                     degree_type_search: initialDegree,
-                    study_area_search: initialStudy
+                    study_area_search: initialStudy,
+                    tags_search: initialTags
                 }]
             });
         }
+    }else{
+        renderNoResults(document.getElementById('search-result-container'));
     }
     
     //Hero School Search Form Script
@@ -852,7 +1156,8 @@ const initDatabase = () => {
         e.preventDefault();
         var selectedValue = $(this).attr('data-value');
         var dropdownButton = $(this).closest('.dropdown').find('.dropdown-toggle');
-        dropdownButton.text(selectedValue);
+        var textValue = $(this).text().trim();
+        dropdownButton.text(textValue);
         dropdownButton.val(selectedValue);
         $('input[name="heroDegreeType"]','.hero').val(selectedValue);
     });
@@ -876,6 +1181,17 @@ const initDatabase = () => {
         console.warn(`Modal element "${filterModalId}" not found. Instance remains null.`);
     }
 
+    $('.dropdown-menu .dropdown-item','#sort-dropdown-filter').on('click', function(e) {
+        e.preventDefault();
+        var selectedValue = $(this).attr('data-value');
+        var textValue = $(this).text().trim();
+        var dropdownButton = $(this).closest('.dropdown').find('.dropdown-toggle');
+        dropdownButton.text(textValue);
+        dropdownButton.val(selectedValue);
+        $('input[name="sortFilter"]').val(selectedValue);
+        executeSerializedSearch();
+    });
+
     const countFilter = function(){
         let count = 0;
 
@@ -896,19 +1212,17 @@ const initDatabase = () => {
         $('.filter-count').text(count);
     }
 
-    const clearFilterFields = function(dataFilter){
-        $('.filter-field:not([type=range])','#'+filterModalId + ' .accordion-item .accordion-collapse.show').each(function() {
-                let fieldType = $(this).attr('type');
-                // Check if the value of the current input is not empty
-                if (fieldType === 'checkbox' || fieldType === 'radio'){
+    const clearFilterFields = () =>{
+        $('.filter-field:not([type=range])','#'+filterModalId + ' .accordion-item .accordion-collapse').each(function() {
+            let fieldType = $(this).attr('type');
+            // Check if the value of the current input is not empty
+            if (fieldType === 'checkbox' || fieldType === 'radio'){
                 $(this).prop('checked', false);
             }else{
                 $(this).val('');
             }            
         });
-         const   formData = serializeContainer('#'+filterModalId);
-        
-        filterSchoolSearchResults(formData,resultsName,dataFilter,true);
+        setTimeout(() => executeSerializedSearch(true), 50);
     }
 
     const initSchoolComparison = () => {
@@ -916,24 +1230,27 @@ const initDatabase = () => {
         const itemsContainer = document.getElementById('compare-items');
         const clearBtn = document.getElementById('compare-clear');
         
-        let selectedSchools = []; // Array of {id, name, logo}
+        let selectedSchools = [];
 
         const updateBanner = () => {
             banner.style.display = selectedSchools.length > 0 ? 'block' : 'none';
+            itemsContainer.innerHTML = selectedSchools.map(school => {
+                const hasLogo = school.logo && school.logo.trim() !== '';
+                const logoContent = hasLogo 
+                    ? `<img src="${school.logo}" alt="${school.name}" class="img-thumbnail w-100 h-100 object-fit-contain" title="${school.name}">`
+                    : `<div class="w-100 h-100 d-flex align-items-center justify-content-center text-center p-1 bg-light border rounded small" style="font-size: 10px; line-height: 1.1;">${school.name}</div>`;
 
-            // Render Logos instead of Names
-            itemsContainer.innerHTML = selectedSchools.map(school => `
-                <div class="position-relative me-2 mb-1" style="width: 60px; height: 60px;">
-                    <img src="${school.logo}" alt="${school.name}" 
-                        class="img-thumbnail w-100 h-100 object-fit-contain" 
-                        title="${school.name}">
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill remove-badge cursor-pointer" 
-                        onclick="removeCompareItem('${school.id}')" 
-                        style="z-index: 2;">
-                        &times;
-                    </span>
-                </div>
-            `).join('');
+                return `
+                    <div class="position-relative me-2 mb-1" style="width: 60px; height: 60px;">
+                        ${logoContent}
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill remove-badge cursor-pointer" 
+                            onclick="removeCompareItem('${school.id}')" 
+                            style="z-index: 2; background-color: #dc3545; color: #fff; border: 1px solid white;">
+                            &times;
+                        </span>
+                    </div>
+                `;
+            }).join('');
         };
 
         window.removeCompareItem = (id) => {
@@ -947,7 +1264,7 @@ const initDatabase = () => {
             if (e.target.classList.contains('compare-check')) {
                 const id = e.target.getAttribute('data-id');
                 const name = e.target.getAttribute('data-name');
-                const logo = e.target.getAttribute('data-logo') || 'placeholder-logo.png'; // Fallback
+                const logo = e.target.getAttribute('data-logo') || '';
 
                 if (e.target.checked) {
                     if (selectedSchools.length >= 5) {
@@ -969,10 +1286,25 @@ const initDatabase = () => {
             updateBanner();
         });
 
+        // --- UPDATED SUBMIT LOGIC ---
         document.getElementById('compare-submit')?.addEventListener('click', () => {
-            const ids = selectedSchools.map(s => s.id).join(',');
-            //window.location.href = `/compare?school_ids=${ids}`;
-            window.location.href = `/ugo_dev/ugo_comparison.html?school_ids=${ids}`;
+            // 1. Get the selected school IDs from your array
+            const ids = selectedSchools.map(s => (s.id || s.hs_id)).join(',');
+
+            // 2. Get your current serialized filter data
+            // Assuming serializeContainer or getSerializedCriteria returns an object like { country: 'USA' }
+            const currentFilters = typeof getSerializedCriteria === 'function' ? getSerializedCriteria() : {};
+
+            // 3. Create a new URLSearchParams object
+            const params = new URLSearchParams({
+                ...currentFilters, // Spread existing filters (e.g., degree_type_search: 'Bachelor')
+                school_ids: ids    // Add the specific schools for comparison
+            });
+
+            // 4. Redirect with the full query string
+            //const targetUrl = `/compare?${params.toString()}`;
+            const targetUrl = `/ugo_dev/ugo_comparison.html?${params.toString()}`;
+            window.location.href = targetUrl;
         });
     };
 
@@ -983,12 +1315,11 @@ const initDatabase = () => {
     });
 
     $('.clear-filter','#'+filterModalId).on('click',function(){
-        $('.collapse.show',filterModalId).collapse('hide');
+        $('.collapse.show','#'+filterModalId).collapse('hide');
         
         // Optional: If using Bootstrap 5's default accordion component structure, 
         // also ensure the buttons/headers get the 'collapsed' class and lose 'active' if used
         $('.accordion-button','#'+filterModalId).addClass('collapsed');
         $('.accordion-button','#'+filterModalId).attr('aria-expanded', false);
-        clearFilterFields($(this).attr('data-filter'));
-        executeSerializedSearch();
+        clearFilterFields();
     });

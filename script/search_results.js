@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    initDataSync();
     initSchoolComparison();
 });
 
@@ -11,7 +10,7 @@ $(document).on('click','.school-card-item a.school-link',(e)=>{
     
     if(length > 0){
         const queryParam = new URLSearchParams(filterParam);
-        window.location.href = `${target}?${queryParam.toString()}`;
+            window.location.href = `${target}?${queryParam.toString()}`;
     }else{
         window.location.href = `${target}`;
     }

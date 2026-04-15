@@ -1,5 +1,21 @@
 @use 'variables' as v;
 
+// --- 1. Responsive Breakpoints & Mixins ---
+$breakpoints: (
+  'xs': 480px,
+  'sm': 768px,
+  'md': 992px,
+  'lg': 1200px,
+  'xl': 1440px
+);
+
+@mixin mq($key) {
+  $size: map-get($breakpoints, $key);
+  @media screen and (max-width: $size) {
+    @content;
+  }
+}
+
 #carouselQuiz {
     z-index: 100;
     &.carousel{
@@ -20,6 +36,16 @@
             opacity: 1;
         }
         .carousel-item{
+            &.active{
+                .slick-slider{
+                    &.slick-initialized{
+                        opacity: 1;
+                    }
+                }
+            }
+            .slick-slider{
+                opacity: 0;
+            }
             .text-box{
                 padding-top:0;
             }
@@ -34,12 +60,24 @@
                     text-decoration: none;
                     display: block;
                     margin-bottom: 30px;
+                    padding:0 5px;
 
                     &:before{
                         content: '\f104';
                         font-family: FontAwesome;
                         margin-right:5px;
                         font-weight: 500;
+                        display: inline-block; /* Essential for transform to work */
+                        transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                    }
+
+                    &.prev-slide{
+                        &:hover{
+                            &:before{
+                                transform: translateX(-3px);
+                            }
+                        }
+                       
                     }
                 }
             }
@@ -62,13 +100,35 @@
     .results-item{
         .results-container{
             opacity:0;
-            transition: opacity .5;
+            transition: opacity 0.5s ease-in-out;
             min-height:350px;
         }
     }
 
     .input-form-group{
-        padding:0 5px;
+        padding:0 10px;
+        .input-group{
+            &.d-flex{
+                @include mq('sm') {
+                    flex-direction: column;
+                }
+                .input-group-radio{
+                    @include mq('sm') {
+                        width: 100% !important;
+                    }
+                }
+            }
+        }
+
+        input{
+            &#testScore{
+                width: auto;
+                flex: none;
+                field-sizing: content;
+                min-width: 40%;
+                max-width: 100%;
+            }
+        }
 
         .form-check{
             width: 100%;
@@ -83,6 +143,9 @@
             padding: 15px 20px;
             vertical-align: middle;
             white-space: nowrap;
+            @include mq('sm') {
+                white-space: normal;
+            }
 
             &:not(:last-child){
                 margin-bottom: 20px;
@@ -91,10 +154,20 @@
             .form-check-input{
                 margin-left:0;
                 margin-right:20px;
-                width:18px;
-                height: 18px;
+                width:24px;
+                height: 24px;
                 margin-top:0;
                 border:1px solid #AAAAAA;
+                padding:0;
+                border-radius: 5px;
+                transition: background-size 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+                background-size: 0% 0%; /* Hidden by default */
+
+                &:checked{
+                    background-color: v.$primary-color;
+                    border-color: v.$primary-color;
+                    background-size: 100% 100%; /* Scales up when checked */
+                }
             }
         }
 
@@ -132,20 +205,18 @@
             vertical-align: middle;
             display: table-cell;
             width: 100%;
+            padding:0 5px;
             @media screen and (max-width: 768px) {
-                width: 100%;
+                width: 100% !important;
+                padding:0 !important;
             }
-            &.w-25{
-                &:not(:nth-child(4n+1)){
-                    padding: 0 10px;
-                }
-                &:nth-child(4n+4){
-                    padding-right:0;
-                }
-            }
+            
             &.w-33{
                 &:not(:nth-child(3n+1)){
                     padding: 0 10px;
+                    @include mq('sm') {
+                        padding: 0;
+                    }
                 }
                 &:nth-child(3n+3){
                     padding-right:0;
@@ -156,6 +227,10 @@
                     justify-content: space-between !important;
                     align-items: center;
                     padding:0 15px;
+                    @include mq('sm') {
+                        justify-content: center !important;
+                        padding: 0;
+                    }
                 }
             }
             &:not(:last-child){
@@ -207,12 +282,23 @@
                 text-align: center;
                 vertical-align: middle;
                 white-space: nowrap;
+                background-color: transparent;
+                transition: background-color 0.5s ease, transform 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             }
             &:hover {
                 label {
-                    background-color: rgb(230, 230, 230);
-                    border-color: rgb(173, 173, 173);
-                    color: rgb(51, 51, 51);
+                        background-color: rgb(230, 230, 230);
+                        border-color: rgb(173, 173, 173);
+                        color: rgb(51, 51, 51);
+                        transform: scale(1.011); // Slightly larger on hover
+                    }
+            }
+            &:active {
+                label {
+                    transform: scale(0.98) translateY(1px); // Shrinks and moves down
+                    transition: transform 0.05s ease; // Fast response for the "press"
+                    background-color: v.$primary-color; // Change background color on click
+                    color: #FFF;
                 }
             }
         }
@@ -230,80 +316,15 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    @include mq('sm') {
+                        white-space: normal;
+                        height: fit-content;
+                        min-height:48px;
+                    }
                 }
             }
         }
         
-
-    .student-info{
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            label{
-                margin-bottom: 10px;
-            }
-        }
-        .checkbox-line {
-            display: flex;
-            align-items: center;
-            cursor: pointer; // Makes the whole line feel interactive
-
-            input[type=checkbox] {
-                appearance: none; // Hides the default browser styling
-                -webkit-appearance: none;
-                
-                width: 25px;
-                height: 25px;
-                margin-right: 10px;
-                border: 1px solid v.$secondary-color;
-                border-radius: 4px; // Optional: adds a slight curve
-                display: grid;
-                place-content: center; // Centers the checkmark
-                cursor: pointer;
-                background-color: white;
-                transition: background 0.2s ease-in-out;
-
-                &::after {
-                    content: "";
-                    width: 12px;
-                    height: 12px;
-                    transform: scale(0); // Hidden by default
-                    transition: 120ms transform ease-in-out;
-                    background-color: v.$secondary-color; // Or any color you prefer
-                    
-                    /* This creates a simple "inner box" check. 
-                    For a real "L" shaped checkmark, see the clip-path below */
-                    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-                }
-
-                &:checked {
-                    border-color: v.$secondary-color;
-                    
-                    &::after {
-                        transform: scale(1); // Reveals the checkmark
-                    }
-                }
-                
-                &:focus {
-                    outline: 2px solid v.$secondary-color; // Good for accessibility
-                    outline-offset: 2px;
-                }
-            }
-        }
-        input[type=text],input[type=email],input[type=tel]{
-                            
-            border-radius: 10px;
-            border-width: 1px;
-            border-color:v.$secondary-color;
-            width: 60%;
-
-            @media screen and (max-width: 768px) {
-                width: 100%;
-            }
-
-        }
-    }
     .school-results-list{
         opacity: 0;
         transition: opacity 0.5s ease-in-out;        
@@ -382,11 +403,11 @@
                         /* Optional: use clamp to prevent it from getting too tiny or huge */
                         font-size: clamp(13px, 8cqw, 20px);
                         line-height: 1.2;
-                        display: -webkit-box;
-                        -webkit-line-clamp: 2;           /* Number of lines to show */
-                        -webkit-box-orient: vertical;     
-                        overflow: hidden;
-                        text-overflow: ellipsis;
+                        // display: -webkit-box;
+                        // -webkit-line-clamp: 2;           /* Number of lines to show */
+                        // -webkit-box-orient: vertical;     
+                        // overflow: hidden;
+                        // text-overflow: ellipsis;
                         
                     }
                     
@@ -396,6 +417,7 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    max-width: 150px;
                 }
             }
             
@@ -443,6 +465,46 @@
             display: flex !important;
             justify-content: center;
             align-items: center;
+        }
+    }
+    @keyframes celebrate {
+        0% {
+            transform: scale(1);
+        }
+        20% {
+            transform: scale(2) rotate(-5deg);
+            background-color: #ffffff; /* Festive Yellow */
+            box-shadow: 0 0 15px rgba(224, 255, 51, 0.928);
+        }
+        40% {
+            transform: scale(1.5) rotate(5deg);
+        }
+        60% {
+            transform: scale(1.7) rotate(-3deg);
+        }
+        80% {
+            transform: scale(1.3) rotate(3deg);
+        }
+        100% {
+            transform: scale(1) rotate(0);
+            background-color: transparent; /* Or your default highlight color */
+        }
+    }
+
+    .search-count{
+        &.highlight {
+            display: inline-block; /* Required for transforms to work */
+            border-radius: 4px;
+            font-weight: bold;
+            /* Trigger the animation */
+            animation: celebrate 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+    }
+    .results-list{
+        .header{
+            @include mq('sm') {
+                flex-direction: column;
+            }
         }
     }
 }
